@@ -31,9 +31,11 @@ public class VesselBlockEntity extends BlockEntity implements IAnimatable {
     private PlayState predicate(AnimationEvent<VesselBlockEntity> event) {
         AnimationController<VesselBlockEntity> controller = event.getController();
         
-        controller.setAnimation(animationBuilder);
-        controller.tickOffset = random.nextInt(0, 20);
-        controller.animationSpeed = random.nextDouble(0.9d, 1.1d);
+        if(controller.isJustStarting) {
+            controller.setAnimation(animationBuilder);
+            controller.tickOffset = random.nextInt(20);
+            controller.setAnimationSpeed(random.nextDouble(0.8f, 1.1f));
+        }
 
         return PlayState.CONTINUE;
     }

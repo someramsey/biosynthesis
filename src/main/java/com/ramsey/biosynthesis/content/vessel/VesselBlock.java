@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class VesselBlock extends BaseEntityBlock {
     public static DirectionProperty FacingProperty = BlockStateProperties.FACING;
-    public static IntegerProperty AgeProperty = IntegerProperty.create("age", 0, 4);
+    public static IntegerProperty AgeProperty = IntegerProperty.create("age", 0, 5);
 
     public VesselBlock() {
         super(BlockBehaviour.Properties.of(Material.STONE).noOcclusion().strength(-1.0F, 3600000.0F).noLootTable());
