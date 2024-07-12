@@ -1,7 +1,12 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
+import com.ramsey.biosynthesis.registrate.ParticleTypeRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -31,6 +36,18 @@ public class VesselBlock extends BaseEntityBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(FacingProperty);
         pBuilder.add(AgeProperty);
+    }
+
+    @Override
+    public void animateTick(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
+        double offset = 0.5d;
+        double shift = 0.1d;
+
+        double d0 = (double) pPos.getX() + offset - pRandom.nextDouble() * shift;
+        double d1 = (double) pPos.getY() + offset - pRandom.nextDouble() * shift;
+        double d2 = (double) pPos.getZ() + offset - pRandom.nextDouble() * shift;
+
+        pLevel.addParticle(ParticleTypeRegistry.bloodParticleType.get(), d0, d1, d2, 0, 0, 0);
     }
 
     @Override
