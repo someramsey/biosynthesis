@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"idle.model.new": {
+		"idle": {
 			"loop": true,
 			"animation_length": 1.75,
 			"bones": {

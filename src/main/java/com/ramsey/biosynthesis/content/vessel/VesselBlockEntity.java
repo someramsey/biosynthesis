@@ -17,7 +17,7 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 
 @SuppressWarnings("ALL")
 public class VesselBlockEntity extends BlockEntity implements IAnimatable {
-    private static final AnimationBuilder animationBuilder = new AnimationBuilder().addAnimation("animation.vessel.idle", true);
+    private static final AnimationBuilder animationBuilder = new AnimationBuilder().addAnimation("idle", true);
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     public VesselBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
