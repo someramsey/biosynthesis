@@ -14,11 +14,6 @@ public class VesselBlock extends BaseEntityBlock {
     }
 
     @Override
-    public boolean isRandomlyTicking(@NotNull BlockState pState) {
-        return true;
-    }
-
-    @Override
     public @NotNull RenderShape getRenderShape(@NotNull BlockState pState) {
         return RenderShape.ENTITYBLOCK_ANIMATED;
     }
