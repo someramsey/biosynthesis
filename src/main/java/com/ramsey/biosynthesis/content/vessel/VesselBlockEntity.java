@@ -24,14 +24,14 @@ public class VesselBlockEntity extends BlockEntity implements IAnimatable {
         super(BlockEntityTypeRegistry.vesselBlockEntityType.get(), pPos, pState);
     }
 
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
     private PlayState predicate(AnimationEvent<VesselBlockEntity> event) {
         event.getController().setAnimation(animationBuilder);
         return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void registerControllers(AnimationData animationData) {
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
     @Override
