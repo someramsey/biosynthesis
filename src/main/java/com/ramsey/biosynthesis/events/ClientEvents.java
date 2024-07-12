@@ -11,7 +11,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class ClientEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        Main.LOGGER.info("HELLO FROM CLIENT SETUP");
-        Main.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
     }
 }
