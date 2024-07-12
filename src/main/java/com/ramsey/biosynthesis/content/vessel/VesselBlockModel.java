@@ -2,12 +2,27 @@ package com.ramsey.biosynthesis.content.vessel;
 
 import com.ramsey.biosynthesis.Main;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class VesselBlockModel extends AnimatedGeoModel<VesselBlockEntity> {
+    private static final String baseModelDir = "geo/vessel/";
+
     @Override
     public ResourceLocation getModelResource(VesselBlockEntity vesselBlockEntity) {
-        return new ResourceLocation(Main.MODID, "geo/vessel/body/stage3.geo.json");
+        BlockState state = vesselBlockEntity.getBlockState();
+
+        String modelPath = baseModelDir;
+
+        if (state.getValue(VesselBlock.FacingProperty) == VesselBlock.VesselDirection.UP) {
+            modelPath += "head/";
+        } else {
+            modelPath += "body/";
+        }
+
+        modelPath += "stage" + state.getValue(VesselBlock.AgeProperty) + ".geo.json";
+
+        return new ResourceLocation(Main.MODID, modelPath);
     }
 
     @Override
