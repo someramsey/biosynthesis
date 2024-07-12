@@ -1,4 +1,4 @@
-package com.ramsey.biosynthesis.content.vessel;
+package com.ramsey.biosynthesis.content.blocks.vessel;
 
 import com.ramsey.biosynthesis.Main;
 import net.minecraft.core.Direction;

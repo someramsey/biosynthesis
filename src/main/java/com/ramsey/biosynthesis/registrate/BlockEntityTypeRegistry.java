@@ -1,7 +1,7 @@
 package com.ramsey.biosynthesis.registrate;
 
 import com.ramsey.biosynthesis.Main;
-import com.ramsey.biosynthesis.content.vessel.VesselBlockEntity;
+import com.ramsey.biosynthesis.content.blocks.vessel.VesselBlockEntity;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;

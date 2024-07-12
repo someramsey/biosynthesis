@@ -1,8 +1,8 @@
 package com.ramsey.biosynthesis.registrate;
 
 import com.ramsey.biosynthesis.Main;
-import com.ramsey.biosynthesis.content.vessel.VesselBlock;
-import com.ramsey.biosynthesis.content.vessel.VesselHeadBlock;
+import com.ramsey.biosynthesis.content.blocks.vessel.VesselBlock;
+import com.ramsey.biosynthesis.content.blocks.vessel.VesselHeadBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
