@@ -1,7 +1,7 @@
 package com.ramsey.biosynthesis.content.vessel;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -10,6 +10,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
@@ -20,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class VesselBlock extends BaseEntityBlock {
-    public static EnumProperty<VesselDirection> FacingProperty = EnumProperty.create("facing", VesselDirection.class);
+    public static DirectionProperty FacingProperty = BlockStateProperties.FACING;
     public static IntegerProperty AgeProperty = IntegerProperty.create("age", 0, 4);
 
     public VesselBlock() {
@@ -47,24 +49,5 @@ public class VesselBlock extends BaseEntityBlock {
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         return new VesselBlockEntity(pPos, pState);
-    }
-
-    public enum VesselDirection implements StringRepresentable {
-        NORTH("north"),
-        EAST("east"),
-        SOUTH("south"),
-        WEST("west"),
-        UP("up");
-
-        private final String name;
-
-        VesselDirection(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public @NotNull String getSerializedName() {
-            return name;
-        }
     }
 }

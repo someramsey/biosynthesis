@@ -2,6 +2,7 @@ package com.ramsey.biosynthesis.content.vessel;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -17,7 +18,13 @@ public class VesselBlockRenderer extends GeoBlockRenderer<VesselBlockEntity> {
 
     @Override
     protected void rotateBlock(Direction facing, PoseStack poseStack) {
-        super.rotateBlock(facing, poseStack);
+        switch (facing) {
+            case SOUTH -> poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
+            case WEST -> poseStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+            case NORTH -> poseStack.mulPose(Vector3f.YP.rotationDegrees(0.0F));
+            case EAST -> poseStack.mulPose(Vector3f.YP.rotationDegrees(270.0F));
+            case DOWN -> poseStack.mulPose(Vector3f.XN.rotationDegrees(180.0F));
+        }
     }
 
     @Override

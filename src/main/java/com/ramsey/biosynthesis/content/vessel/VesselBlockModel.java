@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.content.vessel;
 
 import com.ramsey.biosynthesis.Main;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
@@ -14,7 +15,7 @@ public class VesselBlockModel extends AnimatedGeoModel<VesselBlockEntity> {
 
         String modelPath = baseModelDir;
 
-        if (state.getValue(VesselBlock.FacingProperty) == VesselBlock.VesselDirection.UP) {
+        if (state.getValue(VesselBlock.FacingProperty) == Direction.UP) {
             modelPath += "head/";
         } else {
             modelPath += "body/";

@@ -15,9 +15,13 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
+import java.util.Random;
+
 @SuppressWarnings("ALL")
 public class VesselBlockEntity extends BlockEntity implements IAnimatable {
     private static final AnimationBuilder animationBuilder = new AnimationBuilder().addAnimation("idle", true);
+    private static final Random random = new Random();
+
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     public VesselBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
@@ -25,7 +29,12 @@ public class VesselBlockEntity extends BlockEntity implements IAnimatable {
     }
 
     private PlayState predicate(AnimationEvent<VesselBlockEntity> event) {
-        event.getController().setAnimation(animationBuilder);
+        AnimationController<VesselBlockEntity> controller = event.getController();
+        
+        controller.setAnimation(animationBuilder);
+        controller.tickOffset = random.nextInt(0, 20);
+        controller.animationSpeed = random.nextDouble(0.9d, 1.1d);
+
         return PlayState.CONTINUE;
     }
 
