@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class VesselHeadBlock extends VesselBlock {
-    public VesselHeadBlock() {
-        super();
+    public VesselHeadBlock(Properties pProperties) {
+        super(pProperties);
 
         this.registerDefaultState(
             stateDefinition.any().setValue(FacingProperty, Direction.UP)
