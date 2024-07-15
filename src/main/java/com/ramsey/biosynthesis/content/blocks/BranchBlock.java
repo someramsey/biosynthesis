@@ -1,5 +1,6 @@
 package com.ramsey.biosynthesis.content.blocks;
 
+import net.minecraft.client.renderer.block.BlockModelShaper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.BlockGetter;
