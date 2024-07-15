@@ -1,0 +1,44 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "biosynthesis:block/branch/map",
+		"particle": "biosynthesis:block/branch/map"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 1],
+			"to": [11, 1, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 9]},
+			"faces": {
+				"north": {"uv": [9.5, 0, 13.5, 0.5], "texture": "#0"},
+				"east": {"uv": [6.5, 13.5, 10.5, 14.5], "texture": "#0"},
+				"west": {"uv": [6.5, 13.5, 10.5, 14.5], "texture": "#0"},
+				"up": {"uv": [10.5, 0.5, 13.5, 8], "texture": "#0"},
+				"down": {"uv": [10.5, 0.5, 13.5, 8], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, 0, 0],
+			"to": [11, 1, 1],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, -6]},
+			"faces": {
+				"north": {"uv": [10.5, 7.5, 13.5, 8], "texture": "#0"},
+				"east": {"uv": [6.5, 13.5, 10.5, 14.5], "texture": "#0"},
+				"west": {"uv": [6.5, 13.5, 10.5, 14.5], "texture": "#0"},
+				"down": {"uv": [10.5, 0, 13.5, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, 1, 0],
+			"to": [11, 16, 1],
+			"rotation": {"angle": 0, "axis": "x", "origin": [7, 8, 0]},
+			"faces": {
+				"north": {"uv": [10.5, 7.5, 13.5, 0], "rotation": 180, "texture": "#0"},
+				"east": {"uv": [6.5, 13.5, 10.5, 14.5], "rotation": 270, "texture": "#0"},
+				"south": {"uv": [10.5, 0, 13.5, 8], "texture": "#0"},
+				"west": {"uv": [6.5, 13.5, 10.5, 14.5], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [9.5, 0, 13.5, 0.5], "rotation": 180, "texture": "#0"}
+			}
+		}
+	]
+}

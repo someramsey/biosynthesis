@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 public class BranchBlock extends Block {
     public static final EnumProperty<BranchSide> ConnectedFrontProperty = EnumProperty.create("front", BranchSide.class);
     public static final EnumProperty<BranchSide> ConnectedRightProperty = EnumProperty.create("right", BranchSide.class);
-    public static final EnumProperty<BranchSide> ConnectedBackProperty = EnumProperty.create("back", BranchSide.class);
     public static final EnumProperty<BranchSide> ConnectedLeftProperty = EnumProperty.create("left", BranchSide.class);
     public static final EnumProperty<BranchOrientation> OrientationProperty = EnumProperty.create("orientation", BranchOrientation.class);
     public static final DirectionProperty SideProperty = DirectionProperty.create("side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
@@ -28,7 +27,6 @@ public class BranchBlock extends Block {
             this.stateDefinition.any()
                 .setValue(ConnectedFrontProperty, BranchSide.None)
                 .setValue(ConnectedRightProperty, BranchSide.None)
-                .setValue(ConnectedBackProperty, BranchSide.None)
                 .setValue(ConnectedLeftProperty, BranchSide.None)
                 .setValue(OrientationProperty, BranchOrientation.Horizontal)
         );
@@ -40,7 +38,6 @@ public class BranchBlock extends Block {
 
         pBuilder.add(ConnectedFrontProperty);
         pBuilder.add(ConnectedRightProperty);
-        pBuilder.add(ConnectedBackProperty);
         pBuilder.add(ConnectedLeftProperty);
         pBuilder.add(OrientationProperty);
         pBuilder.add(SideProperty);
