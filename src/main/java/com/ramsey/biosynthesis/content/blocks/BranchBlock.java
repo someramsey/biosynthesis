@@ -42,7 +42,7 @@ public class BranchBlock extends Block {
         pBuilder.add(ConnectedRightProperty);
         pBuilder.add(ConnectedBackProperty);
         pBuilder.add(ConnectedLeftProperty);
-        pBuilder.add(SideProperty);
+        pBuilder.add(OrientationProperty);
         pBuilder.add(SideProperty);
     }
 
