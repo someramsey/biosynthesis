@@ -1,15 +1,14 @@
 package com.ramsey.biosynthesis.content.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +18,8 @@ public class BranchBlock extends Block {
     public static final EnumProperty<BranchSide> ConnectedRightProperty = EnumProperty.create("right", BranchSide.class);
     public static final EnumProperty<BranchSide> ConnectedBackProperty = EnumProperty.create("back", BranchSide.class);
     public static final EnumProperty<BranchSide> ConnectedLeftProperty = EnumProperty.create("left", BranchSide.class);
-    public static final DirectionProperty FacingProperty = DirectionalBlock.FACING;
+    public static final EnumProperty<BranchFace> FaceProperty = EnumProperty.create("face", BranchFace.class);
+    public static final DirectionProperty SideProperty = DirectionProperty.create("side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
 
     public BranchBlock(Properties pProperties) {
         super(pProperties);
@@ -41,7 +41,8 @@ public class BranchBlock extends Block {
         pBuilder.add(ConnectedRightProperty);
         pBuilder.add(ConnectedBackProperty);
         pBuilder.add(ConnectedLeftProperty);
-        pBuilder.add(FacingProperty);
+        pBuilder.add(SideProperty);
+        pBuilder.add(FaceProperty);
     }
 
     @Override
@@ -57,6 +58,23 @@ public class BranchBlock extends Block {
         private final String name;
 
         BranchSide(String state) {
+            this.name = state;
+        }
+
+        @Override
+        public @NotNull String getSerializedName() {
+            return this.name;
+        }
+    }
+
+    public enum BranchFace implements StringRepresentable {
+        Up("up"),
+        Normal("normal"),
+        Down("down");
+
+        private final String name;
+
+        BranchFace(String state) {
             this.name = state;
         }
 
