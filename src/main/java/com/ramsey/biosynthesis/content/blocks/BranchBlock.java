@@ -14,10 +14,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class BranchBlock extends Block {
-    public static final EnumProperty<BranchSide> ConnectedFrontProperty = EnumProperty.create("front", BranchSide.class);
-    public static final EnumProperty<BranchSide> ConnectedRightProperty = EnumProperty.create("right", BranchSide.class);
-    public static final EnumProperty<BranchSide> ConnectedLeftProperty = EnumProperty.create("left", BranchSide.class);
-    public static final EnumProperty<BranchOrientation> OrientationProperty = EnumProperty.create("orientation", BranchOrientation.class);
+    public static final EnumProperty<ConnectionState> ConnectedFrontProperty = EnumProperty.create("front", ConnectionState.class);
+    public static final EnumProperty<ConnectionState> ConnectedRightProperty = EnumProperty.create("right", ConnectionState.class);
+    public static final EnumProperty<ConnectionState> ConnectedLeftProperty = EnumProperty.create("left", ConnectionState.class);
+    public static final EnumProperty<OrientationState> OrientationProperty = EnumProperty.create("orientation", OrientationState.class);
     public static final DirectionProperty SideProperty = DirectionProperty.create("side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
 
     public BranchBlock(Properties pProperties) {
@@ -25,10 +25,10 @@ public class BranchBlock extends Block {
 
         this.registerDefaultState(
             this.stateDefinition.any()
-                .setValue(ConnectedFrontProperty, BranchSide.None)
-                .setValue(ConnectedRightProperty, BranchSide.None)
-                .setValue(ConnectedLeftProperty, BranchSide.None)
-                .setValue(OrientationProperty, BranchOrientation.Horizontal)
+                .setValue(ConnectedFrontProperty, ConnectionState.None)
+                .setValue(ConnectedRightProperty, ConnectionState.None)
+                .setValue(ConnectedLeftProperty, ConnectionState.None)
+                .setValue(OrientationProperty, OrientationState.Horizontal)
         );
     }
 
@@ -48,14 +48,15 @@ public class BranchBlock extends Block {
         return super.getShape(pState, pLevel, pPos, pContext);
     }
 
-    public enum BranchSide implements StringRepresentable {
+    public enum ConnectionState implements StringRepresentable {
         Up("up"),
         Flat("flat"),
+        Down("down"),
         None("none");
 
         private final String name;
 
-        BranchSide(String state) {
+        ConnectionState(String state) {
             this.name = state;
         }
 
@@ -65,14 +66,14 @@ public class BranchBlock extends Block {
         }
     }
 
-    public enum BranchOrientation implements StringRepresentable {
+    public enum OrientationState implements StringRepresentable {
         Up("up"),
         Horizontal("horizontal"),
         Down("down");
 
         private final String name;
 
-        BranchOrientation(String state) {
+        OrientationState(String state) {
             this.name = state;
         }
 
