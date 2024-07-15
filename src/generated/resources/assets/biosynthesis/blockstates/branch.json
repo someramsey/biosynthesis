@@ -1,0 +1,976 @@
+{
+  "variants": {
+    "front=flat,left=flat,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=flat,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=none,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=flat,left=up,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=flat,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=none,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=none,left=up,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=flat,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=none,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=down,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=horizontal,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=flat,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=flat,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=flat,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=flat,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=none,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=none,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=none,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=none,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=up,side=east": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=up,side=north": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=up,side=south": {
+      "model": "biosynthesis:block/branch/straight"
+    },
+    "front=up,left=up,orientation=up,right=up,side=west": {
+      "model": "biosynthesis:block/branch/straight"
+    }
+  }
+}
