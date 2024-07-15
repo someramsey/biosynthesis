@@ -1,5 +1,8 @@
 {
   "variants": {
-	"": {"model": "biosynthesis:branch"}
+	"facing=south": {"model": "biosynthesis:block/branch/left", "y": 0},
+	"facing=east": {"model": "biosynthesis:block/branch/left", "y": 90},
+	"facing=north": {"model": "biosynthesis:block/branch/left", "y": 180},
+	"facing=west": {"model": "biosynthesis:block/branch/left", "y": 270}
   }
 }
