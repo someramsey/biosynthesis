@@ -23,6 +23,14 @@ public class BranchBlock extends Block {
 
     public BranchBlock(Properties pProperties) {
         super(pProperties);
+
+        this.registerDefaultState(
+            this.stateDefinition.any()
+                .setValue(ConnectedFrontProperty, BranchSide.None)
+                .setValue(ConnectedRightProperty, BranchSide.None)
+                .setValue(ConnectedBackProperty, BranchSide.None)
+                .setValue(ConnectedLeftProperty, BranchSide.None)
+        );
     }
 
     @Override

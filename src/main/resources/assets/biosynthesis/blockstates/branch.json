@@ -1,8 +1,20 @@
 {
   "variants": {
-	"facing=south": {"model": "biosynthesis:block/branch/left", "y": 0},
-	"facing=east": {"model": "biosynthesis:block/branch/left", "y": 90},
-	"facing=north": {"model": "biosynthesis:block/branch/left", "y": 180},
-	"facing=west": {"model": "biosynthesis:block/branch/left", "y": 270}
+	"left=none,right=none,facing=south": {"model": "biosynthesis:block/branch/straight", "y": 0},
+	"left=none,right=none,facing=east": {"model": "biosynthesis:block/branch/straight", "y": 90},
+	"left=none,right=none,facing=north": {"model": "biosynthesis:block/branch/straight", "y": 180},
+	"left=none,right=none,facing=west": {"model": "biosynthesis:block/branch/straight", "y": 270},
+	"left=flat,right=none,facing=south": {"model": "biosynthesis:block/branch/left", "y": 0},
+	"left=flat,right=none,facing=east": {"model": "biosynthesis:block/branch/left", "y": 90},
+	"left=flat,right=none,facing=north": {"model": "biosynthesis:block/branch/left", "y": 180},
+	"left=flat,right=none,facing=west": {"model": "biosynthesis:block/branch/left", "y": 270},
+	"left=none,right=flat,facing=south": {"model": "biosynthesis:block/branch/right", "y": 0},
+	"left=none,right=flat,facing=east": {"model": "biosynthesis:block/branch/right", "y": 90},
+	"left=none,right=flat,facing=north": {"model": "biosynthesis:block/branch/right", "y": 180},
+	"left=none,right=flat,facing=west": {"model": "biosynthesis:block/branch/right", "y": 270},
+	"left=flat,right=flat,facing=south": {"model": "biosynthesis:block/branch/both", "y": 0},
+	"left=flat,right=flat,facing=east": {"model": "biosynthesis:block/branch/both", "y": 90},
+	"left=flat,right=flat,facing=north": {"model": "biosynthesis:block/branch/both", "y": 180},
+	"left=flat,right=flat,facing=west": {"model": "biosynthesis:block/branch/both", "y": 270}
   }
 }
