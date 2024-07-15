@@ -36,8 +36,7 @@
 				"north": {"uv": [10.5, 7.5, 13.5, 0], "rotation": 180, "texture": "#0"},
 				"east": {"uv": [6.5, 13.5, 10.5, 14.5], "rotation": 270, "texture": "#0"},
 				"south": {"uv": [10.5, 0, 13.5, 8], "texture": "#0"},
-				"west": {"uv": [6.5, 13.5, 10.5, 14.5], "rotation": 90, "texture": "#0"},
-				"up": {"uv": [9.5, 0, 13.5, 0.5], "rotation": 180, "texture": "#0"}
+				"west": {"uv": [6.5, 13.5, 10.5, 14.5], "rotation": 90, "texture": "#0"}
 			}
 		}
 	]
