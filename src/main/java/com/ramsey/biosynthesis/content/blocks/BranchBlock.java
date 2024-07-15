@@ -18,7 +18,7 @@ public class BranchBlock extends Block {
     public static final EnumProperty<BranchSide> ConnectedRightProperty = EnumProperty.create("right", BranchSide.class);
     public static final EnumProperty<BranchSide> ConnectedBackProperty = EnumProperty.create("back", BranchSide.class);
     public static final EnumProperty<BranchSide> ConnectedLeftProperty = EnumProperty.create("left", BranchSide.class);
-    public static final EnumProperty<BranchFace> FaceProperty = EnumProperty.create("face", BranchFace.class);
+    public static final EnumProperty<BranchOrientation> OrientationProperty = EnumProperty.create("orientation", BranchOrientation.class);
     public static final DirectionProperty SideProperty = DirectionProperty.create("side", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
 
     public BranchBlock(Properties pProperties) {
@@ -30,6 +30,7 @@ public class BranchBlock extends Block {
                 .setValue(ConnectedRightProperty, BranchSide.None)
                 .setValue(ConnectedBackProperty, BranchSide.None)
                 .setValue(ConnectedLeftProperty, BranchSide.None)
+                .setValue(OrientationProperty, BranchOrientation.Horizontal)
         );
     }
 
@@ -42,7 +43,7 @@ public class BranchBlock extends Block {
         pBuilder.add(ConnectedBackProperty);
         pBuilder.add(ConnectedLeftProperty);
         pBuilder.add(SideProperty);
-        pBuilder.add(FaceProperty);
+        pBuilder.add(SideProperty);
     }
 
     @Override
@@ -67,14 +68,14 @@ public class BranchBlock extends Block {
         }
     }
 
-    public enum BranchFace implements StringRepresentable {
+    public enum BranchOrientation implements StringRepresentable {
         Up("up"),
-        Normal("normal"),
+        Horizontal("horizontal"),
         Down("down");
 
         private final String name;
 
-        BranchFace(String state) {
+        BranchOrientation(String state) {
             this.name = state;
         }
 
