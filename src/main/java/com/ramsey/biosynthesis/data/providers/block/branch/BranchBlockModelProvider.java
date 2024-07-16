@@ -1,7 +1,7 @@
-package com.ramsey.biosynthesis.data.providers.blockstate.branch;
+package com.ramsey.biosynthesis.data.providers.block.branch;
 
 import com.ramsey.biosynthesis.content.blocks.BranchBlock;
-import com.ramsey.biosynthesis.data.providers.blockstate.BlockModelProvider;
+import com.ramsey.biosynthesis.data.providers.block.BlockModelProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 

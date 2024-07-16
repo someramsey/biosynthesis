@@ -1,20 +1,25 @@
-package com.ramsey.biosynthesis.content.blocks;
+package com.ramsey.biosynthesis.data.providers.block.branch;
 
-import com.ramsey.biosynthesis.content.BlockShapeBuilder;
+import com.ramsey.biosynthesis.content.blocks.BranchBlock;
+import com.ramsey.biosynthesis.data.providers.block.BlockShapeProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.stream.Stream;
 
-public class BranchBlockShapeProvider extends BlockShapeBuilder {
-    private static void applyXRotation(UnbakedShape pShape, BranchBlock.OrientationState pOrientation) {
-        if (pOrientation != BranchBlock.OrientationState.Horizontal) {
+public class BranchBlockShapeProvider extends BlockShapeProvider {
+    private static void applyXRotation(UnbakedShape pShape, BlockState pBlockState) {
+        BranchBlock.OrientationState orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
+
+        if (orientation != BranchBlock.OrientationState.Horizontal) {
             pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
         }
     }
 
-    private static void applyYRotation(UnbakedShape pShape, Direction pDirection) {
-        switch (pDirection) {
+    private static void applyYRotation(UnbakedShape pShape, BlockState pBlockState) {
+        Direction direction = pBlockState.getValue(BranchBlock.FacingProperty);
+
+        switch (direction) {
             case SOUTH ->
                 pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
             case WEST ->
@@ -26,11 +31,8 @@ public class BranchBlockShapeProvider extends BlockShapeBuilder {
 
     @Override
     protected UnbakedShape transformShape(UnbakedShape pShape, BlockState pBlockState) {
-        Direction direction = pBlockState.getValue(BranchBlock.FacingProperty);
-        BranchBlock.OrientationState orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
-
-        applyXRotation(pShape, orientation);
-        applyYRotation(pShape, direction);
+        applyXRotation(pShape, pBlockState);
+        applyYRotation(pShape, pBlockState);
 
         return pShape;
     }

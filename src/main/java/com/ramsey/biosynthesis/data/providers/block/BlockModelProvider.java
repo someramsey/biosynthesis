@@ -1,4 +1,4 @@
-package com.ramsey.biosynthesis.data.providers.blockstate;
+package com.ramsey.biosynthesis.data.providers.block;
 
 import net.minecraft.world.level.block.state.BlockState;
 

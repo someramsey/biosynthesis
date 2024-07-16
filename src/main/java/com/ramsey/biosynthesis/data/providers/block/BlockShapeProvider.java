@@ -1,4 +1,4 @@
-package com.ramsey.biosynthesis.content;
+package com.ramsey.biosynthesis.data.providers.block;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -6,7 +6,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
-public abstract class BlockShapeBuilder {
+public abstract class BlockShapeProvider {
     protected abstract Stream<UnbakedShape> buildShape(String pModel);
 
     protected abstract UnbakedShape transformShape(UnbakedShape pShape, BlockState pBlockState);
