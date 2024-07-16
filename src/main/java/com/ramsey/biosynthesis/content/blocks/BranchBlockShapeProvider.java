@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 
 public class BranchBlockShapeProvider extends BlockShapeBuilder {
     private static void applyXRotation(UnbakedShape pShape, BranchBlock.OrientationState pOrientation) {
-        if(pOrientation != BranchBlock.OrientationState.Horizontal) {
-            pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
+        if (pOrientation != BranchBlock.OrientationState.Horizontal) {
+            pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
         }
     }
 
@@ -42,18 +42,18 @@ public class BranchBlockShapeProvider extends BlockShapeBuilder {
                 box(5, 0, 0, 11, 1, 16),
                 box(11, 0, 5, 16, 1, 11),
                 box(0, 0, 5, 5, 1, 11),
-                box(-1, -15, 5, 0, 0, 11),
-                box(16, -15, 5, 17, 0, 11),
-                box(-1, 0, 5, 0, 1, 11),
-                box(16, 0, 5, 17, 1, 11)
+                box(0, 0, 5, 0, 0, 11),
+                box(16, 0, 5, 16, 0, 11),
+                box(0, 0, 5, 0, 1, 11),
+                box(16, 0, 5, 16, 1, 11)
             );
 
             case "both/down_flat" -> Stream.of(
                 box(5, 0, 0, 11, 1, 16),
                 box(11, 0, 5, 16, 1, 11),
                 box(0, 0, 5, 5, 1, 11),
-                box(-1, -15, 5, 0, 0, 11),
-                box(-1, 0, 5, 0, 1, 11)
+                box(0, 0, 5, 0, 0, 11),
+                box(0, 0, 5, 0, 1, 11)
             );
 
             case "both/flat_flat" -> Stream.of(
@@ -94,9 +94,9 @@ public class BranchBlockShapeProvider extends BlockShapeBuilder {
 
             case "left/down" -> Stream.of(
                 box(5, 0, 0, 11, 1, 16),
-                box(-1, -15, 5, 0, 0, 11),
+                box(0, 0, 5, 0, 0, 11),
                 box(0, 0, 5, 5, 1, 11),
-                box(-1, 0, 5, 0, 1, 11)
+                box(0, 0, 5, 0, 1, 11)
             );
 
             case "left/flat" -> Stream.of(
@@ -114,8 +114,8 @@ public class BranchBlockShapeProvider extends BlockShapeBuilder {
             case "right/down" -> Stream.of(
                 box(5, 0, 0, 11, 1, 16),
                 box(11, 0, 5, 16, 1, 11),
-                box(16, 0, 5, 17, 1, 11),
-                box(16, -15, 5, 17, 0, 11)
+                box(16, 0, 5, 16, 1, 11),
+                box(16, 0, 5, 16, 0, 11)
             );
 
             case "right/flat" -> Stream.of(
@@ -132,8 +132,8 @@ public class BranchBlockShapeProvider extends BlockShapeBuilder {
 
             case "straight/down" -> Stream.of(
                 box(5, 0, 0, 11, 1, 16),
-                box(5, 0, -1, 11, 1, 0),
-                box(5, -15, -1, 11, 0, 0)
+                box(5, 0, 0, 11, 1, 0),
+                box(5, 0, 0, 11, 0, 0)
             );
 
             case "straight/flat" -> Stream.of(

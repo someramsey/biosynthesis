@@ -34,15 +34,31 @@ public abstract class BlockShapeBuilder {
             this.maxZ = maxZ / 16.0d;
         }
 
-        public UnbakedShape transform(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
+        public void transform(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
+            if (minX > maxX) {
+                double temp = minX;
+                minX = maxX;
+                maxX = temp;
+            }
+
+            if (minY > maxY) {
+                double temp = minY;
+                minY = maxY;
+                maxY = temp;
+            }
+
+            if (minZ > maxZ) {
+                double temp = minZ;
+                minZ = maxZ;
+                maxZ = temp;
+            }
+
             this.minX = minX;
             this.minY = minY;
             this.minZ = minZ;
             this.maxX = maxX;
             this.maxY = maxY;
             this.maxZ = maxZ;
-
-            return this;
         }
     }
 }

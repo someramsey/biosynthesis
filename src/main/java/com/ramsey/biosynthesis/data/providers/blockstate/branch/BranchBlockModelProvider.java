@@ -43,7 +43,7 @@ public class BranchBlockModelProvider implements BlockModelProvider {
         BranchBlock.ConnectionState front = blockState.getValue(BranchBlock.ConnectedFrontProperty);
 
         if (left == BranchBlock.ConnectionState.None && right == BranchBlock.ConnectionState.None) {
-            if (front != BranchBlock.ConnectionState.None) {
+            if (front == BranchBlock.ConnectionState.None) {
                 return "edge";
             }
 

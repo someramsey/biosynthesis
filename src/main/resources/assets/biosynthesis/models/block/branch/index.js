@@ -28,7 +28,9 @@ function parseFile(file) {
         const modelName = file.replace(/\.json$/, "").replace(/\\/g, '/')
 
         parsed.elements.forEach((element) => {
-            mesh.push(`box(${[...element.from, ...element.to].join(", ")})`);
+            const bounds = [...element.from, ...element.to].map((x) => Math.min(16, Math.max(0, x)));
+
+            mesh.push(`box(${bounds.join(", ")})`);
         });
 
         out += `case \"${modelName}\" -> Stream.of(\n${mesh.join(", \n")}\n);\n\n`;
