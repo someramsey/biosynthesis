@@ -1,24 +1,28 @@
 package com.ramsey.biosynthesis.content.blocks;
 
-import net.minecraft.client.renderer.block.BlockModelShaper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class BranchBlock extends Block {
+import java.util.List;
+import java.util.stream.Stream;
+
+public class BranchBlock extends HorizontalDirectionalBlock {
     public static final EnumProperty<ConnectionState> ConnectedFrontProperty = EnumProperty.create("front", ConnectionState.class);
     public static final EnumProperty<ConnectionState> ConnectedRightProperty = EnumProperty.create("right", ConnectionState.class);
     public static final EnumProperty<ConnectionState> ConnectedLeftProperty = EnumProperty.create("left", ConnectionState.class);
     public static final EnumProperty<OrientationState> OrientationProperty = EnumProperty.create("orientation", OrientationState.class);
-    public static final EnumProperty<Side> SideProperty = EnumProperty.create("side", Side.class);
+    public static final DirectionProperty FacingProperty = FACING;
 
     public BranchBlock(Properties pProperties) {
         super(pProperties);
@@ -40,12 +44,12 @@ public class BranchBlock extends Block {
         pBuilder.add(ConnectedRightProperty);
         pBuilder.add(ConnectedLeftProperty);
         pBuilder.add(OrientationProperty);
-        pBuilder.add(SideProperty);
+        pBuilder.add(FacingProperty);
     }
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return Shapes.box(0, 0, 0, 0, 0, 0);
+        return super.getShape(pState, pLevel, pPos, pContext);
     }
 
     public enum ConnectionState implements StringRepresentable {
@@ -83,7 +87,7 @@ public class BranchBlock extends Block {
         }
     }
 
-    public enum Side implements StringRepresentable {
+    public enum SideState implements StringRepresentable {
         North("north"),
         East("east"),
         South("south"),
@@ -91,7 +95,7 @@ public class BranchBlock extends Block {
 
         private final String name;
 
-        Side(String state) {
+        SideState(String state) {
             this.name = state;
         }
 

@@ -1,7 +1,6 @@
 package com.ramsey.biosynthesis.data.providers.block;
 
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -17,24 +16,20 @@ public abstract class BlockStateMapper implements Function<BlockState, Configure
 
     public abstract int getRotationX(BlockState blockState);
     public abstract int getRotationY(BlockState blockState);
-    public abstract ModelInstance getModelInstance(BlockState blockState);
+    public abstract String getModelPath(BlockState blockState);
 
     @Override
     public ConfiguredModel[] apply(BlockState blockState) {
-        ModelInstance modelInstance = getModelInstance(blockState);
+        String modelPath = getModelPath(blockState);
+        ModelFile file = provider.models().getExistingFile(provider.modLoc(modelPath));
+
         int rotationX = getRotationX(blockState);
         int rotationY = getRotationY(blockState);
 
         return ConfiguredModel.builder()
-            .modelFile(modelInstance.toFile(provider))
+            .modelFile(file)
             .rotationX(rotationX)
             .rotationY(rotationY)
             .build();
     }
-
-    public record ModelInstance(String path, VoxelShape shape) {
-        public ModelFile toFile(BlockStateProvider provider) {
-                return provider.models().getExistingFile(provider.modLoc(path));
-            }
-        }
 }

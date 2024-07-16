@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.data.providers.block;
 
 import com.ramsey.biosynthesis.content.blocks.BranchBlock;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 
@@ -22,14 +23,14 @@ public class BranchBlockStateMapper extends BlockStateMapper {
 
     @Override
     public int getRotationY(BlockState blockState) {
-        BranchBlock.Side side = blockState.getValue(BranchBlock.SideProperty);
+        Direction facing = blockState.getValue(BranchBlock.FacingProperty);
         BranchBlock.OrientationState orientation = blockState.getValue(BranchBlock.OrientationProperty);
 
-        int rotation = switch (side) {
-            case North -> 0;
-            case South -> 180;
-            case East -> 90;
-            case West -> 270;
+        int rotation = switch (facing) {
+            case SOUTH -> 180;
+            case EAST -> 90;
+            case WEST -> 270;
+            default -> 0;
         };
 
         if (orientation == BranchBlock.OrientationState.Down) {
@@ -40,7 +41,7 @@ public class BranchBlockStateMapper extends BlockStateMapper {
     }
 
     @Override
-    public ModelInstance getModelInstance(BlockState blockState) {
+    public String getModelPath(BlockState blockState) {
         BranchBlock.ConnectionState left = blockState.getValue(BranchBlock.ConnectedLeftProperty);
         BranchBlock.ConnectionState right = blockState.getValue(BranchBlock.ConnectedRightProperty);
         BranchBlock.ConnectionState front = blockState.getValue(BranchBlock.ConnectedFrontProperty);
@@ -49,16 +50,16 @@ public class BranchBlockStateMapper extends BlockStateMapper {
 
         if (left == BranchBlock.ConnectionState.None && right == BranchBlock.ConnectionState.None) {
             if (front == BranchBlock.ConnectionState.None) {
-                return new ModelInstance(basePath + "edge", null);
+                return basePath + "edge";
             }
 
-            return new ModelInstance(basePath + "straight/" + front.getSerializedName(), null);
+            return basePath + "straight/" + front.getSerializedName();
         } else if (left != BranchBlock.ConnectionState.None && right != BranchBlock.ConnectionState.None) {
-            return new ModelInstance(basePath + "both/" + "up_up", null);
+            return basePath + "both/" + "up_up";
         } else if (left != BranchBlock.ConnectionState.None) {
-            return new ModelInstance(basePath + "left/" + left.getSerializedName(), null);
+            return basePath + "left/" + left.getSerializedName();
         } else {
-            return new ModelInstance(basePath + "right/" + right.getSerializedName(), null);
+            return basePath + "right/" + right.getSerializedName();
         }
     }
 }
