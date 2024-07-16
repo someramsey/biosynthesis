@@ -1,15 +1,11 @@
-package com.ramsey.biosynthesis.data.providers.block;
+package com.ramsey.biosynthesis.data.providers.blockstate.branch;
 
 import com.ramsey.biosynthesis.content.blocks.BranchBlock;
+import com.ramsey.biosynthesis.data.providers.blockstate.BlockModelProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
 
-public class BranchBlockStateMapper extends BlockStateMapper {
-    public BranchBlockStateMapper(BlockStateProvider provider) {
-        super(provider);
-    }
-
+public class BranchBlockModelProvider implements BlockModelProvider {
     @Override
     public int getRotationX(BlockState blockState) {
         BranchBlock.OrientationState orientation = blockState.getValue(BranchBlock.OrientationProperty);
@@ -46,20 +42,20 @@ public class BranchBlockStateMapper extends BlockStateMapper {
         BranchBlock.ConnectionState right = blockState.getValue(BranchBlock.ConnectedRightProperty);
         BranchBlock.ConnectionState front = blockState.getValue(BranchBlock.ConnectedFrontProperty);
 
-        String basePath = "block/branch/";
-
         if (left == BranchBlock.ConnectionState.None && right == BranchBlock.ConnectionState.None) {
-            if (front == BranchBlock.ConnectionState.None) {
-                return basePath + "edge";
+            if (front != BranchBlock.ConnectionState.None) {
+                return "edge";
             }
 
-            return basePath + "straight/" + front.getSerializedName();
+            return "straight/" + front.getSerializedName();
         } else if (left != BranchBlock.ConnectionState.None && right != BranchBlock.ConnectionState.None) {
-            return basePath + "both/" + "up_up";
+            return "both/" + "up_up"; //TODO: add rest of the models
         } else if (left != BranchBlock.ConnectionState.None) {
-            return basePath + "left/" + left.getSerializedName();
+            return "left/" + left.getSerializedName();
         } else {
-            return basePath + "right/" + right.getSerializedName();
+            return "right/" + right.getSerializedName();
         }
     }
+
+
 }

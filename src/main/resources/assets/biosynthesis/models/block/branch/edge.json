@@ -8,7 +8,7 @@
 		{
 			"from": [5, 0, 0],
 			"to": [11, 1, 1],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, -6]},
+			"rotation": {"angle": 0, "axis": "x", "origin": [8, 0, 0]},
 			"faces": {
 				"north": {"uv": [6.5, 9.5, 9.5, 10], "texture": "#0"},
 				"east": {"uv": [6.5, 9.5, 9.5, 10], "texture": "#0"},
@@ -17,6 +17,14 @@
 				"up": {"uv": [6.5, 9.5, 9.5, 10], "texture": "#0"},
 				"down": {"uv": [6.5, 9.5, 9.5, 10], "texture": "#0"}
 			}
+		}
+	],
+	"groups": [
+		{
+			"name": "VoxelShapes",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0]
 		}
 	]
 }

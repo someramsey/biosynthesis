@@ -1,6 +1,8 @@
 var fs = require('fs');
 var path = require('path');
 
+let out = "";
+
 function walk(dirPath) {
     const files = fs.readdirSync(dirPath);
 
@@ -22,13 +24,16 @@ function parseFile(file) {
     try {
         const parsed = JSON.parse(raw);
 
+        const mesh = [];
+        const modelName = file.replace(/\.json$/, "").replace(/\\/g, '/')
+
         parsed.elements.forEach((element) => {
-            console.log([...element.from, ...element.to]);
-            const modelName = file.replace(/\.json$/, "").replace(/\\/g, '/')
-            console.log(modelName);
+            mesh.push(`box(${[...element.from, ...element.to].join(", ")})`);
         });
 
-    
+        out += `case \"${modelName}\" -> Stream.of(\n${mesh.join(", \n")}\n);\n\n`;
+
+
     } catch (error) {
         console.error(`Error parsing file: ${file}`);
         console.error(error);
@@ -36,8 +41,5 @@ function parseFile(file) {
     }
 }
 
-function convertToShape(mesh) {
-    
-}
-
 walk('.');
+console.log(out);
