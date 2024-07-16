@@ -1,7 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks;
 
-import com.ramsey.biosynthesis.data.providers.block.branch.BranchBlockModelProvider;
-import com.ramsey.biosynthesis.data.providers.block.branch.BranchBlockShapeProvider;
+import com.ramsey.biosynthesis.data.providers.block.common.branch.BranchBlockModelProvider;
+import com.ramsey.biosynthesis.data.providers.block.common.branch.BranchBlockShapeProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.BlockGetter;

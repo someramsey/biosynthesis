@@ -1,14 +1,15 @@
-package com.ramsey.biosynthesis.data.providers.block.branch;
+package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
 import com.ramsey.biosynthesis.content.blocks.BranchBlock;
 import com.ramsey.biosynthesis.data.providers.block.BlockShapeProvider;
+import com.ramsey.biosynthesis.data.providers.block.ShapeUtils;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.stream.Stream;
 
 public class BranchBlockShapeProvider extends BlockShapeProvider {
-    private static void applyXRotation(UnbakedShape pShape, BlockState pBlockState) {
+    private static void applyVerticalRotation(UnbakedShape pShape, BlockState pBlockState) {
         BranchBlock.OrientationState orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
 
         if (orientation != BranchBlock.OrientationState.Horizontal) {
@@ -16,23 +17,12 @@ public class BranchBlockShapeProvider extends BlockShapeProvider {
         }
     }
 
-    private static void applyYRotation(UnbakedShape pShape, BlockState pBlockState) {
-        Direction direction = pBlockState.getValue(BranchBlock.FacingProperty);
-
-        switch (direction) {
-            case SOUTH ->
-                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
-            case WEST ->
-                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
-            case EAST ->
-                pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
-        }
-    }
-
     @Override
     protected UnbakedShape transformShape(UnbakedShape pShape, BlockState pBlockState) {
-        applyXRotation(pShape, pBlockState);
-        applyYRotation(pShape, pBlockState);
+        Direction direction = pBlockState.getValue(BranchBlock.FacingProperty);
+
+        applyVerticalRotation(pShape, pBlockState);
+        ShapeUtils.rotateHorizontally(pShape, direction);
 
         return pShape;
     }

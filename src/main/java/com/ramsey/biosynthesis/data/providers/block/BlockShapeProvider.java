@@ -7,19 +7,19 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.stream.Stream;
 
 public abstract class BlockShapeProvider {
+    protected abstract UnbakedShape transformShape(UnbakedShape pShape, BlockState pBlockState);
+
     protected abstract Stream<UnbakedShape> buildShape(String pModel);
 
-    protected abstract UnbakedShape transformShape(UnbakedShape pShape, BlockState pBlockState);
+    protected static UnbakedShape box(int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+        return new UnbakedShape(minX, minY, minZ, maxX, maxY, maxZ);
+    }
 
     public VoxelShape buildShape(String pModel, BlockState pBlockState) {
         return buildShape(pModel)
             .map(shape -> transformShape(shape, pBlockState))
             .map(shape -> Shapes.box(shape.minX, shape.minY, shape.minZ, shape.maxX, shape.maxY, shape.maxZ))
             .reduce(Shapes.empty(), Shapes::or);
-    }
-
-    protected static UnbakedShape box(int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
-        return new UnbakedShape(minX, minY, minZ, maxX, maxY, maxZ);
     }
 
     public static class UnbakedShape {

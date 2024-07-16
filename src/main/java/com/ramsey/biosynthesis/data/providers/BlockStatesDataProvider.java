@@ -2,7 +2,7 @@ package com.ramsey.biosynthesis.data.providers;
 
 import com.ramsey.biosynthesis.Main;
 import com.ramsey.biosynthesis.data.providers.block.BlockModelProvider;
-import com.ramsey.biosynthesis.data.providers.block.branch.BranchBlockModelProvider;
+import com.ramsey.biosynthesis.data.providers.block.common.branch.BranchBlockModelProvider;
 import com.ramsey.biosynthesis.registrate.BlockRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.state.BlockState;

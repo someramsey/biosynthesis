@@ -1,4 +1,4 @@
-package com.ramsey.biosynthesis.data.providers.block.branch;
+package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
 import com.ramsey.biosynthesis.content.blocks.BranchBlock;
 import com.ramsey.biosynthesis.data.providers.block.BlockModelProvider;
