@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
 import com.ramsey.biosynthesis.content.blocks.BranchBlock;
+import com.ramsey.biosynthesis.data.providers.block.BlockModelKeyProvider;
 import com.ramsey.biosynthesis.data.providers.block.BlockShapeProvider;
 import com.ramsey.biosynthesis.data.providers.block.ShapeUtils;
 import net.minecraft.core.Direction;
@@ -9,6 +10,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.stream.Stream;
 
 public class BranchBlockShapeProvider extends BlockShapeProvider {
+    public BranchBlockShapeProvider() {
+        super(new BranchBlockModelProvider());
+    }
+
     private static void applyVerticalRotation(UnbakedShape pShape, BlockState pBlockState) {
         BranchBlock.OrientationState orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
 

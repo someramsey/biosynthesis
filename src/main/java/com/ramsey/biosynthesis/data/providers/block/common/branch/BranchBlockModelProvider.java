@@ -37,10 +37,10 @@ public class BranchBlockModelProvider implements BlockModelProvider {
     }
 
     @Override
-    public String getModelPath(BlockState blockState) {
-        BranchBlock.ConnectionState left = blockState.getValue(BranchBlock.ConnectedLeftProperty);
-        BranchBlock.ConnectionState right = blockState.getValue(BranchBlock.ConnectedRightProperty);
-        BranchBlock.ConnectionState front = blockState.getValue(BranchBlock.ConnectedFrontProperty);
+    public String getModelKey(BlockState pBlockState) {
+        BranchBlock.ConnectionState left = pBlockState.getValue(BranchBlock.ConnectedLeftProperty);
+        BranchBlock.ConnectionState right = pBlockState.getValue(BranchBlock.ConnectedRightProperty);
+        BranchBlock.ConnectionState front = pBlockState.getValue(BranchBlock.ConnectedFrontProperty);
 
         if (left == BranchBlock.ConnectionState.None && right == BranchBlock.ConnectionState.None) {
             if (front == BranchBlock.ConnectionState.None) {
@@ -56,6 +56,4 @@ public class BranchBlockModelProvider implements BlockModelProvider {
             return "right/" + right.getSerializedName();
         }
     }
-
-
 }

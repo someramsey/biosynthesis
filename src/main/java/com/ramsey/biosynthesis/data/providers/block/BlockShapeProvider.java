@@ -7,6 +7,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.stream.Stream;
 
 public abstract class BlockShapeProvider {
+    private final BlockModelKeyProvider modelKeyProvider;
+
+    public BlockShapeProvider(BlockModelKeyProvider modelKeyProvider) {
+        this.modelKeyProvider = modelKeyProvider;
+    }
+
     protected abstract UnbakedShape transformShape(UnbakedShape pShape, BlockState pBlockState);
 
     protected abstract Stream<UnbakedShape> buildShape(String pModel);
@@ -15,8 +21,10 @@ public abstract class BlockShapeProvider {
         return new UnbakedShape(minX, minY, minZ, maxX, maxY, maxZ);
     }
 
-    public VoxelShape buildShape(String pModel, BlockState pBlockState) {
-        return buildShape(pModel)
+    public VoxelShape buildShape(BlockState pBlockState) {
+        String key = modelKeyProvider.getModelKey(pBlockState);
+
+        return buildShape(key)
             .map(shape -> transformShape(shape, pBlockState))
             .map(shape -> Shapes.box(shape.minX, shape.minY, shape.minZ, shape.maxX, shape.maxY, shape.maxZ))
             .reduce(Shapes.empty(), Shapes::or);

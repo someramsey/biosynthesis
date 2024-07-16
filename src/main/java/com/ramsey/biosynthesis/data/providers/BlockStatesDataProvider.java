@@ -24,7 +24,7 @@ public class BlockStatesDataProvider extends BlockStateProvider {
 
     private Function<BlockState, ConfiguredModel[]> applyProvider(BlockModelProvider modelProvider, String pBasePath) {
         return (blockState) -> {
-            String modelPath = pBasePath + modelProvider.getModelPath(blockState);
+            String modelPath = pBasePath + modelProvider.getModelKey(blockState);
             int rotationX = modelProvider.getRotationX(blockState);
             int rotationY = modelProvider.getRotationY(blockState);
 
