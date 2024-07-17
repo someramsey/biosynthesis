@@ -27,9 +27,8 @@ public class VesselHeadBlock extends VesselBlock {
         Orientation orientation = Orientation.Horizontal[pRandom.nextInt(4)];
         SpreadTask task = new SpreadTask(pLevel, pRandom, pPos, orientation);
 
-        task.spread();
-
-//        while (task.spreading) {
-//        }
+        while (task.spreading) {
+            task.spread();
+        }
     }
 }

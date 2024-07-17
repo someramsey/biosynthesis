@@ -26,13 +26,27 @@ public interface GrowingBlock {
             this.spreading = true;
         }
 
-        private void spread() {
+        public void spread() {
             BlockState state = level.getBlockState(pos);
             Block block = state.getBlock();
 
             if (block instanceof GrowingBlock growingBlock) {
                 growingBlock.grow(level, state, pos, random, this);
             }
+        }
+
+        public void propagate(BlockPos pPos, Orientation pOrientation) {
+            pPos = pPos;
+            orientation = pOrientation;
+        }
+
+        public void consume() {
+            spreading = false;
+        }
+    }
+}
+
+
 //
 //            if (block == BlockRegistry.vesselBlock.get()) {
 //                BlockPos below = pos.below();
@@ -84,12 +98,3 @@ public interface GrowingBlock {
 //            }
 //
 //            return true;
-
-        }
-
-        public void propagate(Orientation pOrientation) {
-            pos = pOrientation.step(pos);
-            orientation = pOrientation;
-        }
-    }
-}

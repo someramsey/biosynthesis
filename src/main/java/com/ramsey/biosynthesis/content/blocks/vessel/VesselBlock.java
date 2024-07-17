@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
 import com.ramsey.biosynthesis.content.blocks.GrowingBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import com.ramsey.biosynthesis.data.providers.block.common.VesselBlockShapeProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -20,6 +21,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
 
 public class VesselBlock extends BaseEntityBlock implements GrowingBlock {
     public static final int MaxAge = 5;
@@ -51,19 +54,64 @@ public class VesselBlock extends BaseEntityBlock implements GrowingBlock {
         return new VesselBlockEntity(pPos, pState);
     }
 
-    @Override
-    public void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
-        int age = pState.getValue(AgeProperty);
+    private boolean isAir(ServerLevel pLevel, BlockPos pPos) {
+        return pLevel.getBlockState(pPos).isAir();
+    }
+    private boolean canSpreadTo(ServerLevel pLevel, BlockPos pPos) {
+        return !isAir(pLevel, pPos) && !isAir(pLevel, pPos.below());
+    }
 
-        if(age == MaxAge) {
+    private Orientation getSpreadOrientation(ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        ArrayList<Orientation> available = new ArrayList<>();
 
-            return;
+        if (canSpreadTo(pLevel, pPos.north())) {
+            available.add(Orientation.North);
         }
 
-        if (age < 2) {
+        if (canSpreadTo(pLevel, pPos.east())) {
+            available.add(Orientation.East);
+        }
+
+        if (canSpreadTo(pLevel, pPos.south())) {
+            available.add(Orientation.South);
+        }
+
+        if (canSpreadTo(pLevel, pPos.west())) {
+            available.add(Orientation.West);
+        }
+
+        if (!available.isEmpty()) {
+            return available.get(pRandom.nextInt(available.size()));
+        }
+
+        return null;
+    }
+
+    @Override
+    public void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
+        pTask.consume();
+
+        int age = pState.getValue(AgeProperty);
+
+        if (age < MaxAge) {
+            if (age > 1) {
+                Orientation orientation = getSpreadOrientation(pLevel, pPos, pRandom);
+
+                if (orientation != null) {
+                    //check if 2 blocks ahead is clear
+
+//                    BlockPos target = orientation.step(pPos);
+//                    BlockState targetState = BlockRegistry.stemBlock
+//
+//                    pTask.propagate(pPos, orientation);
+//                    return;
+                }
+
+
+            }
+
             pLevel.setBlock(pPos, pState.setValue(AgeProperty, age + 1), 2);
             pLevel.sendParticles(ParticleTypes.POOF, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, 20, 0.3d, 0.3d, 0.3d, 0);
-            return;
         }
     }
 }
