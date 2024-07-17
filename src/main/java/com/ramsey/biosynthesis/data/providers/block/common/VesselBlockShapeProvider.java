@@ -19,7 +19,7 @@ public abstract class VesselBlockShapeProvider extends BlockShapeProvider {
 
     private static UnbakedShapeFragment transformShape(UnbakedShapeFragment pFragment, BlockState pBlockState) {
         Direction direction = pBlockState.getValue(VesselBlock.FacingProperty);
-        BlockShapeProvider.rotateHorizontally(pFragment, direction);
+        BlockShapeProvider.transformByDirection(pFragment, direction);
 
         return pFragment;
     }

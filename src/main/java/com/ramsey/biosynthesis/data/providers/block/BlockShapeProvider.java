@@ -1,5 +1,6 @@
 package com.ramsey.biosynthesis.data.providers.block;
 
+import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -16,7 +17,23 @@ public abstract class BlockShapeProvider {
             .reduce(Shapes.empty(), Shapes::or);
     }
 
-    protected static void rotateHorizontally(UnbakedShapeFragment pShape, Direction pDirection) {
+//    if (!orientation.isHorizontal()) {
+//        pFragment.transform(pFragment.minX, 1 - pFragment.minZ, pFragment.minY, pFragment.maxX, 1 - pFragment.maxZ, pFragment.maxY);
+//    }
+    @SuppressWarnings("SuspiciousNameCombination")
+    protected static void transformByOrientation(UnbakedShapeFragment pShape, Orientation pOrientation) {
+        switch (pOrientation) {
+            //TODO: Implement the rest of the cases
+            case South ->
+                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
+            case West ->
+                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
+            case East ->
+                pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
+        }
+    }
+
+    protected static void transformByDirection(UnbakedShapeFragment pShape, Direction pDirection) {
         switch (pDirection) {
             case SOUTH ->
                 pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);

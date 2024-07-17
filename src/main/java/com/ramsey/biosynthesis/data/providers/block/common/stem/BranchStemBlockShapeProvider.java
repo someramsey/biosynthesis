@@ -1,9 +1,8 @@
 package com.ramsey.biosynthesis.data.providers.block.common.stem;
 
-import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
 import com.ramsey.biosynthesis.content.blocks.branch.BranchStemBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import com.ramsey.biosynthesis.data.providers.block.BlockShapeProvider;
-import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -19,8 +18,8 @@ public abstract class BranchStemBlockShapeProvider extends BlockShapeProvider {
     }
 
     private static UnbakedShapeFragment transformShape(UnbakedShapeFragment pFragment, BlockState pBlockState) {
-        Direction direction = pBlockState.getValue(BranchBlock.FacingProperty);
-        BlockShapeProvider.rotateHorizontally(pFragment, direction);
+        Orientation orientation = pBlockState.getValue(BranchStemBlock.OrientationProperty);
+        BlockShapeProvider.transformByOrientation(pFragment, orientation);
 
         return pFragment;
     }

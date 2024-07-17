@@ -15,11 +15,10 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class BranchStemBlock extends HorizontalDirectionalBlock {
+public class BranchStemBlock extends Block {
     public static final IntegerProperty AgeProperty = IntegerProperty.create("age", 0, 4);
     public static final BooleanProperty RootedProperty = BooleanProperty.create("rooted");
-    public static final EnumProperty<OrientationState> OrientationProperty = EnumProperty.create("orientation", OrientationState.class);
-    public static final DirectionProperty FacingProperty = FACING;
+    public static final EnumProperty<Orientation> OrientationProperty = EnumProperty.create("orientation", Orientation.class);
 
     public BranchStemBlock(Properties pProperties) {
         super(pProperties);
@@ -30,7 +29,6 @@ public class BranchStemBlock extends HorizontalDirectionalBlock {
         super.createBlockStateDefinition(pBuilder);
 
         pBuilder.add(AgeProperty);
-        pBuilder.add(FacingProperty);
         pBuilder.add(OrientationProperty);
         pBuilder.add(RootedProperty);
     }

@@ -14,12 +14,11 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class BranchBlock extends HorizontalDirectionalBlock {
+public class BranchBlock extends Block {
     public static final EnumProperty<ConnectionState> ConnectedFrontProperty = EnumProperty.create("front", ConnectionState.class);
     public static final EnumProperty<ConnectionState> ConnectedRightProperty = EnumProperty.create("right", ConnectionState.class);
     public static final EnumProperty<ConnectionState> ConnectedLeftProperty = EnumProperty.create("left", ConnectionState.class);
-    public static final EnumProperty<OrientationState> OrientationProperty = EnumProperty.create("orientation", OrientationState.class);
-    public static final DirectionProperty FacingProperty = FACING;
+    public static final EnumProperty<Orientation> OrientationProperty = EnumProperty.create("orientation", Orientation.class);
 
     public BranchBlock(Properties pProperties) {
         super(pProperties);
@@ -29,7 +28,7 @@ public class BranchBlock extends HorizontalDirectionalBlock {
                 .setValue(ConnectedFrontProperty, ConnectionState.Flat)
                 .setValue(ConnectedRightProperty, ConnectionState.None)
                 .setValue(ConnectedLeftProperty, ConnectionState.None)
-                .setValue(OrientationProperty, OrientationState.Horizontal)
+                .setValue(OrientationProperty, Orientation.North)
         );
     }
 
@@ -41,7 +40,6 @@ public class BranchBlock extends HorizontalDirectionalBlock {
         pBuilder.add(ConnectedRightProperty);
         pBuilder.add(ConnectedLeftProperty);
         pBuilder.add(OrientationProperty);
-        pBuilder.add(FacingProperty);
     }
 
     @Override
