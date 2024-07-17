@@ -1,8 +1,10 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
 import com.ramsey.biosynthesis.content.blocks.GrowingBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.BranchStemBlock;
 import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import com.ramsey.biosynthesis.data.providers.block.common.VesselBlockShapeProvider;
+import com.ramsey.biosynthesis.registrate.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -54,29 +56,35 @@ public class VesselBlock extends BaseEntityBlock implements GrowingBlock {
         return new VesselBlockEntity(pPos, pState);
     }
 
+
     private boolean isAir(ServerLevel pLevel, BlockPos pPos) {
         return pLevel.getBlockState(pPos).isAir();
     }
-    private boolean canSpreadTo(ServerLevel pLevel, BlockPos pPos) {
-        return !isAir(pLevel, pPos) && !isAir(pLevel, pPos.below());
+
+    private boolean isStem(ServerLevel pLevel, BlockPos pPos) {
+        return pLevel.getBlockState(pPos).getBlock() == BlockRegistry.stemBlock.get();
+    }
+
+    private boolean isValid(ServerLevel pLevel, BlockPos pPos) {
+        return isAir(pLevel, pPos) || isStem(pLevel, pPos);
     }
 
     private Orientation getSpreadOrientation(ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         ArrayList<Orientation> available = new ArrayList<>();
 
-        if (canSpreadTo(pLevel, pPos.north())) {
+        if (isValid(pLevel, pPos.north())) {
             available.add(Orientation.North);
         }
 
-        if (canSpreadTo(pLevel, pPos.east())) {
+        if (isValid(pLevel, pPos.east())) {
             available.add(Orientation.East);
         }
 
-        if (canSpreadTo(pLevel, pPos.south())) {
+        if (isValid(pLevel, pPos.south())) {
             available.add(Orientation.South);
         }
 
-        if (canSpreadTo(pLevel, pPos.west())) {
+        if (isValid(pLevel, pPos.west())) {
             available.add(Orientation.West);
         }
 
@@ -87,31 +95,41 @@ public class VesselBlock extends BaseEntityBlock implements GrowingBlock {
         return null;
     }
 
-    @Override
-    public void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
-        pTask.consume();
+    private void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, int age) {
+        pLevel.setBlock(pPos, pState.setValue(AgeProperty, age + 1), 2);
+        pLevel.sendParticles(ParticleTypes.POOF, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, 20, 0.3d, 0.3d, 0.3d, 0);
+    }
 
+    @Override
+    public void spread(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
         int age = pState.getValue(AgeProperty);
 
-        if (age < MaxAge) {
-            if (age > 1) {
-                Orientation orientation = getSpreadOrientation(pLevel, pPos, pRandom);
+        if (age < 2) {
+            grow(pLevel, pState, pPos, age);
+            pTask.consume();
+            return;
+        }
 
-                if (orientation != null) {
-                    //check if 2 blocks ahead is clear
+        Orientation spreadOrientation = getSpreadOrientation(pLevel, pPos, pRandom);
 
-//                    BlockPos target = orientation.step(pPos);
-//                    BlockState targetState = BlockRegistry.stemBlock
-//
-//                    pTask.propagate(pPos, orientation);
-//                    return;
-                }
+        if (spreadOrientation == null) {
+            //TODO: spread upwards
+            grow(pLevel, pState, pPos, age);
+            pTask.consume();
+            return;
+        }
 
+        BlockPos pos = spreadOrientation.step(pPos);
 
-            }
+        if (isStem(pLevel, pos)) {
+            pTask.propagate(pos, spreadOrientation);
+        } else {
+            BlockState blockState = BlockRegistry.stemBlock.get().defaultBlockState()
+                .setValue(BranchStemBlock.OrientationProperty, spreadOrientation);
 
-            pLevel.setBlock(pPos, pState.setValue(AgeProperty, age + 1), 2);
-            pLevel.sendParticles(ParticleTypes.POOF, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, 20, 0.3d, 0.3d, 0.3d, 0);
+            pLevel.setBlock(pos, blockState, 2);
+            pTask.consume();
         }
     }
+
 }

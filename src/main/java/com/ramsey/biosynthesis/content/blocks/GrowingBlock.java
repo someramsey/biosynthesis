@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public interface GrowingBlock {
-    void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pSpreadTask);
+    void spread(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pSpreadTask);
 
     class SpreadTask {
         private final ServerLevel level;
@@ -31,7 +31,7 @@ public interface GrowingBlock {
             Block block = state.getBlock();
 
             if (block instanceof GrowingBlock growingBlock) {
-                growingBlock.grow(level, state, pos, random, this);
+                growingBlock.spread(level, state, pos, random, this);
             }
         }
 

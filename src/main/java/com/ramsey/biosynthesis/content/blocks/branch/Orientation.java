@@ -44,19 +44,23 @@ public enum Orientation implements StringRepresentable {
     }
 
     public BlockPos step(BlockPos pos) {
+        return this.step(pos, 1);
+    }
+
+    public BlockPos step(BlockPos pPos, int pDistance) {
         return switch (this) {
-            case North -> pos.north();
-            case NorthUp -> pos.north().above();
-            case NorthDown -> pos.north().below();
-            case EastUp -> pos.east().above();
-            case East -> pos.east();
-            case EastDown -> pos.east().below();
-            case South -> pos.south();
-            case SouthUp -> pos.south().above();
-            case SouthDown -> pos.south().below();
-            case WestUp -> pos.west().above();
-            case West -> pos.west();
-            case WestDown -> pos.west().below();
+            case North -> pPos.north(pDistance);
+            case NorthUp -> pPos.north(pDistance).above(pDistance);
+            case NorthDown -> pPos.north(pDistance).below(pDistance);
+            case EastUp -> pPos.east(pDistance).above(pDistance);
+            case East -> pPos.east(pDistance);
+            case EastDown -> pPos.east(pDistance).below(pDistance);
+            case South -> pPos.south(pDistance);
+            case SouthUp -> pPos.south(pDistance).above(pDistance);
+            case SouthDown -> pPos.south(pDistance).below(pDistance);
+            case WestUp -> pPos.west(pDistance).above(pDistance);
+            case West -> pPos.west(pDistance);
+            case WestDown -> pPos.west(pDistance).below(pDistance);
         };
     }
 
