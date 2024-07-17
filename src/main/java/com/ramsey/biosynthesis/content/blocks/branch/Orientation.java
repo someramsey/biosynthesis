@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
@@ -61,6 +62,15 @@ public enum Orientation implements StringRepresentable {
             case WestUp -> pPos.west(pDistance).above(pDistance);
             case West -> pPos.west(pDistance);
             case WestDown -> pPos.west(pDistance).below(pDistance);
+        };
+    }
+
+    public Direction toHorizontalDirection() {
+        return switch (this) {
+            case North, NorthDown, NorthUp -> Direction.NORTH;
+            case EastUp, East, EastDown -> Direction.EAST;
+            case South, SouthUp, SouthDown -> Direction.SOUTH;
+            case WestUp, West, WestDown -> Direction.WEST;
         };
     }
 

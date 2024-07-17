@@ -57,7 +57,6 @@ public class VesselBlock extends BaseEntityBlock implements SpreadingBlock {
         return new VesselBlockEntity(pPos, pState);
     }
 
-
     private boolean isAir(ServerLevel pLevel, BlockPos pPos) {
         return pLevel.getBlockState(pPos).isAir();
     }
@@ -70,67 +69,84 @@ public class VesselBlock extends BaseEntityBlock implements SpreadingBlock {
         return pLevel.getBlockState(pos).getBlock() == this;
     }
 
-    private boolean isValid(ServerLevel pLevel, BlockPos pPos) {
+    private boolean canSpreadTo(ServerLevel pLevel, BlockPos pPos) {
         return isAir(pLevel, pPos) || isStem(pLevel, pPos);
     }
 
-    private void sendParticles(ServerLevel pLevel, BlockPos pPos) {
+    private void completeSpread(ServerLevel pLevel, BlockPos pPos, SpreadTask pTask) {
         pLevel.sendParticles(ParticleTypes.POOF, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, 20, 0.3d, 0.3d, 0.3d, 0);
+        pTask.consume();
     }
 
     private void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, SpreadTask pTask, int age) {
         pLevel.setBlock(pPos, pState.setValue(AgeProperty, age + 1), 2);
-        sendParticles(pLevel, pPos);
-        pTask.consume();
+        completeSpread(pLevel, pPos, pTask);
     }
 
-    private void spreadUpwards(ServerLevel pLevel, BlockPos pPos, SpreadTask pTask) {
+    private void spreadBodyUpwards(ServerLevel pLevel, BlockPos pPos, SpreadTask pTask) {
         BlockState blockState = this.defaultBlockState()
             .setValue(FacingProperty, Direction.UP)
             .setValue(AgeProperty, 0);
 
-        pLevel.setBlock(pPos.above(), blockState, 3);
-        sendParticles(pLevel, pPos);
-        pTask.consume();
+        pLevel.setBlock(pPos, blockState, 3);
+        completeSpread(pLevel, pPos, pTask);
     }
 
-    private static void spreadStems(ServerLevel pLevel, Orientation spreadOrientation, BlockPos pos) {
+    private void spreadStems(ServerLevel pLevel, Orientation spreadOrientation, BlockPos pos, SpreadTask pTask) {
         BlockState blockState = BlockRegistry.stemBlock.get().defaultBlockState()
             .setValue(BranchStemBlock.OrientationProperty, spreadOrientation)
             .setValue(BranchStemBlock.RootedProperty, true);
 
         pLevel.setBlock(pos, blockState, 3);
+        completeSpread(pLevel, pos, pTask);
     }
 
+    private void spreadBodyHorizontal(ServerLevel pLevel, SpreadTask pTask, Orientation spreadOrientation, BlockPos spreadPos) {
+        Direction direction = spreadOrientation.toHorizontalDirection().getOpposite();
+
+        BlockState blockState = this.defaultBlockState()
+            .setValue(FacingProperty, direction)
+            .setValue(AgeProperty, 0);
+
+        pLevel.setBlock(spreadPos, blockState, 3);
+        completeSpread(pLevel, spreadPos, pTask);
+    }
 
     private void spreadOut(ServerLevel pLevel, BlockPos pPos, SpreadTask pTask, Orientation spreadOrientation) {
-        BlockPos pos = spreadOrientation.step(pPos);
+        BlockPos spreadPos = spreadOrientation.step(pPos);
 
-        if (isVessel(pLevel, pos) || isStem(pLevel, pos)) {
-            pTask.propagate(pos, spreadOrientation);
+        if (isVessel(pLevel, spreadPos) || isStem(pLevel, spreadPos)) {
+            pTask.propagate(spreadPos);
         } else {
-            BlockPos overNext = spreadOrientation.step(pos);
+            BlockPos overNext = spreadOrientation.step(spreadPos);
 
             if (isAir(pLevel, overNext)) {
-                spreadStems(pLevel, spreadOrientation, pos);
+                spreadStems(pLevel, spreadOrientation, spreadPos,pTask);
             } else {
-
+                spreadBodyHorizontal(pLevel, pTask, spreadOrientation, spreadPos);
             }
-
-            pTask.consume();
         }
     }
 
     @Override
     public void spread(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
+        //TODO: test no available spread positions
+        //TODO: test spread as body upwards
+        //TODO: test spread as body horizontal
+
         int age = pState.getValue(AgeProperty);
 
         if (age == MaxAge) {
-            if (isAir(pLevel, pPos.above())) {
-                spreadUpwards(pLevel, pPos, pTask);
-            } else if (isVessel(pLevel, pPos.above())) {
-                Orientation orientation = Orientation.Horizontal[pRandom.nextInt(4)];
-                pTask.propagate(pPos.above(), orientation);
+            BlockPos above = pPos.above();
+
+            if (isVessel(pLevel, above)) {
+                pTask.propagate(above);
+            } else {
+                if (!isAir(pLevel, above)) {
+                    pLevel.destroyBlock(above, true);
+                }
+
+                spreadBodyUpwards(pLevel, above, pTask);
             }
 
             return;
@@ -154,19 +170,19 @@ public class VesselBlock extends BaseEntityBlock implements SpreadingBlock {
     private Orientation getSpreadOrientation(ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         ArrayList<Orientation> available = new ArrayList<>();
 
-        if (isValid(pLevel, pPos.north())) {
+        if (canSpreadTo(pLevel, pPos.north())) {
             available.add(Orientation.North);
         }
 
-        if (isValid(pLevel, pPos.east())) {
+        if (canSpreadTo(pLevel, pPos.east())) {
             available.add(Orientation.East);
         }
 
-        if (isValid(pLevel, pPos.south())) {
+        if (canSpreadTo(pLevel, pPos.south())) {
             available.add(Orientation.South);
         }
 
-        if (isValid(pLevel, pPos.west())) {
+        if (canSpreadTo(pLevel, pPos.west())) {
             available.add(Orientation.West);
         }
 

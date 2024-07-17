@@ -1,6 +1,5 @@
 package com.ramsey.biosynthesis.content.blocks;
 
-import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -14,14 +13,12 @@ public interface SpreadingBlock {
         private final ServerLevel level;
         private final RandomSource random;
 
-        public BlockPos pos;
-        public Orientation orientation;
+        private BlockPos pos;
         public boolean spreading;
 
-        public SpreadTask(ServerLevel level, RandomSource random, BlockPos pos, Orientation orientation) {
+        public SpreadTask(ServerLevel level, RandomSource random, BlockPos pos) {
             this.level = level;
             this.random = random;
-            this.orientation = orientation;
             this.pos = pos;
             this.spreading = true;
         }
@@ -38,9 +35,8 @@ public interface SpreadingBlock {
             this.spreading = false;
         }
 
-        public void propagate(BlockPos pPos, Orientation pOrientation) {
+        public void propagate(BlockPos pPos) {
             pos = pPos;
-            orientation = pOrientation;
         }
 
         public void consume() {

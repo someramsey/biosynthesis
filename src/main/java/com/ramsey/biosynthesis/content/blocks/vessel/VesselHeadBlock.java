@@ -24,8 +24,7 @@ public class VesselHeadBlock extends VesselBlock {
 
     @Override
     public void randomTick(@NotNull BlockState pState, @NotNull ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
-        Orientation orientation = Orientation.Horizontal[pRandom.nextInt(4)];
-        SpreadTask task = new SpreadTask(pLevel, pRandom, pPos, orientation);
+        SpreadTask task = new SpreadTask(pLevel, pRandom, pPos);
 
         while (task.spreading) {
             task.spread();
