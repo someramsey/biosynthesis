@@ -1,5 +1,6 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
+import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,5 +43,14 @@ public enum Orientation implements StringRepresentable {
 
     public boolean isHorizontal() {
         return this == North || this == East || this == South || this == West;
+    }
+
+    public static Orientation fromDirection(Direction direction) {
+        return switch (direction) {
+            case EAST -> East;
+            case SOUTH -> South;
+            case WEST -> West;
+            default -> North;
+        };
     }
 }
