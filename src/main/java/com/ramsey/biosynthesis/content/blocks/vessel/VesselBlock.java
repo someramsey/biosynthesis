@@ -52,12 +52,18 @@ public class VesselBlock extends BaseEntityBlock implements GrowingBlock {
     }
 
     @Override
-    public void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom) {
+    public void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
         int age = pState.getValue(AgeProperty);
 
-        if (age < MaxAge) {
+        if(age == MaxAge) {
+
+            return;
+        }
+
+        if (age < 2) {
             pLevel.setBlock(pPos, pState.setValue(AgeProperty, age + 1), 2);
             pLevel.sendParticles(ParticleTypes.POOF, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, 20, 0.3d, 0.3d, 0.3d, 0);
+            return;
         }
     }
 }
