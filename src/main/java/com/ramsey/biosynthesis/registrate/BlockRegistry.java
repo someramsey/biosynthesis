@@ -20,7 +20,7 @@ public abstract class BlockRegistry {
     private static final BlockBehaviour.Properties biologicalBlockProperties = BlockBehaviour.Properties.of(Material.BARRIER).noOcclusion().strength(-1.0F, 3600000.0F).noLootTable();
 
     public static RegistryObject<VesselHeadBlock> vesselHeadBlock = registrate.register("vessel_head", () -> new VesselHeadBlock(biologicalBlockProperties));
-    public static RegistryObject<VesselBlock> vesselBodyBlock = registrate.register("vessel", () -> new VesselHeadBlock(biologicalBlockProperties));
+    public static RegistryObject<VesselBlock> vesselBodyBlock = registrate.register("vessel", () -> new VesselBlock(biologicalBlockProperties));
 
     public static RegistryObject<Block> branchBlock = registrate.register("branch", () -> new BranchBlock(biologicalBlockProperties));
     public static RegistryObject<Block> stemBlock = registrate.register("stem", () -> new BranchStemBlock(biologicalBlockProperties));
