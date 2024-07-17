@@ -1,6 +1,6 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
-import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +22,8 @@ public enum Orientation implements StringRepresentable {
     private final int xRotation;
     private final int yRotation;
 
+    public static final Orientation[] Horizontal = {North, East, South, West};
+
     Orientation(String state, int xRotation, int yRotation) {
         this.name = state;
         this.xRotation = xRotation;
@@ -41,16 +43,22 @@ public enum Orientation implements StringRepresentable {
         return this.yRotation;
     }
 
-    public boolean isHorizontal() {
-        return this == North || this == East || this == South || this == West;
-    }
-
-    public static Orientation fromDirection(Direction direction) {
-        return switch (direction) {
-            case EAST -> East;
-            case SOUTH -> South;
-            case WEST -> West;
-            default -> North;
+    public BlockPos step(BlockPos pos) {
+        return switch (this) {
+            case North -> pos.north();
+            case NorthUp -> pos.north().above();
+            case NorthDown -> pos.north().below();
+            case EastUp -> pos.east().above();
+            case East -> pos.east();
+            case EastDown -> pos.east().below();
+            case South -> pos.south();
+            case SouthUp -> pos.south().above();
+            case SouthDown -> pos.south().below();
+            case WestUp -> pos.west().above();
+            case West -> pos.west();
+            case WestDown -> pos.west().below();
         };
     }
+
+
 }

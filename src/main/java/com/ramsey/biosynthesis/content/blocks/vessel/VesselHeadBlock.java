@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
 import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.BranchStemBlock;
 import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import com.ramsey.biosynthesis.registrate.BlockRegistry;
 import net.minecraft.core.BlockPos;
@@ -11,6 +12,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceSpreader;
+import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,17 +44,18 @@ public class VesselHeadBlock extends VesselBlock {
     }
 
     private void spread(ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        Direction direction = getSpreadDirection(pRandom);
-        BlockState state = pLevel.getBlockState(pPos.relative(direction));
+        Orientation orientation = getSpreadDirection(pRandom);
+
+        BlockPos pos = orientation.step(pPos);
+        BlockState state = pLevel.getBlockState(pos);
         Block block = state.getBlock();
 
         if (block == Blocks.AIR) {
-            pLevel.setBlock(
-                pPos.relative(getSpreadDirection(pRandom)),
-                BlockRegistry.branchBlock.get().defaultBlockState()
-                    .setValue(BranchBlock.OrientationProperty, Orientation.fromDirection(direction)),
-                2);
+            BlockState newState = BlockRegistry.stemBlock.get().defaultBlockState()
+                .setValue(BranchStemBlock.OrientationProperty, orientation)
+                    .setValue(BranchStemBlock.RootedProperty, true);
 
+            pLevel.setBlock(pos, newState, 2);
             return;
         }
 
@@ -60,13 +63,8 @@ public class VesselHeadBlock extends VesselBlock {
 
     }
 
-    private static Direction getSpreadDirection(@NotNull RandomSource pRandom) {
-        return switch (pRandom.nextInt(3)) {
-            default -> Direction.NORTH;
-            case 1 -> Direction.SOUTH;
-            case 2 -> Direction.WEST;
-            case 3 -> Direction.EAST;
-        };
+    private static Orientation getSpreadDirection(@NotNull RandomSource pRandom) {
+        return Orientation.Horizontal[pRandom.nextInt(4)];
     }
 
 
