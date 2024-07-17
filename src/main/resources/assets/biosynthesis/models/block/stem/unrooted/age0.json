@@ -1,0 +1,33 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "biosynthesis:block/branch/map",
+		"particle": "biosynthesis:block/branch/map"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 12],
+			"to": [11, 1, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 9]},
+			"faces": {
+				"north": {"uv": [9.5, 0, 13.5, 0.5], "texture": "#0"},
+				"east": {"uv": [6.5, 13.5, 10.5, 14.5], "texture": "#0"},
+				"west": {"uv": [6.5, 13.5, 10.5, 14.5], "texture": "#0"},
+				"up": {"uv": [10.5, 0, 13.5, 2], "texture": "#0"},
+				"down": {"uv": [10.5, 0, 13.5, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6, 0, 11],
+			"to": [10, 1, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 10]},
+			"faces": {
+				"north": {"uv": [13.5, 0, 14, 2], "texture": "#0"},
+				"east": {"uv": [13.5, 2, 14, 2.5], "texture": "#0"},
+				"west": {"uv": [10, 2, 10.5, 2.5], "texture": "#0"},
+				"up": {"uv": [13, 1, 13.5, 2.5], "texture": "#0"},
+				"down": {"uv": [13.5, 0.5, 14, 2], "texture": "#0"}
+			}
+		}
+	]
+}
