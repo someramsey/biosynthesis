@@ -17,19 +17,29 @@ public abstract class BlockShapeProvider {
             .reduce(Shapes.empty(), Shapes::or);
     }
 
-//    if (!orientation.isHorizontal()) {
-//        pFragment.transform(pFragment.minX, 1 - pFragment.minZ, pFragment.minY, pFragment.maxX, 1 - pFragment.maxZ, pFragment.maxY);
-//    }
-    @SuppressWarnings("SuspiciousNameCombination")
+
     protected static void transformByOrientation(UnbakedShapeFragment pShape, Orientation pOrientation) {
         switch (pOrientation) {
-            //TODO: Implement the rest of the cases
             case South ->
                 pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
+            //a, b, c, d, e, f
+            //c, b, 1 - a, d, e, 1 - f
             case West ->
                 pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
+
+            //a, b, c, d, e, f
+            //a, 1-c, b, d, 1-f, e
+            //1-e, 1-c, a, 1 - b, 1-f, d
             case East ->
                 pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
+            case EastUp -> {
+                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
+                pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
+            }
+            case EastDown -> {
+                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
+                pShape.transform(1 - pShape.maxZ, pShape.minY, 1 - pShape.maxX, 1 - pShape.minZ, pShape.maxY, 1 - pShape.minX);
+            }
         }
     }
 
