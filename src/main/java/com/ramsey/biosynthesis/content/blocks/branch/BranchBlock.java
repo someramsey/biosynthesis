@@ -1,4 +1,4 @@
-package com.ramsey.biosynthesis.content.blocks;
+package com.ramsey.biosynthesis.content.blocks.branch;
 
 import com.ramsey.biosynthesis.data.providers.block.common.branch.BranchBlockShapeProvider;
 import net.minecraft.core.BlockPos;
@@ -67,20 +67,4 @@ public class BranchBlock extends HorizontalDirectionalBlock {
         }
     }
 
-    public enum OrientationState implements StringRepresentable {
-        Up("up"),
-        Horizontal("horizontal"),
-        Down("down");
-
-        private final String name;
-
-        OrientationState(String state) {
-            this.name = state;
-        }
-
-        @Override
-        public @NotNull String getSerializedName() {
-            return this.name;
-        }
-    }
 }

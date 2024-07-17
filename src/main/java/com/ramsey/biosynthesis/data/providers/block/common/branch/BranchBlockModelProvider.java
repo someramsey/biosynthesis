@@ -1,13 +1,14 @@
 package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
-import com.ramsey.biosynthesis.content.blocks.BranchBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.OrientationState;
 import com.ramsey.biosynthesis.data.providers.block.BlockStateModelProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class BranchBlockModelProvider {
-    private static int getRotationX(BlockState blockState) {
-        BranchBlock.OrientationState orientation = blockState.getValue(BranchBlock.OrientationProperty);
+    public static int getRotationX(BlockState blockState) {
+        OrientationState orientation = blockState.getValue(BranchBlock.OrientationProperty);
 
         return switch (orientation) {
             case Up -> 270;
@@ -16,9 +17,9 @@ public abstract class BranchBlockModelProvider {
         };
     }
 
-    private static int getRotationY(BlockState blockState) {
+    public static int getRotationY(BlockState blockState) {
         Direction facing = blockState.getValue(BranchBlock.FacingProperty);
-        BranchBlock.OrientationState orientation = blockState.getValue(BranchBlock.OrientationProperty);
+        OrientationState orientation = blockState.getValue(BranchBlock.OrientationProperty);
 
         int rotation = switch (facing) {
             case SOUTH -> 180;
@@ -27,7 +28,7 @@ public abstract class BranchBlockModelProvider {
             default -> 0;
         };
 
-        if (orientation == BranchBlock.OrientationState.Down) {
+        if (orientation == OrientationState.Down) {
             rotation = (rotation + 180) % 360;
         }
 

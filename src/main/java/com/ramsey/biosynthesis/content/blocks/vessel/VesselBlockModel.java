@@ -37,9 +37,9 @@ public class VesselBlockModel extends AnimatedGeoModel<VesselBlockEntity> {
         Direction direction = state.getValue(VesselBlock.FacingProperty);
 
         if (direction == Direction.UP) {
-            basePath += "head/";
+            basePath += "mid/";
         } else {
-            basePath += "body/";
+            basePath += "shifted/";
         }
 
         basePath += "stage" + age + ".geo.json";

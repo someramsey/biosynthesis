@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
-import com.ramsey.biosynthesis.content.blocks.BranchBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.OrientationState;
 import com.ramsey.biosynthesis.data.providers.block.BlockShapeProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,9 +20,9 @@ public abstract class BranchBlockShapeProvider extends BlockShapeProvider {
 
     private static UnbakedShapeFragment transformShape(UnbakedShapeFragment pFragment, BlockState pBlockState) {
         Direction direction = pBlockState.getValue(BranchBlock.FacingProperty);
-        BranchBlock.OrientationState orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
+        OrientationState orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
 
-        if (orientation != BranchBlock.OrientationState.Horizontal) {
+        if (orientation != OrientationState.Horizontal) {
             pFragment.transform(pFragment.minX, 1 - pFragment.minZ, pFragment.minY, pFragment.maxX, 1 - pFragment.maxZ, pFragment.maxY);
         }
 

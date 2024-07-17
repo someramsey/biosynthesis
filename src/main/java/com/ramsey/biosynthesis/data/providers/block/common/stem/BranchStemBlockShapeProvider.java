@@ -1,7 +1,7 @@
-package com.ramsey.biosynthesis.data.providers.block.common;
+package com.ramsey.biosynthesis.data.providers.block.common.stem;
 
-import com.ramsey.biosynthesis.content.blocks.BranchBlock;
-import com.ramsey.biosynthesis.content.blocks.StemBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.BranchStemBlock;
 import com.ramsey.biosynthesis.data.providers.block.BlockShapeProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
@@ -10,7 +10,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.List;
 import java.util.stream.Stream;
 
-public abstract class StemBlockShapeProvider extends BlockShapeProvider {
+public abstract class BranchStemBlockShapeProvider extends BlockShapeProvider {
     public static VoxelShape getShape(BlockState pState) {
         Stream<UnbakedShapeFragment> shape = buildShape(pState)
             .map(pFragment -> transformShape(pFragment, pState));
@@ -26,7 +26,7 @@ public abstract class StemBlockShapeProvider extends BlockShapeProvider {
     }
 
     private static Stream<UnbakedShapeFragment> buildShape(BlockState pState) {
-        int age = pState.getValue(StemBlock.AgeProperty);
+        int age = pState.getValue(BranchStemBlock.AgeProperty);
 
         return List.of(
             Stream.of(

@@ -1,8 +1,8 @@
 package com.ramsey.biosynthesis.registrate;
 
 import com.ramsey.biosynthesis.Main;
-import com.ramsey.biosynthesis.content.blocks.BranchBlock;
-import com.ramsey.biosynthesis.content.blocks.StemBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.BranchStemBlock;
 import com.ramsey.biosynthesis.content.blocks.vessel.VesselBlock;
 import com.ramsey.biosynthesis.content.blocks.vessel.VesselHeadBlock;
 import net.minecraft.core.Registry;
@@ -23,7 +23,7 @@ public abstract class BlockRegistry {
     public static RegistryObject<VesselBlock> vesselBodyBlock = registrate.register("vessel", () -> new VesselHeadBlock(biologicalBlockProperties));
 
     public static RegistryObject<Block> branchBlock = registrate.register("branch", () -> new BranchBlock(biologicalBlockProperties));
-    public static RegistryObject<Block> stemBlock = registrate.register("stem", () -> new StemBlock(biologicalBlockProperties));
+    public static RegistryObject<Block> stemBlock = registrate.register("stem", () -> new BranchStemBlock(biologicalBlockProperties));
 
 
     public static void init(IEventBus modEventBus) {

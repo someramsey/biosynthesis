@@ -1,23 +1,27 @@
-package com.ramsey.biosynthesis.content.blocks;
+package com.ramsey.biosynthesis.content.blocks.branch;
 
-import com.ramsey.biosynthesis.data.providers.block.common.StemBlockShapeProvider;
+import com.ramsey.biosynthesis.data.providers.block.common.stem.BranchStemBlockShapeProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class StemBlock extends Block {
+public class BranchStemBlock extends HorizontalDirectionalBlock {
     public static final IntegerProperty AgeProperty = IntegerProperty.create("age", 0, 4);
-    public static final DirectionProperty FacingProperty = BlockStateProperties.HORIZONTAL_FACING;
+    public static final BooleanProperty RootedProperty = BooleanProperty.create("rooted");
+    public static final EnumProperty<OrientationState> OrientationProperty = EnumProperty.create("orientation", OrientationState.class);
+    public static final DirectionProperty FacingProperty = FACING;
 
-    public StemBlock(Properties pProperties) {
+    public BranchStemBlock(Properties pProperties) {
         super(pProperties);
     }
 
@@ -27,10 +31,12 @@ public class StemBlock extends Block {
 
         pBuilder.add(AgeProperty);
         pBuilder.add(FacingProperty);
+        pBuilder.add(OrientationProperty);
+        pBuilder.add(RootedProperty);
     }
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return StemBlockShapeProvider.getShape(pState);
+        return BranchStemBlockShapeProvider.getShape(pState);
     }
 }
