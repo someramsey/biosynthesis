@@ -11,7 +11,7 @@ files.forEach((file) => {
     const content = [];
     geometry.bones.forEach((bone) => {
         bone.cubes.forEach((cube) => {
-            const matrix = [cube.origin[0] + 8, cube.origin[1], cube.origin[2] + 8, ...cube.size].map((v) => Math.round(v));
+            const matrix = [, ...cube.size].map((v) => Math.round(v));
             content.push(`box(${matrix.join(", ")})`);
         });
     });

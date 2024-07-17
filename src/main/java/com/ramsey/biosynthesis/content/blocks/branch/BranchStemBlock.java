@@ -22,6 +22,13 @@ public class BranchStemBlock extends Block {
 
     public BranchStemBlock(Properties pProperties) {
         super(pProperties);
+
+        this.registerDefaultState(
+            this.stateDefinition.any()
+                .setValue(AgeProperty, 0)
+                .setValue(RootedProperty, false)
+                .setValue(OrientationProperty, Orientation.North)
+        );
     }
 
     @Override

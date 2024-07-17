@@ -19,7 +19,7 @@ public abstract class BranchBlockModelProvider implements BlockStateModelProvide
 
             return "straight/" + front.getSerializedName();
         } else if (left != BranchBlock.ConnectionState.None && right != BranchBlock.ConnectionState.None) {
-            return "both/" + "up_up"; //TODO: add rest of the models
+            return "both/" + left.getSerializedName() + "_" + right.getSerializedName();
         } else if (left != BranchBlock.ConnectionState.None) {
             return "left/" + left.getSerializedName();
         } else {

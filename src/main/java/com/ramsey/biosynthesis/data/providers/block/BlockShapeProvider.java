@@ -20,18 +20,47 @@ public abstract class BlockShapeProvider {
 
     protected static void transformByOrientation(UnbakedShapeFragment pShape, Orientation pOrientation) {
         switch (pOrientation) {
+            case NorthUp ->
+                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
+
+            case NorthDown ->
+                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
+
             case South ->
                 pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
-            //a, b, c, d, e, f
-            //c, b, 1 - a, d, e, 1 - f
+
+            case SouthUp -> {
+                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
+                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
+            }
+
+            case SouthDown -> {
+                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
+                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
+            }
+
             case West ->
                 pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
+
+            //a, b, c, d, e, f
+            //c, b, 1 - d, f, e, 1 - a
+            //1 - d, b, 1 - f, 1 - a, e, 1 - c
+            case WestUp -> {
+                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
+                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
+            }
+
+            case WestDown -> {
+                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
+                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
+            }
 
             //a, b, c, d, e, f
             //a, 1-c, b, d, 1-f, e
             //1-e, 1-c, a, 1 - b, 1-f, d
             case East ->
                 pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
+
             case EastUp -> {
                 pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
                 pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
@@ -42,6 +71,7 @@ public abstract class BlockShapeProvider {
             }
         }
     }
+
 
     protected static void transformByDirection(UnbakedShapeFragment pShape, Direction pDirection) {
         switch (pDirection) {

@@ -44,6 +44,24 @@ public abstract class BranchBlockShapeProvider extends BlockShapeProvider {
                 box(0, 0, 5, 0, 1, 11)
             );
 
+            case "both/down_up" -> Stream.of(
+                box(5, 0, 0, 11, 1, 16),
+                box(11, 0, 5, 15, 1, 11),
+                box(1, 0, 5, 5, 1, 11),
+                box(0, 0, 5, 1, 0, 11),
+                box(15, 1, 5, 16, 16, 11),
+                box(0, 0, 5, 1, 1, 11),
+                box(15, 0, 5, 16, 1, 11)
+            );
+
+            case "both/flat_down" -> Stream.of(
+                box(5, 0, 0, 11, 1, 16),
+                box(11, 0, 5, 15, 1, 11),
+                box(0, 0, 5, 5, 1, 11),
+                box(15, 0, 5, 16, 0, 11),
+                box(15, 0, 5, 16, 1, 11)
+            );
+
             case "both/flat_flat" -> Stream.of(
                 box(5, 0, 0, 11, 1, 16),
                 box(11, 0, 5, 16, 1, 11),
@@ -55,6 +73,16 @@ public abstract class BranchBlockShapeProvider extends BlockShapeProvider {
                 box(11, 0, 5, 15, 1, 11),
                 box(0, 0, 5, 5, 1, 11),
                 box(15, 1, 5, 16, 16, 11),
+                box(15, 0, 5, 16, 1, 11)
+            );
+
+            case "both/up_down" -> Stream.of(
+                box(5, 0, 0, 11, 1, 16),
+                box(11, 0, 5, 15, 1, 11),
+                box(1, 0, 5, 5, 1, 11),
+                box(0, 1, 5, 1, 16, 11),
+                box(15, 0, 5, 16, 0, 11),
+                box(0, 0, 5, 1, 1, 11),
                 box(15, 0, 5, 16, 1, 11)
             );
 

@@ -43,5 +43,6 @@ function parseFile(file) {
     }
 }
 
-walk('./stem');
+
+walk('./branch');
 console.log(out);
