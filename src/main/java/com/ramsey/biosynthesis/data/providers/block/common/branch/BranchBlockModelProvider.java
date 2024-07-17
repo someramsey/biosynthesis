@@ -1,13 +1,12 @@
 package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
 import com.ramsey.biosynthesis.content.blocks.BranchBlock;
-import com.ramsey.biosynthesis.data.providers.block.BlockModelProvider;
+import com.ramsey.biosynthesis.data.providers.block.BlockStateModelProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BranchBlockModelProvider implements BlockModelProvider {
-    @Override
-    public int getRotationX(BlockState blockState) {
+public abstract class BranchBlockModelProvider {
+    private static int getRotationX(BlockState blockState) {
         BranchBlock.OrientationState orientation = blockState.getValue(BranchBlock.OrientationProperty);
 
         return switch (orientation) {
@@ -17,8 +16,7 @@ public class BranchBlockModelProvider implements BlockModelProvider {
         };
     }
 
-    @Override
-    public int getRotationY(BlockState blockState) {
+    private static int getRotationY(BlockState blockState) {
         Direction facing = blockState.getValue(BranchBlock.FacingProperty);
         BranchBlock.OrientationState orientation = blockState.getValue(BranchBlock.OrientationProperty);
 
@@ -36,8 +34,7 @@ public class BranchBlockModelProvider implements BlockModelProvider {
         return rotation;
     }
 
-    @Override
-    public String getModelKey(BlockState pBlockState) {
+    public static String getModelKey(BlockState pBlockState) {
         BranchBlock.ConnectionState left = pBlockState.getValue(BranchBlock.ConnectedLeftProperty);
         BranchBlock.ConnectionState right = pBlockState.getValue(BranchBlock.ConnectedRightProperty);
         BranchBlock.ConnectionState front = pBlockState.getValue(BranchBlock.ConnectedFrontProperty);
@@ -55,5 +52,13 @@ public class BranchBlockModelProvider implements BlockModelProvider {
         } else {
             return "right/" + right.getSerializedName();
         }
+    }
+
+    public static BlockStateModelProvider.ModelInstance getModelInstance(BlockState blockState) {
+        String modelPath = "block/branch/" + getModelKey(blockState);
+        int rotationX = getRotationX(blockState);
+        int rotationY = getRotationY(blockState);
+
+        return new BlockStateModelProvider.ModelInstance(modelPath, rotationX, rotationY);
     }
 }

@@ -1,7 +1,7 @@
 package com.ramsey.biosynthesis.data.providers;
 
 import com.ramsey.biosynthesis.Main;
-import com.ramsey.biosynthesis.data.providers.block.BlockModelProvider;
+import com.ramsey.biosynthesis.data.providers.block.BlockStateModelProvider;
 import com.ramsey.biosynthesis.data.providers.block.common.branch.BranchBlockModelProvider;
 import com.ramsey.biosynthesis.registrate.BlockRegistry;
 import net.minecraft.data.DataGenerator;
@@ -19,20 +19,10 @@ public class BlockStatesDataProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        getVariantBuilder(BlockRegistry.branchBlock.get()).forAllStates(applyProvider(new BranchBlockModelProvider(), "block/branch/"));
+        getVariantBuilder(BlockRegistry.branchBlock.get()).forAllStates(use(BranchBlockModelProvider::getModelInstance));
     }
 
-    private Function<BlockState, ConfiguredModel[]> applyProvider(BlockModelProvider modelProvider, String pBasePath) {
-        return (blockState) -> {
-            String modelPath = pBasePath + modelProvider.getModelKey(blockState);
-            int rotationX = modelProvider.getRotationX(blockState);
-            int rotationY = modelProvider.getRotationY(blockState);
-
-            return ConfiguredModel.builder()
-                .modelFile(models().getExistingFile(modLoc(modelPath)))
-                .rotationX(rotationX)
-                .rotationY(rotationY)
-                .build();
-        };
+    private Function<BlockState, ConfiguredModel[]> use(BlockStateModelProvider pModelProvider) {
+        return (blockState) -> pModelProvider.getModel(blockState).build(this);
     }
 }

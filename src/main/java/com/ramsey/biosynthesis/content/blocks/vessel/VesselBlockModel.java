@@ -8,8 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 public class VesselBlockModel extends AnimatedGeoModel<VesselBlockEntity> {
-    private static final String baseModelDir = "geo/vessel/";
-
     @Override
     public ResourceLocation getModelResource(VesselBlockEntity vesselBlockEntity) {
         BlockState state = vesselBlockEntity.getBlockState();
@@ -29,22 +27,23 @@ public class VesselBlockModel extends AnimatedGeoModel<VesselBlockEntity> {
     }
 
     private static @NotNull String getModelPath(BlockState state) {
-        String modelPath = baseModelDir;
-
+        String basePath = "geo/vessel/";
         int age = state.getValue(VesselBlock.AgeProperty);
 
-        if(age == 5) {
-            return modelPath + "full.geo.json";
+        if (age == 5) {
+            return basePath + "full.geo.json";
         }
 
-        if (state.getValue(VesselBlock.FacingProperty) == Direction.UP) {
-            modelPath += "head/";
+        Direction direction = state.getValue(VesselBlock.FacingProperty);
+
+        if (direction == Direction.UP) {
+            basePath += "head/";
         } else {
-            modelPath += "body/";
+            basePath += "body/";
         }
 
-        modelPath += "stage" + age + ".geo.json";
+        basePath += "stage" + age + ".geo.json";
 
-        return modelPath;
+        return basePath;
     }
 }

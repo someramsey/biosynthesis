@@ -43,7 +43,5 @@ function parseFile(file) {
     }
 }
 
-
-
 walk('./stem');
 console.log(out);

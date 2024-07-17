@@ -21,8 +21,6 @@ public class BranchBlock extends HorizontalDirectionalBlock {
     public static final EnumProperty<OrientationState> OrientationProperty = EnumProperty.create("orientation", OrientationState.class);
     public static final DirectionProperty FacingProperty = FACING;
 
-    private final BranchBlockShapeProvider shapeProvider = new BranchBlockShapeProvider();
-
     public BranchBlock(Properties pProperties) {
         super(pProperties);
 
@@ -48,7 +46,7 @@ public class BranchBlock extends HorizontalDirectionalBlock {
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return shapeProvider.buildShape(pState);
+        return BranchBlockShapeProvider.getShape(pState);
     }
 
     public enum ConnectionState implements StringRepresentable {

@@ -1,6 +1,6 @@
 package com.ramsey.biosynthesis.content.blocks;
 
-import com.ramsey.biosynthesis.data.providers.block.common.stem.StemBlockShapeProvider;
+import com.ramsey.biosynthesis.data.providers.block.common.StemBlockShapeProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -17,8 +17,6 @@ public class StemBlock extends Block {
     public static final IntegerProperty AgeProperty = IntegerProperty.create("age", 0, 4);
     public static final DirectionProperty FacingProperty = BlockStateProperties.HORIZONTAL_FACING;
 
-    private final StemBlockShapeProvider shapeProvider = new StemBlockShapeProvider();
-
     public StemBlock(Properties pProperties) {
         super(pProperties);
     }
@@ -33,6 +31,6 @@ public class StemBlock extends Block {
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return shapeProvider.buildShape(pState);
+        return StemBlockShapeProvider.getShape(pState);
     }
 }

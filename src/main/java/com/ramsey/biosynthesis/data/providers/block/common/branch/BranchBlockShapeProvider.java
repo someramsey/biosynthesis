@@ -1,40 +1,37 @@
 package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
 import com.ramsey.biosynthesis.content.blocks.BranchBlock;
-import com.ramsey.biosynthesis.data.providers.block.BlockModelKeyProvider;
 import com.ramsey.biosynthesis.data.providers.block.BlockShapeProvider;
-import com.ramsey.biosynthesis.data.providers.block.ShapeUtils;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
-public class BranchBlockShapeProvider extends BlockShapeProvider {
-    public BranchBlockShapeProvider() {
-        super(new BranchBlockModelProvider());
+public abstract class BranchBlockShapeProvider extends BlockShapeProvider {
+    public static VoxelShape getShape(BlockState pState) {
+        String modelKey = BranchBlockModelProvider.getModelKey(pState);
+        Stream<UnbakedShapeFragment> shape = buildShape(modelKey)
+            .map(pFragment -> transformShape(pFragment, pState));
+
+        return bakeShape(shape);
     }
 
-    private static void applyVerticalRotation(UnbakedShape pShape, BlockState pBlockState) {
+    private static UnbakedShapeFragment transformShape(UnbakedShapeFragment pFragment, BlockState pBlockState) {
+        Direction direction = pBlockState.getValue(BranchBlock.FacingProperty);
         BranchBlock.OrientationState orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
 
         if (orientation != BranchBlock.OrientationState.Horizontal) {
-            pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
+            pFragment.transform(pFragment.minX, 1 - pFragment.minZ, pFragment.minY, pFragment.maxX, 1 - pFragment.maxZ, pFragment.maxY);
         }
+
+        BlockShapeProvider.rotateHorizontally(pFragment, direction);
+
+        return pFragment;
     }
 
-    @Override
-    protected UnbakedShape transformShape(UnbakedShape pShape, BlockState pBlockState) {
-        Direction direction = pBlockState.getValue(BranchBlock.FacingProperty);
-
-        applyVerticalRotation(pShape, pBlockState);
-        ShapeUtils.rotateHorizontally(pShape, direction);
-
-        return pShape;
-    }
-
-    @Override
-    protected Stream<UnbakedShape> buildShape(String pModel) {
-        return switch (pModel) {
+    private static Stream<UnbakedShapeFragment> buildShape(String pModelKey) {
+        return switch (pModelKey) {
             case "both/down_down" -> Stream.of(
                 box(5, 0, 0, 11, 1, 16),
                 box(11, 0, 5, 16, 1, 11),
@@ -143,7 +140,7 @@ public class BranchBlockShapeProvider extends BlockShapeProvider {
                 box(5, 1, 0, 11, 16, 1)
             );
 
-            default -> throw new IllegalArgumentException("Invalid model: " + pModel);
+            default -> throw new IllegalArgumentException("Invalid model: " + pModelKey);
         };
     }
 }

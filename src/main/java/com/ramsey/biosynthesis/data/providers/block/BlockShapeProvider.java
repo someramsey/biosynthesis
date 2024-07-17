@@ -1,39 +1,36 @@
 package com.ramsey.biosynthesis.data.providers.block;
 
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.Direction;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
 public abstract class BlockShapeProvider {
-    private final BlockModelKeyProvider modelKeyProvider;
-
-    public BlockShapeProvider(BlockModelKeyProvider modelKeyProvider) {
-        this.modelKeyProvider = modelKeyProvider;
+    protected static UnbakedShapeFragment box(int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+        return new UnbakedShapeFragment(minX, minY, minZ, maxX, maxY, maxZ);
     }
 
-    protected abstract UnbakedShape transformShape(UnbakedShape pShape, BlockState pBlockState);
-
-    protected abstract Stream<UnbakedShape> buildShape(String pModel);
-
-    protected static UnbakedShape box(int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
-        return new UnbakedShape(minX, minY, minZ, maxX, maxY, maxZ);
-    }
-
-    public VoxelShape buildShape(BlockState pBlockState) {
-        String key = modelKeyProvider.getModelKey(pBlockState);
-
-        return buildShape(key)
-            .map(shape -> transformShape(shape, pBlockState))
-            .map(shape -> Shapes.box(shape.minX, shape.minY, shape.minZ, shape.maxX, shape.maxY, shape.maxZ))
+    protected static VoxelShape bakeShape(Stream<UnbakedShapeFragment> pShape) {
+        return pShape.map(shape -> Shapes.box(shape.minX, shape.minY, shape.minZ, shape.maxX, shape.maxY, shape.maxZ))
             .reduce(Shapes.empty(), Shapes::or);
     }
 
-    public static class UnbakedShape {
+    protected static void rotateHorizontally(UnbakedShapeFragment pShape, Direction pDirection) {
+        switch (pDirection) {
+            case SOUTH ->
+                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
+            case WEST ->
+                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
+            case EAST ->
+                pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
+        }
+    }
+
+    protected static class UnbakedShapeFragment {
         public double minX, minY, minZ, maxX, maxY, maxZ;
 
-        public UnbakedShape(int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+        public UnbakedShapeFragment(int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
             this.minX = minX / 16.0d;
             this.minY = minY / 16.0d;
             this.minZ = minZ / 16.0d;
