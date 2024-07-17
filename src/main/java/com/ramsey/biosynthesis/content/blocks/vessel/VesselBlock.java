@@ -2,6 +2,8 @@ package com.ramsey.biosynthesis.content.blocks.vessel;
 
 import com.ramsey.biosynthesis.data.providers.block.common.VesselBlockShapeProvider;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -18,8 +20,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class VesselBlock extends BaseEntityBlock {
+    public static final int MaxAge = 5;
     public static DirectionProperty FacingProperty = BlockStateProperties.FACING;
-    public static IntegerProperty AgeProperty = IntegerProperty.create("age", 0, 5);
+    public static IntegerProperty AgeProperty = IntegerProperty.create("age", 0, MaxAge);
 
     public VesselBlock(Properties pProperties) {
         super(pProperties);
@@ -44,5 +47,10 @@ public class VesselBlock extends BaseEntityBlock {
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         return new VesselBlockEntity(pPos, pState);
+    }
+
+    public static void grow(ServerLevel pLevel, BlockState pState, BlockPos pPos, int age) {
+        pLevel.setBlock(pPos, pState.setValue(AgeProperty, age), 2);
+        pLevel.sendParticles(ParticleTypes.POOF, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, 20, 0.3d, 0.3d, 0.3d, 0);
     }
 }

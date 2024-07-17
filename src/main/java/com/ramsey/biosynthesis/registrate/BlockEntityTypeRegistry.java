@@ -18,7 +18,7 @@ public abstract class BlockEntityTypeRegistry {
     public static DeferredRegister<BlockEntityType<?>> registrate = DeferredRegister.create(Registry.BLOCK_ENTITY_TYPE_REGISTRY, Main.MODID);
 
     public static RegistryObject<BlockEntityType<VesselBlockEntity>> vesselBlockEntityType = registrate.register("vessel_entity",
-        buildType(VesselBlockEntity::new, BlockRegistry.vesselHeadBlock, BlockRegistry.vesselBodyBlock)
+        buildType(VesselBlockEntity::new, BlockRegistry.vesselHeadBlock, BlockRegistry.vesselBlock)
     );
 
     public static void init(IEventBus modEventBus) {

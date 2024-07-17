@@ -13,26 +13,77 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class VesselHeadBlock extends VesselBlock {
+    public VesselHeadBlock(Properties pProperties) {
+        super(pProperties);
+
+        this.registerDefaultState(
+            stateDefinition.any().setValue(FacingProperty, Direction.UP)
+        );
+    }
+
+    @Override
+    public boolean isRandomlyTicking(@NotNull BlockState pState) {
+        return true;
+    }
+
+    @Override
+    public void randomTick(@NotNull BlockState pState, @NotNull ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
+        Orientation orientation = Orientation.Horizontal[pRandom.nextInt(4)];
+        SpreadTask task = new SpreadTask(pLevel, pRandom, pPos, orientation);
+
+        boolean spreadDone = false;
+        while (!spreadDone) {
+            spreadDone = task.spread();
+        }
+    }
+
     private static class SpreadTask {
         private final ServerLevel level;
         private final RandomSource random;
+
         private BlockPos pos;
         private Orientation orientation;
-
-        private boolean isAtStem;
 
         public SpreadTask(ServerLevel level, RandomSource random, BlockPos pos, Orientation orientation) {
             this.level = level;
             this.random = random;
-            this.pos = pos;
             this.orientation = orientation;
-            this.isAtStem = true;
+            this.pos = pos;
+        }
+
+        private Block getBlock(BlockPos pos) {
+            return level.getBlockState(pos).getBlock();
+        }
+
+        private boolean canSupport(BlockPos pos) {
+            return Block.isShapeFullBlock(level.getBlockState(pos).getCollisionShape(level, pos));
         }
 
         private boolean spread() {
-            BlockPos newPos = orientation.step(pos);
-            BlockState state = level.getBlockState(newPos);
+            BlockState state = level.getBlockState(pos);
             Block block = state.getBlock();
+
+            if (block == BlockRegistry.vesselBlock.get()) {
+                BlockPos below = pos.below();
+
+                if (!canSupport(below.north())) {
+                    return true;
+                }
+
+                int age = state.getValue(AgeProperty);
+
+                if (age < VesselBlock.MaxAge) {
+                    VesselBlock.grow(level, state, pos, age + 1);
+                    return true;
+                }
+
+                if (getBlock(pos.north()) != Blocks.AIR) {
+
+                }
+
+                return false;
+            }
+
 
             if (block == Blocks.AIR) {
                 BlockState newState = BlockRegistry.stemBlock.get().defaultBlockState()
@@ -64,38 +115,4 @@ public class VesselHeadBlock extends VesselBlock {
             return true;
         }
     }
-
-    public VesselHeadBlock(Properties pProperties) {
-        super(pProperties);
-
-        this.registerDefaultState(
-            stateDefinition.any().setValue(FacingProperty, Direction.UP)
-        );
-    }
-
-    @Override
-    public boolean isRandomlyTicking(@NotNull BlockState pState) {
-        return true;
-    }
-
-    @Override
-    public void randomTick(@NotNull BlockState pState, @NotNull ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
-        Orientation orientation = Orientation.Horizontal[pRandom.nextInt(4)];
-        SpreadTask task = new SpreadTask(pLevel, pRandom, pPos, orientation);
-
-        boolean spreadDone = false;
-        while (!spreadDone) {
-            spreadDone = task.spread();
-        }
-    }
-
-//    int age = pState.getValue(VesselBlock.AgeProperty);
-//
-//        if (age < 3) {
-//        pLevel.setBlock(pPos, pState.setValue(VesselBlock.AgeProperty, age + 1), 2);
-//        pLevel.sendParticles(ParticleTypes.POOF, pPos.getX() + 0.5d, pPos.getY() + 0.5d, pPos.getZ() + 0.5d, 20, 0.3d, 0.3d, 0.3d, 0);
-//        return;
-//    }
-//
-//    spread(pLevel, pPos, pRandom);
 }
