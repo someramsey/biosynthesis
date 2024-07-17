@@ -7,7 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public interface GrowingBlock {
+public interface SpreadingBlock {
     void spread(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pSpreadTask);
 
     class SpreadTask {
@@ -30,13 +30,16 @@ public interface GrowingBlock {
             BlockState state = level.getBlockState(pos);
             Block block = state.getBlock();
 
-            if (block instanceof GrowingBlock growingBlock) {
-                growingBlock.spread(level, state, pos, random, this);
+            if (block instanceof SpreadingBlock spreadingBlock) {
+                spreadingBlock.spread(level, state, pos, random, this);
+                return;
             }
+
+            this.spreading = false;
         }
 
         public void propagate(BlockPos pPos, Orientation pOrientation) {
-            pPos = pPos;
+            pos = pPos;
             orientation = pOrientation;
         }
 
