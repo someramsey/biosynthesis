@@ -9,6 +9,10 @@ import net.minecraft.world.level.block.state.BlockState;
 public interface SpreadingBlock {
     void spread(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pSpreadTask);
 
+    static boolean canPropagate(Block pBlock) {
+        return pBlock instanceof SpreadingBlock;
+    }
+
     class SpreadTask {
         private final ServerLevel level;
         private final RandomSource random;
@@ -23,12 +27,22 @@ public interface SpreadingBlock {
             this.spreading = true;
         }
 
+        private int propagationAttempts = 0; //TODO: remove fcked up check
+
         public void spread() {
             BlockState state = level.getBlockState(pos);
             Block block = state.getBlock();
 
             if (block instanceof SpreadingBlock spreadingBlock) {
                 spreadingBlock.spread(level, state, pos, random, this);
+
+                //TODO: remove fcked up check
+                if (propagationAttempts++ > 1000) {
+                    spreading = false;
+
+                    System.err.println("YOU FCKED UP AT " + spreadingBlock);
+                }
+
                 return;
             }
 
@@ -44,56 +58,3 @@ public interface SpreadingBlock {
         }
     }
 }
-
-
-//
-//            if (block == BlockRegistry.vesselBlock.get()) {
-//                BlockPos below = pos.below();
-//
-//                if (!canSupport(below.north())) {
-//                    return true;
-//                }
-//
-//                int age = state.getValue(AgeProperty);
-//
-//                if (age < VesselBlock.MaxAge) {
-//                    VesselBlock.grow(level, state, pos, age + 1);
-//                    return true;
-//                }
-//
-//                if (getBlock(pos.north()) != Blocks.AIR) {
-//
-//                }
-//
-//                return false;
-//            }
-//
-//
-//            if (block == Blocks.AIR) {
-//                BlockState newState = BlockRegistry.stemBlock.get().defaultBlockState()
-//                    .setValue(BranchStemBlock.OrientationProperty, orientation)
-//                    .setValue(BranchStemBlock.RootedProperty, true);
-//                System.out.println(newState.getValue(BranchStemBlock.AgeProperty));
-//
-//                level.setBlock(newPos, newState, 2);
-//            } else if (block == BlockRegistry.stemBlock.get()) {
-//                int age = state.getValue(BranchStemBlock.AgeProperty);
-//
-//                if (age == 4) {
-//                    int orientationIndex = random.nextInt(4);
-//                    Orientation newOrientation = Orientation.Horizontal[orientationIndex];
-//
-//                    if (newOrientation == orientation) {
-//                        newOrientation = Orientation.Horizontal[(orientationIndex + 1) % 4];
-//                    }
-//
-//                    pos = newPos;
-//                    orientation = newOrientation;
-//
-//                    return false;
-//                }
-//
-//                level.setBlock(newPos, state.setValue(BranchStemBlock.AgeProperty, age + 1), 2);
-//            }
-//
-//            return true;
