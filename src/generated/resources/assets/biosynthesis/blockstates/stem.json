@@ -1,531 +1,1101 @@
 {
   "variants": {
-    "age=0,orientation=east,rooted=false": {
+    "age=0,orientation=de,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": 180,
       "y": 90
     },
-    "age=0,orientation=east,rooted=true": {
+    "age=0,orientation=de,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
+      "x": 180,
       "y": 90
     },
-    "age=0,orientation=east_down,rooted=false": {
+    "age=0,orientation=dn,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": 90,
-      "y": 270
+      "x": 180
     },
-    "age=0,orientation=east_down,rooted=true": {
+    "age=0,orientation=dn,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
-      "x": 90,
+      "x": 180
+    },
+    "age=0,orientation=ds,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": 180,
+      "y": 180
+    },
+    "age=0,orientation=ds,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": 180,
+      "y": 180
+    },
+    "age=0,orientation=dw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": 180,
       "y": 270
     },
-    "age=0,orientation=east_up,rooted=false": {
+    "age=0,orientation=dw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": 180,
+      "y": 270
+    },
+    "age=0,orientation=ed,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
       "x": -90,
       "y": 90
     },
-    "age=0,orientation=east_up,rooted=true": {
+    "age=0,orientation=ed,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
       "x": -90,
       "y": 90
     },
-    "age=0,orientation=north,rooted=false": {
+    "age=0,orientation=en,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 90
+    },
+    "age=0,orientation=en,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 90
+    },
+    "age=0,orientation=es,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 90
+    },
+    "age=0,orientation=es,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 90
+    },
+    "age=0,orientation=eu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 90
+    },
+    "age=0,orientation=eu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 90
+    },
+    "age=0,orientation=nd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90
+    },
+    "age=0,orientation=nd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90
+    },
+    "age=0,orientation=ne,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90
+    },
+    "age=0,orientation=ne,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90
+    },
+    "age=0,orientation=nu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90
+    },
+    "age=0,orientation=nu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90
+    },
+    "age=0,orientation=nw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90
+    },
+    "age=0,orientation=nw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90
+    },
+    "age=0,orientation=sd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 180
+    },
+    "age=0,orientation=sd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 180
+    },
+    "age=0,orientation=se,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 180
+    },
+    "age=0,orientation=se,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 180
+    },
+    "age=0,orientation=su,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 180
+    },
+    "age=0,orientation=su,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 180
+    },
+    "age=0,orientation=sw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 180
+    },
+    "age=0,orientation=sw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 180
+    },
+    "age=0,orientation=ue,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "y": 90
+    },
+    "age=0,orientation=ue,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "y": 90
+    },
+    "age=0,orientation=un,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0"
     },
-    "age=0,orientation=north,rooted=true": {
+    "age=0,orientation=un,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0"
     },
-    "age=0,orientation=north_down,rooted=false": {
+    "age=0,orientation=us,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": 90,
       "y": 180
     },
-    "age=0,orientation=north_down,rooted=true": {
+    "age=0,orientation=us,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
-      "x": 90,
       "y": 180
     },
-    "age=0,orientation=north_up,rooted=false": {
+    "age=0,orientation=uw,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
+      "y": 270
+    },
+    "age=0,orientation=uw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "y": 270
+    },
+    "age=0,orientation=wd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 270
+    },
+    "age=0,orientation=wd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 270
+    },
+    "age=0,orientation=wn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 270
+    },
+    "age=0,orientation=wn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 270
+    },
+    "age=0,orientation=ws,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 270
+    },
+    "age=0,orientation=ws,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 270
+    },
+    "age=0,orientation=wu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age0",
+      "x": -90,
+      "y": 270
+    },
+    "age=0,orientation=wu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age0",
+      "x": -90,
+      "y": 270
+    },
+    "age=1,orientation=de,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": 180,
+      "y": 90
+    },
+    "age=1,orientation=de,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": 180,
+      "y": 90
+    },
+    "age=1,orientation=dn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": 180
+    },
+    "age=1,orientation=dn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": 180
+    },
+    "age=1,orientation=ds,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": 180,
+      "y": 180
+    },
+    "age=1,orientation=ds,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": 180,
+      "y": 180
+    },
+    "age=1,orientation=dw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": 180,
+      "y": 270
+    },
+    "age=1,orientation=dw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": 180,
+      "y": 270
+    },
+    "age=1,orientation=ed,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 90
+    },
+    "age=1,orientation=ed,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 90
+    },
+    "age=1,orientation=en,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 90
+    },
+    "age=1,orientation=en,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 90
+    },
+    "age=1,orientation=es,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 90
+    },
+    "age=1,orientation=es,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 90
+    },
+    "age=1,orientation=eu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 90
+    },
+    "age=1,orientation=eu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 90
+    },
+    "age=1,orientation=nd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
       "x": -90
     },
-    "age=0,orientation=north_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
+    "age=1,orientation=nd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
       "x": -90
     },
-    "age=0,orientation=south,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "y": 180
+    "age=1,orientation=ne,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90
     },
-    "age=0,orientation=south,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "y": 180
+    "age=1,orientation=ne,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90
     },
-    "age=0,orientation=south_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": 90
+    "age=1,orientation=nu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90
     },
-    "age=0,orientation=south_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": 90
+    "age=1,orientation=nu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90
     },
-    "age=0,orientation=south_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
+    "age=1,orientation=nw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90
+    },
+    "age=1,orientation=nw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90
+    },
+    "age=1,orientation=sd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
       "x": -90,
       "y": 180
     },
-    "age=0,orientation=south_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
+    "age=1,orientation=sd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
       "x": -90,
       "y": 180
     },
-    "age=0,orientation=west,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "y": 270
-    },
-    "age=0,orientation=west,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "y": 270
-    },
-    "age=0,orientation=west_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": 90,
-      "y": 90
-    },
-    "age=0,orientation=west_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": 90,
-      "y": 90
-    },
-    "age=0,orientation=west_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
+    "age=1,orientation=se,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
       "x": -90,
-      "y": 270
+      "y": 180
     },
-    "age=0,orientation=west_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
+    "age=1,orientation=se,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
       "x": -90,
-      "y": 270
+      "y": 180
     },
-    "age=1,orientation=east,rooted=false": {
+    "age=1,orientation=su,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 180
+    },
+    "age=1,orientation=su,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 180
+    },
+    "age=1,orientation=sw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 180
+    },
+    "age=1,orientation=sw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 180
+    },
+    "age=1,orientation=ue,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1",
       "y": 90
     },
-    "age=1,orientation=east,rooted=true": {
+    "age=1,orientation=ue,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age1",
       "y": 90
     },
-    "age=1,orientation=east_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": 90,
-      "y": 270
-    },
-    "age=1,orientation=east_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": 90,
-      "y": 270
-    },
-    "age=1,orientation=east_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
-      "y": 90
-    },
-    "age=1,orientation=east_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
-      "y": 90
-    },
-    "age=1,orientation=north,rooted=false": {
+    "age=1,orientation=un,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1"
     },
-    "age=1,orientation=north,rooted=true": {
+    "age=1,orientation=un,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age1"
     },
-    "age=1,orientation=north_down,rooted=false": {
+    "age=1,orientation=us,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": 90,
       "y": 180
     },
-    "age=1,orientation=north_down,rooted=true": {
+    "age=1,orientation=us,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age1",
-      "x": 90,
       "y": 180
     },
-    "age=1,orientation=north_up,rooted=false": {
+    "age=1,orientation=uw,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1",
+      "y": 270
+    },
+    "age=1,orientation=uw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "y": 270
+    },
+    "age=1,orientation=wd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 270
+    },
+    "age=1,orientation=wd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 270
+    },
+    "age=1,orientation=wn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 270
+    },
+    "age=1,orientation=wn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 270
+    },
+    "age=1,orientation=ws,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 270
+    },
+    "age=1,orientation=ws,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 270
+    },
+    "age=1,orientation=wu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age1",
+      "x": -90,
+      "y": 270
+    },
+    "age=1,orientation=wu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age1",
+      "x": -90,
+      "y": 270
+    },
+    "age=2,orientation=de,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": 180,
+      "y": 90
+    },
+    "age=2,orientation=de,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": 180,
+      "y": 90
+    },
+    "age=2,orientation=dn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": 180
+    },
+    "age=2,orientation=dn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": 180
+    },
+    "age=2,orientation=ds,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": 180,
+      "y": 180
+    },
+    "age=2,orientation=ds,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": 180,
+      "y": 180
+    },
+    "age=2,orientation=dw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": 180,
+      "y": 270
+    },
+    "age=2,orientation=dw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": 180,
+      "y": 270
+    },
+    "age=2,orientation=ed,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 90
+    },
+    "age=2,orientation=ed,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 90
+    },
+    "age=2,orientation=en,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 90
+    },
+    "age=2,orientation=en,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 90
+    },
+    "age=2,orientation=es,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 90
+    },
+    "age=2,orientation=es,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 90
+    },
+    "age=2,orientation=eu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 90
+    },
+    "age=2,orientation=eu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 90
+    },
+    "age=2,orientation=nd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
       "x": -90
     },
-    "age=1,orientation=north_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
+    "age=2,orientation=nd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
       "x": -90
     },
-    "age=1,orientation=south,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "y": 180
+    "age=2,orientation=ne,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90
     },
-    "age=1,orientation=south,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "y": 180
+    "age=2,orientation=ne,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90
     },
-    "age=1,orientation=south_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": 90
+    "age=2,orientation=nu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90
     },
-    "age=1,orientation=south_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": 90
+    "age=2,orientation=nu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90
     },
-    "age=1,orientation=south_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
+    "age=2,orientation=nw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90
+    },
+    "age=2,orientation=nw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90
+    },
+    "age=2,orientation=sd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
       "x": -90,
       "y": 180
     },
-    "age=1,orientation=south_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
+    "age=2,orientation=sd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
       "x": -90,
       "y": 180
     },
-    "age=1,orientation=west,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "y": 270
-    },
-    "age=1,orientation=west,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "y": 270
-    },
-    "age=1,orientation=west_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": 90,
-      "y": 90
-    },
-    "age=1,orientation=west_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": 90,
-      "y": 90
-    },
-    "age=1,orientation=west_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
+    "age=2,orientation=se,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
       "x": -90,
-      "y": 270
+      "y": 180
     },
-    "age=1,orientation=west_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
+    "age=2,orientation=se,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
       "x": -90,
-      "y": 270
+      "y": 180
     },
-    "age=2,orientation=east,rooted=false": {
+    "age=2,orientation=su,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 180
+    },
+    "age=2,orientation=su,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 180
+    },
+    "age=2,orientation=sw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 180
+    },
+    "age=2,orientation=sw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 180
+    },
+    "age=2,orientation=ue,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2",
       "y": 90
     },
-    "age=2,orientation=east,rooted=true": {
+    "age=2,orientation=ue,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age2",
       "y": 90
     },
-    "age=2,orientation=east_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": 90,
-      "y": 270
-    },
-    "age=2,orientation=east_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": 90,
-      "y": 270
-    },
-    "age=2,orientation=east_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
-      "y": 90
-    },
-    "age=2,orientation=east_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
-      "y": 90
-    },
-    "age=2,orientation=north,rooted=false": {
+    "age=2,orientation=un,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2"
     },
-    "age=2,orientation=north,rooted=true": {
+    "age=2,orientation=un,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age2"
     },
-    "age=2,orientation=north_down,rooted=false": {
+    "age=2,orientation=us,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": 90,
       "y": 180
     },
-    "age=2,orientation=north_down,rooted=true": {
+    "age=2,orientation=us,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age2",
-      "x": 90,
       "y": 180
     },
-    "age=2,orientation=north_up,rooted=false": {
+    "age=2,orientation=uw,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2",
+      "y": 270
+    },
+    "age=2,orientation=uw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "y": 270
+    },
+    "age=2,orientation=wd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 270
+    },
+    "age=2,orientation=wd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 270
+    },
+    "age=2,orientation=wn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 270
+    },
+    "age=2,orientation=wn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 270
+    },
+    "age=2,orientation=ws,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 270
+    },
+    "age=2,orientation=ws,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 270
+    },
+    "age=2,orientation=wu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age2",
+      "x": -90,
+      "y": 270
+    },
+    "age=2,orientation=wu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age2",
+      "x": -90,
+      "y": 270
+    },
+    "age=3,orientation=de,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": 180,
+      "y": 90
+    },
+    "age=3,orientation=de,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": 180,
+      "y": 90
+    },
+    "age=3,orientation=dn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": 180
+    },
+    "age=3,orientation=dn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": 180
+    },
+    "age=3,orientation=ds,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": 180,
+      "y": 180
+    },
+    "age=3,orientation=ds,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": 180,
+      "y": 180
+    },
+    "age=3,orientation=dw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": 180,
+      "y": 270
+    },
+    "age=3,orientation=dw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": 180,
+      "y": 270
+    },
+    "age=3,orientation=ed,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 90
+    },
+    "age=3,orientation=ed,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 90
+    },
+    "age=3,orientation=en,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 90
+    },
+    "age=3,orientation=en,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 90
+    },
+    "age=3,orientation=es,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 90
+    },
+    "age=3,orientation=es,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 90
+    },
+    "age=3,orientation=eu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 90
+    },
+    "age=3,orientation=eu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 90
+    },
+    "age=3,orientation=nd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
       "x": -90
     },
-    "age=2,orientation=north_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
+    "age=3,orientation=nd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
       "x": -90
     },
-    "age=2,orientation=south,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "y": 180
+    "age=3,orientation=ne,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90
     },
-    "age=2,orientation=south,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "y": 180
+    "age=3,orientation=ne,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90
     },
-    "age=2,orientation=south_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": 90
+    "age=3,orientation=nu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90
     },
-    "age=2,orientation=south_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": 90
+    "age=3,orientation=nu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90
     },
-    "age=2,orientation=south_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
+    "age=3,orientation=nw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90
+    },
+    "age=3,orientation=nw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90
+    },
+    "age=3,orientation=sd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
       "x": -90,
       "y": 180
     },
-    "age=2,orientation=south_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
+    "age=3,orientation=sd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
       "x": -90,
       "y": 180
     },
-    "age=2,orientation=west,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "y": 270
-    },
-    "age=2,orientation=west,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "y": 270
-    },
-    "age=2,orientation=west_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": 90,
-      "y": 90
-    },
-    "age=2,orientation=west_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": 90,
-      "y": 90
-    },
-    "age=2,orientation=west_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
+    "age=3,orientation=se,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
       "x": -90,
-      "y": 270
+      "y": 180
     },
-    "age=2,orientation=west_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
+    "age=3,orientation=se,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
       "x": -90,
-      "y": 270
+      "y": 180
     },
-    "age=3,orientation=east,rooted=false": {
+    "age=3,orientation=su,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 180
+    },
+    "age=3,orientation=su,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 180
+    },
+    "age=3,orientation=sw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 180
+    },
+    "age=3,orientation=sw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 180
+    },
+    "age=3,orientation=ue,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3",
       "y": 90
     },
-    "age=3,orientation=east,rooted=true": {
+    "age=3,orientation=ue,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age3",
       "y": 90
     },
-    "age=3,orientation=east_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": 90,
-      "y": 270
-    },
-    "age=3,orientation=east_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": 90,
-      "y": 270
-    },
-    "age=3,orientation=east_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
-      "y": 90
-    },
-    "age=3,orientation=east_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
-      "y": 90
-    },
-    "age=3,orientation=north,rooted=false": {
+    "age=3,orientation=un,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3"
     },
-    "age=3,orientation=north,rooted=true": {
+    "age=3,orientation=un,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age3"
     },
-    "age=3,orientation=north_down,rooted=false": {
+    "age=3,orientation=us,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": 90,
       "y": 180
     },
-    "age=3,orientation=north_down,rooted=true": {
+    "age=3,orientation=us,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age3",
-      "x": 90,
       "y": 180
     },
-    "age=3,orientation=north_up,rooted=false": {
+    "age=3,orientation=uw,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3",
+      "y": 270
+    },
+    "age=3,orientation=uw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "y": 270
+    },
+    "age=3,orientation=wd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 270
+    },
+    "age=3,orientation=wd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 270
+    },
+    "age=3,orientation=wn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 270
+    },
+    "age=3,orientation=wn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 270
+    },
+    "age=3,orientation=ws,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 270
+    },
+    "age=3,orientation=ws,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 270
+    },
+    "age=3,orientation=wu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age3",
+      "x": -90,
+      "y": 270
+    },
+    "age=3,orientation=wu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age3",
+      "x": -90,
+      "y": 270
+    },
+    "age=4,orientation=de,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": 180,
+      "y": 90
+    },
+    "age=4,orientation=de,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": 180,
+      "y": 90
+    },
+    "age=4,orientation=dn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": 180
+    },
+    "age=4,orientation=dn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": 180
+    },
+    "age=4,orientation=ds,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": 180,
+      "y": 180
+    },
+    "age=4,orientation=ds,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": 180,
+      "y": 180
+    },
+    "age=4,orientation=dw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": 180,
+      "y": 270
+    },
+    "age=4,orientation=dw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": 180,
+      "y": 270
+    },
+    "age=4,orientation=ed,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 90
+    },
+    "age=4,orientation=ed,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 90
+    },
+    "age=4,orientation=en,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 90
+    },
+    "age=4,orientation=en,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 90
+    },
+    "age=4,orientation=es,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 90
+    },
+    "age=4,orientation=es,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 90
+    },
+    "age=4,orientation=eu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 90
+    },
+    "age=4,orientation=eu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 90
+    },
+    "age=4,orientation=nd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
       "x": -90
     },
-    "age=3,orientation=north_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
+    "age=4,orientation=nd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
       "x": -90
     },
-    "age=3,orientation=south,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "y": 180
+    "age=4,orientation=ne,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90
     },
-    "age=3,orientation=south,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "y": 180
+    "age=4,orientation=ne,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90
     },
-    "age=3,orientation=south_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": 90
+    "age=4,orientation=nu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90
     },
-    "age=3,orientation=south_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": 90
+    "age=4,orientation=nu,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90
     },
-    "age=3,orientation=south_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
+    "age=4,orientation=nw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90
+    },
+    "age=4,orientation=nw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90
+    },
+    "age=4,orientation=sd,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
       "x": -90,
       "y": 180
     },
-    "age=3,orientation=south_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
+    "age=4,orientation=sd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
       "x": -90,
       "y": 180
     },
-    "age=3,orientation=west,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "y": 270
-    },
-    "age=3,orientation=west,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "y": 270
-    },
-    "age=3,orientation=west_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": 90,
-      "y": 90
-    },
-    "age=3,orientation=west_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": 90,
-      "y": 90
-    },
-    "age=3,orientation=west_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
+    "age=4,orientation=se,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
       "x": -90,
-      "y": 270
+      "y": 180
     },
-    "age=3,orientation=west_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
+    "age=4,orientation=se,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
       "x": -90,
-      "y": 270
+      "y": 180
     },
-    "age=4,orientation=east,rooted=false": {
+    "age=4,orientation=su,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 180
+    },
+    "age=4,orientation=su,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 180
+    },
+    "age=4,orientation=sw,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 180
+    },
+    "age=4,orientation=sw,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 180
+    },
+    "age=4,orientation=ue,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
       "y": 90
     },
-    "age=4,orientation=east,rooted=true": {
+    "age=4,orientation=ue,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
       "y": 90
     },
-    "age=4,orientation=east_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": 90,
-      "y": 270
-    },
-    "age=4,orientation=east_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": 90,
-      "y": 270
-    },
-    "age=4,orientation=east_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
-      "y": 90
-    },
-    "age=4,orientation=east_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
-      "y": 90
-    },
-    "age=4,orientation=north,rooted=false": {
+    "age=4,orientation=un,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4"
     },
-    "age=4,orientation=north,rooted=true": {
+    "age=4,orientation=un,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4"
     },
-    "age=4,orientation=north_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": 90,
-      "y": 180
-    },
-    "age=4,orientation=north_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": 90,
-      "y": 180
-    },
-    "age=4,orientation=north_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90
-    },
-    "age=4,orientation=north_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90
-    },
-    "age=4,orientation=south,rooted=false": {
+    "age=4,orientation=us,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
       "y": 180
     },
-    "age=4,orientation=south,rooted=true": {
+    "age=4,orientation=us,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
       "y": 180
     },
-    "age=4,orientation=south_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": 90
-    },
-    "age=4,orientation=south_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": 90
-    },
-    "age=4,orientation=south_up,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
-      "y": 180
-    },
-    "age=4,orientation=south_up,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
-      "y": 180
-    },
-    "age=4,orientation=west,rooted=false": {
+    "age=4,orientation=uw,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
       "y": 270
     },
-    "age=4,orientation=west,rooted=true": {
+    "age=4,orientation=uw,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
       "y": 270
     },
-    "age=4,orientation=west_down,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": 90,
-      "y": 90
-    },
-    "age=4,orientation=west_down,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": 90,
-      "y": 90
-    },
-    "age=4,orientation=west_up,rooted=false": {
+    "age=4,orientation=wd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
       "x": -90,
       "y": 270
     },
-    "age=4,orientation=west_up,rooted=true": {
+    "age=4,orientation=wd,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 270
+    },
+    "age=4,orientation=wn,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 270
+    },
+    "age=4,orientation=wn,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 270
+    },
+    "age=4,orientation=ws,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 270
+    },
+    "age=4,orientation=ws,rooted=true": {
+      "model": "biosynthesis:block/stem/rooted/age4",
+      "x": -90,
+      "y": 270
+    },
+    "age=4,orientation=wu,rooted=false": {
+      "model": "biosynthesis:block/stem/unrooted/age4",
+      "x": -90,
+      "y": 270
+    },
+    "age=4,orientation=wu,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
       "x": -90,
       "y": 270

@@ -28,7 +28,7 @@ public class BranchBlock extends Block {
                 .setValue(ConnectedFrontProperty, ConnectionState.Flat)
                 .setValue(ConnectedRightProperty, ConnectionState.None)
                 .setValue(ConnectedLeftProperty, ConnectionState.None)
-                .setValue(OrientationProperty, Orientation.North)
+                .setValue(OrientationProperty, Orientation.UpN)
         );
     }
 

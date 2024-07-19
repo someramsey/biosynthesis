@@ -29,7 +29,7 @@ public class BranchStemBlock extends Block implements SpreadingBlock {
             this.stateDefinition.any()
                 .setValue(AgeProperty, 0)
                 .setValue(RootedProperty, false)
-                .setValue(OrientationProperty, Orientation.North)
+                .setValue(OrientationProperty, Orientation.UpN)
         );
     }
 
@@ -64,25 +64,15 @@ public class BranchStemBlock extends Block implements SpreadingBlock {
     }
 
     //TODO: add splits
-    private void placeBranch(ServerLevel pLevel, BlockPos pPos, BlockPos nextPos, Orientation pOrientation) {
-        if (!pLevel.getBlockState(nextPos).isAir()) {
+    private void placeBranch(ServerLevel pLevel, BlockPos pCurrentPos, BlockPos pNextPos, Orientation pCurrentOrientation) {
+        if (!pLevel.getBlockState(pNextPos).isAir()) {
             BlockState blockState = BlockRegistry.branchBlock.get().defaultBlockState()
-                .setValue(BranchBlock.OrientationProperty, pOrientation)
+                .setValue(BranchBlock.OrientationProperty, pCurrentOrientation)
                 .setValue(BranchBlock.ConnectedFrontProperty, BranchBlock.ConnectionState.Up);
 
-            pLevel.setBlock(pPos, blockState, 3);
+            pLevel.setBlock(pCurrentPos, blockState, 3);
 
-            Orientation raisedOrientation = pOrientation.raise();
 
-            BlockPos climbOverPos = raisedOrientation.step(pPos);
-            BlockPos climStraightPos = raisedOrientation.stepStraight(climbOverPos);
-
-            if (pLevel.getBlockState(climbOverPos).isAir()) {
-                placeEdge(pLevel, climStraightPos, raisedOrientation);
-                placeStem(pLevel, climbOverPos, pOrientation);
-            } else {
-                placeStem(pLevel, climStraightPos, pOrientation);
-            }
 
         }
 
@@ -90,37 +80,38 @@ public class BranchStemBlock extends Block implements SpreadingBlock {
 
     @Override
     public void spread(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
-        int age = pState.getValue(AgeProperty);
-
-        if (age < 3) {
-            pLevel.setBlock(pPos, pState.setValue(AgeProperty, age + 1), 3);
-            pTask.consume();
-            return;
-        }
-
-        Orientation orientation = pState.getValue(OrientationProperty);
-
-        BlockPos nextPos = orientation.step(pPos);
-        BlockState nextBlockState = pLevel.getBlockState(nextPos);
-        Block nextBlock = nextBlockState.getBlock();
-
-        if (SpreadingBlock.canPropagate(nextBlock)) {
-            pTask.propagate(nextPos);
-            return;
-        }
-
-        boolean rooted = pState.getValue(RootedProperty);
-
-        if (rooted) {
-            if (!nextBlockState.isAir()) {
-                pLevel.destroyBlock(nextPos, true);
-            }
-
-            placeStem(pLevel, nextPos, orientation);
-            return;
-        }
-
-        placeBranch(pLevel, pPos, nextPos, orientation);
+        //TODO: reimplement
+//        int age = pState.getValue(AgeProperty);
+//
+//        if (age < 3) {
+//            pLevel.setBlock(pPos, pState.setValue(AgeProperty, age + 1), 3);
+//            pTask.consume();
+//            return;
+//        }
+//
+//        Orientation orientation = pState.getValue(OrientationProperty);
+//
+//        BlockPos nextPos = orientation.step(pPos);
+//        BlockState nextBlockState = pLevel.getBlockState(nextPos);
+//        Block nextBlock = nextBlockState.getBlock();
+//
+//        if (SpreadingBlock.canPropagate(nextBlock)) {
+//            pTask.propagate(nextPos);
+//            return;
+//        }
+//
+//        boolean rooted = pState.getValue(RootedProperty);
+//
+//        if (rooted) {
+//            if (!nextBlockState.isAir()) {
+//                pLevel.destroyBlock(nextPos, true);
+//            }
+//
+//            placeStem(pLevel, nextPos, orientation);
+//            return;
+//        }
+//
+//        placeBranch(pLevel, pPos, nextPos, orientation);
 
         pTask.consume();
     }
