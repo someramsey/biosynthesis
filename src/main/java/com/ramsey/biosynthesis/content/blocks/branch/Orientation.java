@@ -6,13 +6,13 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings("DuplicatedCode")
 public enum Orientation implements StringRepresentable {
     NorthU("nu", -90, 0),
-    NorthD("nd", 90, 0),
+    NorthD("nd", 90, 180),
     EastU("eu", -90, 90),
-    EastD("ed", 90, 90),
+    EastD("ed", 90, 270),
     SouthU("su", -90, 180),
-    SouthD("sd", 90, 180),
+    SouthD("sd", 90, 0),
     WestU("wu", -90, 270),
-    WestD("wd", 90, 270),
+    WestD("wd", 90, 90),
     UpN("un", 0, 0),
     UpE("ue", 0, 90),
     UpS("us", 0, 180),

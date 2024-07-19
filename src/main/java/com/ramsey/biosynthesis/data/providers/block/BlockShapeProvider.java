@@ -21,38 +21,67 @@ public abstract class BlockShapeProvider {
     protected static void transformByOrientation(UnbakedShapeFragment pShape, Orientation pOrientation) {
         //TODO: reimplement
 
-//        switch (pOrientation) {
-//            case NorthUp ->
+        System.out.println(pOrientation);
+        switch (pOrientation) {
+            case UpE ->
+                pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
+
+            case UpW ->
+                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
+
+            case UpS ->
+                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
+
+
+            case DownS -> System.out.println("dw");
+
+            case DownN -> {
+                System.out.println(pOrientation);
+
+                pShape.transform(pShape.minX, 1 - pShape.minY, pShape.minZ, pShape.maxX, 1 - pShape.maxY, pShape.maxZ);
+            }
+
+            case DownE, DownW ->
+                pShape.transform(pShape.minZ, 1 - pShape.minY, 1 - pShape.maxX, pShape.maxZ, 1- pShape.maxY, 1 - pShape.minX);
+
+
+            case NorthU, NorthD ->
+                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY); //x
+
+            case WestU, WestD -> {
+                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY); //z
+                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
+            }
+
+
+
+//
+//            case NorthU ->
 //                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
 //
-//            case NorthDown ->
+//            case NorthD ->
 //                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
 //
-//            case South ->
-//                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
 //
-//            case SouthUp -> {
+//            case SouthU -> {
 //                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
 //                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
 //            }
 //
-//            case SouthDown -> {
+//            case SouthD -> {
 //                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
 //                pShape.transform(1 - pShape.maxX, pShape.minY, 1 - pShape.maxZ, 1 - pShape.minX, pShape.maxY, 1 - pShape.minZ);
 //            }
-//
-//            case West ->
-//                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
 //
 //            //a, b, c, d, e, f
 //            //c, b, 1 - d, f, e, 1 - a
 //            //1 - d, b, 1 - f, 1 - a, e, 1 - c
-//            case WestUp -> {
+//            case WestU -> {
 //                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
 //                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
 //            }
 //
-//            case WestDown -> {
+//            case WestD -> {
 //                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
 //                pShape.transform(pShape.minZ, pShape.minY, 1 - pShape.maxX, pShape.maxZ, pShape.maxY, 1 - pShape.minX);
 //            }
@@ -60,18 +89,15 @@ public abstract class BlockShapeProvider {
 //            //a, b, c, d, e, f
 //            //a, 1-c, b, d, 1-f, e
 //            //1-e, 1-c, a, 1 - b, 1-f, d
-//            case East ->
-//                pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
-//
-//            case EastUp -> {
+//            case EastU -> {
 //                pShape.transform(pShape.minX, 1 - pShape.minZ, pShape.minY, pShape.maxX, 1 - pShape.maxZ, pShape.maxY);
 //                pShape.transform(1 - pShape.maxZ, pShape.minY, pShape.minX, 1 - pShape.minZ, pShape.maxY, pShape.maxX);
 //            }
-//            case EastDown -> {
+//            case EastD -> {
 //                pShape.transform(pShape.minX, pShape.minZ, pShape.minY, pShape.maxX, pShape.maxZ, pShape.maxY);
 //                pShape.transform(1 - pShape.maxZ, pShape.minY, 1 - pShape.maxX, 1 - pShape.minZ, pShape.maxY, 1 - pShape.minX);
 //            }
-//        }
+        }
     }
 
 
