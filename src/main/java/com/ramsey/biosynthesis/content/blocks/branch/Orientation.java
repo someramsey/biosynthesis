@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("DuplicatedCode")
 public enum Orientation implements StringRepresentable {
     NorthUp("north_up", -90, 0),
     North("north", 0, 0),
@@ -65,6 +66,16 @@ public enum Orientation implements StringRepresentable {
         };
     }
 
+    public BlockPos above(BlockPos pPos) {
+        return switch (this) {
+            case North, East, South, West -> pPos.above();
+            case NorthUp, SouthDown -> pPos.south();
+            case EastUp, WestDown -> pPos.west();
+            case SouthUp, NorthDown -> pPos.north();
+            case WestUp, EastDown -> pPos.east();
+        };
+    }
+
     public Direction toHorizontalDirection() {
         return switch (this) {
             case North, NorthDown, NorthUp -> Direction.NORTH;
@@ -74,5 +85,29 @@ public enum Orientation implements StringRepresentable {
         };
     }
 
+    public Orientation raise() {
+        return switch (this) {
+            case North -> NorthUp;
+            case East -> EastUp;
+            case South -> SouthUp;
+            case West -> WestUp;
+            case NorthDown, SouthUp -> North;
+            case EastDown, WestUp -> East;
+            case SouthDown, NorthUp -> South;
+            case WestDown, EastUp -> West;
+        };
+    }
 
+    public Orientation lower() {
+        return switch (this) {
+            case North -> NorthDown;
+            case East -> EastDown;
+            case South -> SouthDown;
+            case West -> WestDown;
+            case NorthUp, SouthDown -> North;
+            case EastUp, WestDown -> East;
+            case SouthUp, NorthDown -> South;
+            case WestUp, EastDown -> West;
+        };
+    }
 }

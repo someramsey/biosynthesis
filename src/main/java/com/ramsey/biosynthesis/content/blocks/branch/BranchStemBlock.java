@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.levelgen.synth.PerlinNoise;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -48,7 +47,7 @@ public class BranchStemBlock extends Block implements SpreadingBlock {
         return BranchStemBlockShapeProvider.getShape(pState);
     }
 
-    private void placeNextStem(ServerLevel pLevel, BlockPos pPos, Orientation pOrientation) {
+    private void placeStem(ServerLevel pLevel, BlockPos pPos, Orientation pOrientation) {
         BlockState blockState = this.defaultBlockState()
             .setValue(OrientationProperty, pOrientation)
             .setValue(RootedProperty, false);
@@ -56,12 +55,37 @@ public class BranchStemBlock extends Block implements SpreadingBlock {
         pLevel.setBlock(pPos, blockState, 3);
     }
 
-    private void placeBranch(ServerLevel pLevel, BlockPos pPos, Orientation pOrientation) {
+    private void placeEdge(ServerLevel pLevel, BlockPos pPos, Orientation pOrientation) {
         BlockState blockState = BlockRegistry.branchBlock.get().defaultBlockState()
-            .setValue(BranchBlock.OrientationProperty, pOrientation);
-
+            .setValue(BranchBlock.OrientationProperty, pOrientation)
+            .setValue(BranchBlock.ConnectedFrontProperty, BranchBlock.ConnectionState.None);
 
         pLevel.setBlock(pPos, blockState, 3);
+    }
+
+    //TODO: add splits
+    private void placeBranch(ServerLevel pLevel, BlockPos pPos, BlockPos nextPos, Orientation pOrientation) {
+        if (!pLevel.getBlockState(nextPos).isAir()) {
+            BlockState blockState = BlockRegistry.branchBlock.get().defaultBlockState()
+                .setValue(BranchBlock.OrientationProperty, pOrientation)
+                .setValue(BranchBlock.ConnectedFrontProperty, BranchBlock.ConnectionState.Up);
+
+            pLevel.setBlock(pPos, blockState, 3);
+
+            Orientation raisedOrientation = pOrientation.raise();
+
+            BlockPos climbOverPos = raisedOrientation.step(pPos);
+            BlockPos climStraightPos = raisedOrientation.stepStraight(climbOverPos);
+
+            if (pLevel.getBlockState(climbOverPos).isAir()) {
+                placeEdge(pLevel, climStraightPos, raisedOrientation);
+                placeStem(pLevel, climbOverPos, pOrientation);
+            } else {
+                placeStem(pLevel, climStraightPos, pOrientation);
+            }
+
+        }
+
     }
 
     @Override
@@ -92,12 +116,11 @@ public class BranchStemBlock extends Block implements SpreadingBlock {
                 pLevel.destroyBlock(nextPos, true);
             }
 
-            placeNextStem(pLevel, nextPos, orientation);
+            placeStem(pLevel, nextPos, orientation);
             return;
         }
 
-        placeNextStem(pLevel, nextPos, orientation);
-        placeBranch(pLevel, pPos, orientation);
+        placeBranch(pLevel, pPos, nextPos, orientation);
 
         pTask.consume();
     }
