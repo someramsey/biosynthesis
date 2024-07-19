@@ -40,32 +40,12 @@
     },
     "age=0,orientation=ed,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=0,orientation=ed,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
-      "y": 90
-    },
-    "age=0,orientation=en,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
-      "y": 90
-    },
-    "age=0,orientation=en,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
-      "y": 90
-    },
-    "age=0,orientation=es,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
-      "y": 90
-    },
-    "age=0,orientation=es,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=0,orientation=eu,rooted=false": {
@@ -80,19 +60,11 @@
     },
     "age=0,orientation=nd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90
+      "x": 90
     },
     "age=0,orientation=nd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90
-    },
-    "age=0,orientation=ne,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90
-    },
-    "age=0,orientation=ne,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90
+      "x": 90
     },
     "age=0,orientation=nu,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
@@ -102,32 +74,14 @@
       "model": "biosynthesis:block/stem/rooted/age0",
       "x": -90
     },
-    "age=0,orientation=nw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90
-    },
-    "age=0,orientation=nw,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90
-    },
     "age=0,orientation=sd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=0,orientation=sd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
-      "y": 180
-    },
-    "age=0,orientation=se,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
-      "y": 180
-    },
-    "age=0,orientation=se,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=0,orientation=su,rooted=false": {
@@ -136,16 +90,6 @@
       "y": 180
     },
     "age=0,orientation=su,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
-      "y": 180
-    },
-    "age=0,orientation=sw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
-      "y": 180
-    },
-    "age=0,orientation=sw,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
       "x": -90,
       "y": 180
@@ -182,32 +126,12 @@
     },
     "age=0,orientation=wd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=0,orientation=wd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
-      "y": 270
-    },
-    "age=0,orientation=wn,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
-      "y": 270
-    },
-    "age=0,orientation=wn,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
-      "y": 270
-    },
-    "age=0,orientation=ws,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age0",
-      "x": -90,
-      "y": 270
-    },
-    "age=0,orientation=ws,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age0",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=0,orientation=wu,rooted=false": {
@@ -260,32 +184,12 @@
     },
     "age=1,orientation=ed,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=1,orientation=ed,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
-      "y": 90
-    },
-    "age=1,orientation=en,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
-      "y": 90
-    },
-    "age=1,orientation=en,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
-      "y": 90
-    },
-    "age=1,orientation=es,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
-      "y": 90
-    },
-    "age=1,orientation=es,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=1,orientation=eu,rooted=false": {
@@ -300,19 +204,11 @@
     },
     "age=1,orientation=nd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90
+      "x": 90
     },
     "age=1,orientation=nd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90
-    },
-    "age=1,orientation=ne,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90
-    },
-    "age=1,orientation=ne,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90
+      "x": 90
     },
     "age=1,orientation=nu,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1",
@@ -322,32 +218,14 @@
       "model": "biosynthesis:block/stem/rooted/age1",
       "x": -90
     },
-    "age=1,orientation=nw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90
-    },
-    "age=1,orientation=nw,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90
-    },
     "age=1,orientation=sd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=1,orientation=sd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
-      "y": 180
-    },
-    "age=1,orientation=se,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
-      "y": 180
-    },
-    "age=1,orientation=se,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=1,orientation=su,rooted=false": {
@@ -356,16 +234,6 @@
       "y": 180
     },
     "age=1,orientation=su,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
-      "y": 180
-    },
-    "age=1,orientation=sw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
-      "y": 180
-    },
-    "age=1,orientation=sw,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age1",
       "x": -90,
       "y": 180
@@ -402,32 +270,12 @@
     },
     "age=1,orientation=wd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=1,orientation=wd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
-      "y": 270
-    },
-    "age=1,orientation=wn,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
-      "y": 270
-    },
-    "age=1,orientation=wn,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
-      "y": 270
-    },
-    "age=1,orientation=ws,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age1",
-      "x": -90,
-      "y": 270
-    },
-    "age=1,orientation=ws,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age1",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=1,orientation=wu,rooted=false": {
@@ -480,32 +328,12 @@
     },
     "age=2,orientation=ed,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=2,orientation=ed,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
-      "y": 90
-    },
-    "age=2,orientation=en,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
-      "y": 90
-    },
-    "age=2,orientation=en,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
-      "y": 90
-    },
-    "age=2,orientation=es,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
-      "y": 90
-    },
-    "age=2,orientation=es,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=2,orientation=eu,rooted=false": {
@@ -520,19 +348,11 @@
     },
     "age=2,orientation=nd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90
+      "x": 90
     },
     "age=2,orientation=nd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90
-    },
-    "age=2,orientation=ne,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90
-    },
-    "age=2,orientation=ne,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90
+      "x": 90
     },
     "age=2,orientation=nu,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2",
@@ -542,32 +362,14 @@
       "model": "biosynthesis:block/stem/rooted/age2",
       "x": -90
     },
-    "age=2,orientation=nw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90
-    },
-    "age=2,orientation=nw,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90
-    },
     "age=2,orientation=sd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=2,orientation=sd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
-      "y": 180
-    },
-    "age=2,orientation=se,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
-      "y": 180
-    },
-    "age=2,orientation=se,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=2,orientation=su,rooted=false": {
@@ -576,16 +378,6 @@
       "y": 180
     },
     "age=2,orientation=su,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
-      "y": 180
-    },
-    "age=2,orientation=sw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
-      "y": 180
-    },
-    "age=2,orientation=sw,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age2",
       "x": -90,
       "y": 180
@@ -622,32 +414,12 @@
     },
     "age=2,orientation=wd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=2,orientation=wd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
-      "y": 270
-    },
-    "age=2,orientation=wn,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
-      "y": 270
-    },
-    "age=2,orientation=wn,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
-      "y": 270
-    },
-    "age=2,orientation=ws,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age2",
-      "x": -90,
-      "y": 270
-    },
-    "age=2,orientation=ws,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age2",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=2,orientation=wu,rooted=false": {
@@ -700,32 +472,12 @@
     },
     "age=3,orientation=ed,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=3,orientation=ed,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
-      "y": 90
-    },
-    "age=3,orientation=en,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
-      "y": 90
-    },
-    "age=3,orientation=en,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
-      "y": 90
-    },
-    "age=3,orientation=es,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
-      "y": 90
-    },
-    "age=3,orientation=es,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=3,orientation=eu,rooted=false": {
@@ -740,19 +492,11 @@
     },
     "age=3,orientation=nd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90
+      "x": 90
     },
     "age=3,orientation=nd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90
-    },
-    "age=3,orientation=ne,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90
-    },
-    "age=3,orientation=ne,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90
+      "x": 90
     },
     "age=3,orientation=nu,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3",
@@ -762,32 +506,14 @@
       "model": "biosynthesis:block/stem/rooted/age3",
       "x": -90
     },
-    "age=3,orientation=nw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90
-    },
-    "age=3,orientation=nw,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90
-    },
     "age=3,orientation=sd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=3,orientation=sd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
-      "y": 180
-    },
-    "age=3,orientation=se,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
-      "y": 180
-    },
-    "age=3,orientation=se,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=3,orientation=su,rooted=false": {
@@ -796,16 +522,6 @@
       "y": 180
     },
     "age=3,orientation=su,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
-      "y": 180
-    },
-    "age=3,orientation=sw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
-      "y": 180
-    },
-    "age=3,orientation=sw,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age3",
       "x": -90,
       "y": 180
@@ -842,32 +558,12 @@
     },
     "age=3,orientation=wd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=3,orientation=wd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
-      "y": 270
-    },
-    "age=3,orientation=wn,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
-      "y": 270
-    },
-    "age=3,orientation=wn,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
-      "y": 270
-    },
-    "age=3,orientation=ws,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age3",
-      "x": -90,
-      "y": 270
-    },
-    "age=3,orientation=ws,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age3",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=3,orientation=wu,rooted=false": {
@@ -920,32 +616,12 @@
     },
     "age=4,orientation=ed,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=4,orientation=ed,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
-      "y": 90
-    },
-    "age=4,orientation=en,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
-      "y": 90
-    },
-    "age=4,orientation=en,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
-      "y": 90
-    },
-    "age=4,orientation=es,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
-      "y": 90
-    },
-    "age=4,orientation=es,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
+      "x": 90,
       "y": 90
     },
     "age=4,orientation=eu,rooted=false": {
@@ -960,19 +636,11 @@
     },
     "age=4,orientation=nd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90
+      "x": 90
     },
     "age=4,orientation=nd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90
-    },
-    "age=4,orientation=ne,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90
-    },
-    "age=4,orientation=ne,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90
+      "x": 90
     },
     "age=4,orientation=nu,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
@@ -982,32 +650,14 @@
       "model": "biosynthesis:block/stem/rooted/age4",
       "x": -90
     },
-    "age=4,orientation=nw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90
-    },
-    "age=4,orientation=nw,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90
-    },
     "age=4,orientation=sd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=4,orientation=sd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
-      "y": 180
-    },
-    "age=4,orientation=se,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
-      "y": 180
-    },
-    "age=4,orientation=se,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
+      "x": 90,
       "y": 180
     },
     "age=4,orientation=su,rooted=false": {
@@ -1016,16 +666,6 @@
       "y": 180
     },
     "age=4,orientation=su,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
-      "y": 180
-    },
-    "age=4,orientation=sw,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
-      "y": 180
-    },
-    "age=4,orientation=sw,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
       "x": -90,
       "y": 180
@@ -1062,32 +702,12 @@
     },
     "age=4,orientation=wd,rooted=false": {
       "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=4,orientation=wd,rooted=true": {
       "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
-      "y": 270
-    },
-    "age=4,orientation=wn,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
-      "y": 270
-    },
-    "age=4,orientation=wn,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
-      "y": 270
-    },
-    "age=4,orientation=ws,rooted=false": {
-      "model": "biosynthesis:block/stem/unrooted/age4",
-      "x": -90,
-      "y": 270
-    },
-    "age=4,orientation=ws,rooted=true": {
-      "model": "biosynthesis:block/stem/rooted/age4",
-      "x": -90,
+      "x": 90,
       "y": 270
     },
     "age=4,orientation=wu,rooted=false": {
