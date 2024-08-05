@@ -1,10 +1,11 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
+import com.ramsey.biosynthesis.data.providers.block.Shape;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("DuplicatedCode")
-public enum Orientation implements StringRepresentable {
+public enum Orientation implements StringRepresentable, Shape.Modifier {
     NorthU("nu", -90, 0),
     NorthD("nd", 90, 180),
     EastU("eu", -90, 90),
@@ -43,5 +44,52 @@ public enum Orientation implements StringRepresentable {
 
     public int getYRotation() {
         return this.yRotation;
+    }
+
+    @SuppressWarnings("SuspiciousNameCombination")
+    public void applyToShapeFragment(Shape.Fragment pFragment) {
+        switch (this) {
+            case UpW ->
+                pFragment.transform(pFragment.minZ, pFragment.minY, 1 - pFragment.maxX, pFragment.maxZ, pFragment.maxY, 1 - pFragment.minX);
+
+            case UpE ->
+                pFragment.transform(1 - pFragment.minZ, pFragment.minY, pFragment.maxX, 1 - pFragment.maxZ, pFragment.maxY, pFragment.minX);
+
+            case DownN ->
+                pFragment.transform(pFragment.minX, 1 - pFragment.minY, pFragment.minZ, pFragment.maxX, 1 - pFragment.maxY, pFragment.maxZ);
+
+            case DownS ->
+                pFragment.transform(1 - pFragment.minX, 1 - pFragment.minY, pFragment.minZ, 1 - pFragment.maxX, 1 - pFragment.maxY, pFragment.maxZ);
+
+            case DownW ->
+                pFragment.transform(1 - pFragment.minZ, 1 - pFragment.minY, pFragment.maxX, 1 - pFragment.maxZ, 1 - pFragment.maxY, pFragment.minX);
+
+            case DownE ->
+                pFragment.transform(pFragment.minZ, 1 - pFragment.minY, 1 - pFragment.maxX, pFragment.maxZ, 1 - pFragment.maxY, 1 - pFragment.minX);
+
+            case NorthU ->
+                pFragment.transform(pFragment.minX, pFragment.minZ, pFragment.minY, pFragment.maxX, pFragment.maxZ, pFragment.maxY); //x
+
+            case NorthD ->
+                pFragment.transform(1 - pFragment.minX, pFragment.minZ, pFragment.minY, 1 - pFragment.maxX, pFragment.maxZ, pFragment.maxY); //x
+
+            case SouthU ->
+                pFragment.transform(1 - pFragment.maxX, pFragment.minZ, 1 - pFragment.maxY, 1 - pFragment.minX, pFragment.maxZ, 1 - pFragment.minY); //x
+
+            case SouthD ->
+                pFragment.transform(pFragment.maxX, pFragment.minZ, 1 - pFragment.maxY, pFragment.minX, pFragment.maxZ, 1 - pFragment.minY); //x
+
+            case WestD ->
+                pFragment.transform(pFragment.minY, pFragment.minZ, pFragment.maxX, pFragment.maxY, pFragment.maxZ, pFragment.minX);
+
+            case WestU ->
+                pFragment.transform(pFragment.minY, 1 - pFragment.minZ, 1 - pFragment.maxX, pFragment.maxY, 1 - pFragment.maxZ, 1 - pFragment.minX);
+
+            case EastU ->
+                pFragment.transform(1 - pFragment.maxY, 1 - pFragment.minZ, pFragment.minX, 1 - pFragment.minY, 1 - pFragment.maxZ, pFragment.maxX);
+
+            case EastD ->
+                pFragment.transform(1 - pFragment.maxY, pFragment.minZ, 1 - pFragment.minX, 1 - pFragment.minY, pFragment.maxZ, 1 - pFragment.maxX);
+        }
     }
 }

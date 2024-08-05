@@ -17,7 +17,7 @@ public interface SpreadingBlock {
         private final ServerLevel level;
         private final RandomSource random;
 
-        private BlockPos pos;
+        public BlockPos pos;
         public boolean spreading;
 
         public SpreadTask(ServerLevel level, RandomSource random, BlockPos pos) {
@@ -27,22 +27,12 @@ public interface SpreadingBlock {
             this.spreading = true;
         }
 
-        private int propagationAttempts = 0; //TODO: remove fcked up check
-
         public void spread() {
             BlockState state = level.getBlockState(pos);
             Block block = state.getBlock();
 
             if (block instanceof SpreadingBlock spreadingBlock) {
                 spreadingBlock.spread(level, state, pos, random, this);
-
-                //TODO: remove fcked up check
-                if (propagationAttempts++ > 1000) {
-                    spreading = false;
-
-                    System.err.println("YOU FCKED UP AT " + spreadingBlock);
-                }
-
                 return;
             }
 

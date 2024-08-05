@@ -2,11 +2,10 @@ package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
 import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
 import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
-import com.ramsey.biosynthesis.data.providers.block.BlockStateModelProvider;
-import net.minecraft.core.Direction;
+import com.ramsey.biosynthesis.data.providers.block.ModelConfiguration;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BranchBlockModelProvider implements BlockStateModelProvider {
+public abstract class BranchBlockModelProvider {
     public static String getModelKey(BlockState pBlockState) {
         BranchBlock.ConnectionState left = pBlockState.getValue(BranchBlock.ConnectedLeftProperty);
         BranchBlock.ConnectionState right = pBlockState.getValue(BranchBlock.ConnectedRightProperty);
@@ -27,10 +26,15 @@ public abstract class BranchBlockModelProvider implements BlockStateModelProvide
         }
     }
 
-    public static BlockStateModelProvider.ModelInstance getModelInstance(BlockState blockState) {
-        String modelPath = "block/branch/" + getModelKey(blockState);
-        Orientation orientation = blockState.getValue(BranchBlock.OrientationProperty);
+    public static ModelConfiguration getModelConfiguration(BlockState pBlockState) {
+        ModelConfiguration configuration = new ModelConfiguration();
+        Orientation orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
 
-        return new BlockStateModelProvider.ModelInstance(modelPath, orientation.getXRotation(), orientation.getYRotation());
+        configuration.setRotationX(orientation.getXRotation());
+        configuration.setRotationY(orientation.getYRotation());
+        configuration.setModelPath("block/branch/" + getModelKey(pBlockState));
+
+
+        return configuration;
     }
 }

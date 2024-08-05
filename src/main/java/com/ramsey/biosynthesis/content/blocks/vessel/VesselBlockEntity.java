@@ -22,12 +22,23 @@ public class VesselBlockEntity extends BlockEntity implements IAnimatable {
     private static final Random random = new Random();
 
     private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+    private final AnimationController<VesselBlockEntity> controller = new AnimationController<>(this, "controller", 0, this::controllerPredicate);
 
     public VesselBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         super(BlockEntityTypeRegistry.vesselBlockEntityType.get(), pPos, pState);
     }
 
-    private PlayState predicate(AnimationEvent<VesselBlockEntity> event) {
+    @Override
+    public AnimationFactory getFactory() {
+        return factory;
+    }
+
+    @Override
+    public void registerControllers(AnimationData animationData) {
+        animationData.addAnimationController(controller);
+    }
+
+    private PlayState controllerPredicate(AnimationEvent<VesselBlockEntity> event) {
         AnimationController<VesselBlockEntity> controller = event.getController();
         
         if(controller.isJustStarting) {
@@ -37,15 +48,5 @@ public class VesselBlockEntity extends BlockEntity implements IAnimatable {
         }
 
         return PlayState.CONTINUE;
-    }
-
-    @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return factory;
     }
 }

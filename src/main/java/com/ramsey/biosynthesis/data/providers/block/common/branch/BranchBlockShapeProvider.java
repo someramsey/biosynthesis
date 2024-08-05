@@ -2,168 +2,163 @@ package com.ramsey.biosynthesis.data.providers.block.common.branch;
 
 import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
 import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
-import com.ramsey.biosynthesis.data.providers.block.BlockShapeProvider;
+import com.ramsey.biosynthesis.data.providers.block.Shape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
-public abstract class BranchBlockShapeProvider extends BlockShapeProvider {
-    public static VoxelShape getShape(BlockState pState) {
+public abstract class BranchBlockShapeProvider {
+    public static VoxelShape buildShape(BlockState pState) {
         String modelKey = BranchBlockModelProvider.getModelKey(pState);
-        Stream<UnbakedShapeFragment> shape = buildShape(modelKey)
-            .map(pFragment -> transformShape(pFragment, pState));
+        Orientation orientation = pState.getValue(BranchBlock.OrientationProperty);
 
-        return bakeShape(shape);
+        Stream<Shape.Fragment> shape = shapes.get(modelKey).stream()
+            .map(Shape.Fragment::copy)
+            .peek(orientation::applyToShapeFragment);
+
+        return Shape.bake(shape);
     }
 
-    private static UnbakedShapeFragment transformShape(UnbakedShapeFragment pFragment, BlockState pBlockState) {
-        Orientation orientation = pBlockState.getValue(BranchBlock.OrientationProperty);
-        BlockShapeProvider.transformByOrientation(pFragment, orientation);
+    private static final Map<String, List<Shape.Fragment>> shapes = new HashMap<>() {{
+        put("both/down_down", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(0, 0, 5, 0, 0, 11),
+            Shape.box(16, 0, 5, 16, 0, 11),
+            Shape.box(0, 0, 5, 0, 1, 11),
+            Shape.box(16, 0, 5, 16, 1, 11)
+        ));
 
-        return pFragment;
-    }
+        put("both/down_flat", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(0, 0, 5, 0, 0, 11),
+            Shape.box(0, 0, 5, 0, 1, 11)
+        ));
 
-    private static Stream<UnbakedShapeFragment> buildShape(String pModelKey) {
-        return switch (pModelKey) {
-            case "both/down_down" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 16, 1, 11),
-                box(0, 0, 5, 5, 1, 11),
-                box(0, 0, 5, 0, 0, 11),
-                box(16, 0, 5, 16, 0, 11),
-                box(0, 0, 5, 0, 1, 11),
-                box(16, 0, 5, 16, 1, 11)
-            );
+        put("both/down_up", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 15, 1, 11),
+            Shape.box(1, 0, 5, 5, 1, 11),
+            Shape.box(0, 0, 5, 1, 0, 11),
+            Shape.box(15, 1, 5, 16, 16, 11),
+            Shape.box(0, 0, 5, 1, 1, 11),
+            Shape.box(15, 0, 5, 16, 1, 11)
+        ));
 
-            case "both/down_flat" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 16, 1, 11),
-                box(0, 0, 5, 5, 1, 11),
-                box(0, 0, 5, 0, 0, 11),
-                box(0, 0, 5, 0, 1, 11)
-            );
+        put("both/flat_down", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 15, 1, 11),
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(15, 0, 5, 16, 0, 11),
+            Shape.box(15, 0, 5, 16, 1, 11)
+        ));
 
-            case "both/down_up" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 15, 1, 11),
-                box(1, 0, 5, 5, 1, 11),
-                box(0, 0, 5, 1, 0, 11),
-                box(15, 1, 5, 16, 16, 11),
-                box(0, 0, 5, 1, 1, 11),
-                box(15, 0, 5, 16, 1, 11)
-            );
+        put("both/flat_flat", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(0, 0, 5, 5, 1, 11)
+        ));
 
-            case "both/flat_down" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 15, 1, 11),
-                box(0, 0, 5, 5, 1, 11),
-                box(15, 0, 5, 16, 0, 11),
-                box(15, 0, 5, 16, 1, 11)
-            );
+        put("both/flat_up", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 15, 1, 11),
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(15, 1, 5, 16, 16, 11),
+            Shape.box(15, 0, 5, 16, 1, 11)
+        ));
 
-            case "both/flat_flat" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 16, 1, 11),
-                box(0, 0, 5, 5, 1, 11)
-            );
+        put("both/up_down", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 15, 1, 11),
+            Shape.box(1, 0, 5, 5, 1, 11),
+            Shape.box(0, 1, 5, 1, 16, 11),
+            Shape.box(15, 0, 5, 16, 0, 11),
+            Shape.box(0, 0, 5, 1, 1, 11),
+            Shape.box(15, 0, 5, 16, 1, 11)
+        ));
 
-            case "both/flat_up" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 15, 1, 11),
-                box(0, 0, 5, 5, 1, 11),
-                box(15, 1, 5, 16, 16, 11),
-                box(15, 0, 5, 16, 1, 11)
-            );
+        put("both/up_flat", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(1, 0, 5, 5, 1, 11),
+            Shape.box(0, 1, 5, 1, 16, 11),
+            Shape.box(0, 0, 5, 1, 1, 11)
+        ));
 
-            case "both/up_down" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 15, 1, 11),
-                box(1, 0, 5, 5, 1, 11),
-                box(0, 1, 5, 1, 16, 11),
-                box(15, 0, 5, 16, 0, 11),
-                box(0, 0, 5, 1, 1, 11),
-                box(15, 0, 5, 16, 1, 11)
-            );
+        put("both/up_up", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 15, 1, 11),
+            Shape.box(1, 0, 5, 5, 1, 11),
+            Shape.box(0, 1, 5, 1, 16, 11),
+            Shape.box(15, 1, 5, 16, 16, 11),
+            Shape.box(0, 0, 5, 1, 1, 11),
+            Shape.box(15, 0, 5, 16, 1, 11)
+        ));
 
-            case "both/up_flat" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 16, 1, 11),
-                box(1, 0, 5, 5, 1, 11),
-                box(0, 1, 5, 1, 16, 11),
-                box(0, 0, 5, 1, 1, 11)
-            );
+        put("edge", List.of(
+            Shape.box(5, 0, 0, 11, 1, 1)
+        ));
 
-            case "both/up_up" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 15, 1, 11),
-                box(1, 0, 5, 5, 1, 11),
-                box(0, 1, 5, 1, 16, 11),
-                box(15, 1, 5, 16, 16, 11),
-                box(0, 0, 5, 1, 1, 11),
-                box(15, 0, 5, 16, 1, 11)
-            );
+        put("left/down", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(0, 0, 5, 0, 0, 11),
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(0, 0, 5, 0, 1, 11)
+        ));
 
-            case "edge" -> Stream.of(
-                box(5, 0, 0, 11, 1, 1)
-            );
+        put("left/flat", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(0, 0, 5, 5, 1, 11)
+        ));
 
-            case "left/down" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(0, 0, 5, 0, 0, 11),
-                box(0, 0, 5, 5, 1, 11),
-                box(0, 0, 5, 0, 1, 11)
-            );
+        put("left/up", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(0, 1, 5, 1, 16, 11),
+            Shape.box(1, 0, 5, 5, 1, 11),
+            Shape.box(0, 0, 5, 1, 1, 11)
+        ));
 
-            case "left/flat" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(0, 0, 5, 5, 1, 11)
-            );
+        put("right/down", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(16, 0, 5, 16, 1, 11),
+            Shape.box(16, 0, 5, 16, 0, 11)
+        ));
 
-            case "left/up" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(0, 1, 5, 1, 16, 11),
-                box(1, 0, 5, 5, 1, 11),
-                box(0, 0, 5, 1, 1, 11)
-            );
+        put("right/flat", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11)
+        ));
 
-            case "right/down" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 16, 1, 11),
-                box(16, 0, 5, 16, 1, 11),
-                box(16, 0, 5, 16, 0, 11)
-            );
+        put("right/up", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 15, 1, 11),
+            Shape.box(15, 0, 5, 16, 1, 11),
+            Shape.box(15, 1, 5, 16, 16, 11)
+        ));
 
-            case "right/flat" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 16, 1, 11)
-            );
+        put("straight/down", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(5, 0, 0, 11, 1, 0),
+            Shape.box(5, 0, 0, 11, 0, 0)
+        ));
 
-            case "right/up" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(11, 0, 5, 15, 1, 11),
-                box(15, 0, 5, 16, 1, 11),
-                box(15, 1, 5, 16, 16, 11)
-            );
+        put("straight/flat", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16)
+        ));
 
-            case "straight/down" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16),
-                box(5, 0, 0, 11, 1, 0),
-                box(5, 0, 0, 11, 0, 0)
-            );
-
-            case "straight/flat" -> Stream.of(
-                box(5, 0, 0, 11, 1, 16)
-            );
-
-            case "straight/up" -> Stream.of(
-                box(5, 0, 1, 11, 1, 16),
-                box(5, 0, 0, 11, 1, 1),
-                box(5, 1, 0, 11, 16, 1)
-            );
-
-            default -> throw new IllegalArgumentException("Invalid model: " + pModelKey);
-        };
-    }
+        put("straight/up", List.of(
+            Shape.box(5, 0, 1, 11, 1, 16),
+            Shape.box(5, 0, 0, 11, 1, 1),
+            Shape.box(5, 1, 0, 11, 16, 1)
+        ));
+    }};
 }
 

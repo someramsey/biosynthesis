@@ -1,8 +1,6 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
-import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
@@ -11,10 +9,6 @@ import org.jetbrains.annotations.NotNull;
 public class VesselHeadBlock extends VesselBlock {
     public VesselHeadBlock(Properties pProperties) {
         super(pProperties);
-
-        this.registerDefaultState(
-            stateDefinition.any().setValue(FacingProperty, Direction.UP)
-        );
     }
 
     @Override

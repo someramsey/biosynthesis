@@ -3,24 +3,33 @@ package com.ramsey.biosynthesis.data.providers.block.common.stem;
 import com.ramsey.biosynthesis.content.blocks.branch.BranchBlock;
 import com.ramsey.biosynthesis.content.blocks.branch.BranchStemBlock;
 import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
-import com.ramsey.biosynthesis.data.providers.block.BlockStateModelProvider;
+import com.ramsey.biosynthesis.data.providers.block.ModelConfiguration;
 import net.minecraft.world.level.block.state.BlockState;
 
-public abstract class BranchStemBlockModelProvider implements BlockStateModelProvider {
-    public static ModelInstance getModelInstance(BlockState blockState) {
-        String basePath = "block/stem/";
+public abstract class BranchStemBlockModelProvider {
+    private static String getModelKey(BlockState blockState) {
+        StringBuilder builder = new StringBuilder();
 
-        Orientation orientation = blockState.getValue(BranchBlock.OrientationProperty);
-        Boolean rooted = blockState.getValue(BranchStemBlock.RootedProperty);
-
-        if (rooted) {
-            basePath += "rooted/";
+        if (blockState.getValue(BranchStemBlock.RootedProperty)) {
+            builder.append("rooted/");
         } else {
-            basePath += "unrooted/";
+            builder.append("unrooted/");
         }
 
-        String modelPath = basePath + "age" + blockState.getValue(BranchStemBlock.AgeProperty);
+        builder.append("age");
+        builder.append(blockState.getValue(BranchStemBlock.AgeProperty));
 
-        return new ModelInstance(modelPath, orientation.getXRotation(), orientation.getYRotation());
+        return builder.toString();
+    }
+
+    public static ModelConfiguration getModelConfiguration(BlockState blockState) {
+        ModelConfiguration configuration = new ModelConfiguration();
+        Orientation orientation = blockState.getValue(BranchBlock.OrientationProperty);
+
+        configuration.setRotationX(orientation.getXRotation());
+        configuration.setRotationY(orientation.getYRotation());
+        configuration.setModelPath("block/stem/" + getModelKey(blockState));
+
+        return configuration;
     }
 }

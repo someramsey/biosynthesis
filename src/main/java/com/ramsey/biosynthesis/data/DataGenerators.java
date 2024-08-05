@@ -15,6 +15,6 @@ public class DataGenerators {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        generator.addProvider(true,new BlockStatesDataProvider(generator, existingFileHelper));
+        generator.addProvider(true, new BlockStatesDataProvider(generator, existingFileHelper));
     }
 }

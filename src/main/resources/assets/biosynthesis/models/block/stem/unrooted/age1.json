@@ -1,6 +1,7 @@
 {
 	"credit": "Made with Blockbench",
-	"textures": {
+  	"ambientocclusion": false,
+  "textures": {
 		"0": "biosynthesis:block/branch/map",
 		"particle": "biosynthesis:block/branch/map"
 	},

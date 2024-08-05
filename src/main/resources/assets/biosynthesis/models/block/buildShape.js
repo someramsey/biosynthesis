@@ -30,10 +30,10 @@ function parseFile(file) {
         parsed.elements.forEach((element) => {
             const bounds = [...element.from, ...element.to].map((x) => Math.min(16, Math.max(0, x)));
 
-            mesh.push(`box(${bounds.join(", ")})`);
+            mesh.push(`Shape.box(${bounds.join(", ")})`);
         });
 
-        out += `case \"${modelName}\" -> Stream.of(\n${mesh.join(", \n")}\n);\n\n`;
+        out += `List.of(\n${mesh.join(", \n")}\n),\n\n`;
 
 
     } catch (error) {
@@ -44,5 +44,5 @@ function parseFile(file) {
 }
 
 
-walk('./branch');
+walk('./stem/unrooted');
 console.log(out);
