@@ -18,10 +18,6 @@ public class VesselHeadBlock extends VesselBlock {
 
     @Override
     public void randomTick(@NotNull BlockState pState, @NotNull ServerLevel pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
-        SpreadTask task = new SpreadTask(pLevel, pRandom, pPos);
 
-        while (task.spreading) {
-            task.spread();
-        }
     }
 }

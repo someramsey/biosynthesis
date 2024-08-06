@@ -6,47 +6,33 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
 
-import java.util.Random;
+import java.util.ArrayList;
 
-@SuppressWarnings("ALL")
+@SuppressWarnings("removal")
 public class VesselBlockEntity extends BlockEntity implements IAnimatable {
-    private static final AnimationBuilder animationBuilder = new AnimationBuilder().addAnimation("idle", true);
-    private static final Random random = new Random();
-
-    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
-    private final AnimationController<VesselBlockEntity> controller = new AnimationController<>(this, "controller", 0, this::controllerPredicate);
+    private final ArrayList<TreePart> treeParts = new ArrayList<>();
 
     public VesselBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         super(BlockEntityTypeRegistry.vesselBlockEntityType.get(), pPos, pState);
     }
-
     @Override
     public AnimationFactory getFactory() {
-        return factory;
+        return new AnimationFactory(this);
     }
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(controller);
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 0,
+            VesselBlockModel::animationControllerPredicate
+        ));
     }
 
-    private PlayState controllerPredicate(AnimationEvent<VesselBlockEntity> event) {
-        AnimationController<VesselBlockEntity> controller = event.getController();
-        
-        if(controller.isJustStarting) {
-            controller.setAnimation(animationBuilder);
-            controller.tickOffset = random.nextInt(20);
-            controller.setAnimationSpeed(random.nextDouble(0.8f, 1.1f));
-        }
+    public static class TreePart {
 
-        return PlayState.CONTINUE;
+
     }
 }

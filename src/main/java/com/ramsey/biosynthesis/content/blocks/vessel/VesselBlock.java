@@ -1,10 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
-import com.ramsey.biosynthesis.content.blocks.SpreadingBlock;
 import com.ramsey.biosynthesis.data.providers.block.common.vessel.VesselBlockShapeProvider;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -19,7 +16,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class VesselBlock extends BaseEntityBlock implements SpreadingBlock {
+public class VesselBlock extends BaseEntityBlock {
     public static final int MaxAge = 5;
     public static EnumProperty<Alignment> AlignmentProperty = EnumProperty.create("alignment", Alignment.class);
     public static IntegerProperty AgeProperty = IntegerProperty.create("age", 0, MaxAge);
@@ -52,10 +49,4 @@ public class VesselBlock extends BaseEntityBlock implements SpreadingBlock {
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         return new VesselBlockEntity(pPos, pState);
     }
-
-    @Override
-    public void spread(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
-        pTask.consume();
-    }
-
 }

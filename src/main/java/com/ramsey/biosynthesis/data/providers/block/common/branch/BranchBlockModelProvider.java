@@ -7,23 +7,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public abstract class BranchBlockModelProvider {
     public static String getModelKey(BlockState pBlockState) {
-        BranchBlock.ConnectionState left = pBlockState.getValue(BranchBlock.ConnectedLeftProperty);
-        BranchBlock.ConnectionState right = pBlockState.getValue(BranchBlock.ConnectedRightProperty);
-        BranchBlock.ConnectionState front = pBlockState.getValue(BranchBlock.ConnectedFrontProperty);
+        BranchBlock.ConnectionState front = pBlockState.getValue(BranchBlock.FrontConnectionProperty);
+        boolean left = pBlockState.getValue(BranchBlock.ConnectedLeftProperty);
+        boolean right = pBlockState.getValue(BranchBlock.ConnectedRightProperty);
 
-        if (left == BranchBlock.ConnectionState.None && right == BranchBlock.ConnectionState.None) {
-            if (front == BranchBlock.ConnectionState.None) {
-                return "edge";
-            }
-
-            return "straight/" + front.getSerializedName();
-        } else if (left != BranchBlock.ConnectionState.None && right != BranchBlock.ConnectionState.None) {
-            return "both/" + left.getSerializedName() + "_" + right.getSerializedName();
-        } else if (left != BranchBlock.ConnectionState.None) {
-            return "left/" + left.getSerializedName();
-        } else {
-            return "right/" + right.getSerializedName();
-        }
+        return front.getSerializedName() + "_" + left + "_" + right;
     }
 
     public static ModelConfiguration getModelConfiguration(BlockState pBlockState) {

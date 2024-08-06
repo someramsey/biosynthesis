@@ -24,7 +24,7 @@ public abstract class BranchBlockShapeProvider {
     }
 
     private static final Map<String, List<Shape.Fragment>> shapes = new HashMap<>() {{
-        put("both/down_down", List.of(
+        put("flat_down_down", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11),
             Shape.box(0, 0, 5, 5, 1, 11),
@@ -34,7 +34,7 @@ public abstract class BranchBlockShapeProvider {
             Shape.box(16, 0, 5, 16, 1, 11)
         ));
 
-        put("both/down_flat", List.of(
+        put("flat_down_flat", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11),
             Shape.box(0, 0, 5, 5, 1, 11),
@@ -42,7 +42,7 @@ public abstract class BranchBlockShapeProvider {
             Shape.box(0, 0, 5, 0, 1, 11)
         ));
 
-        put("both/down_up", List.of(
+        put("flat_down_up", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 15, 1, 11),
             Shape.box(1, 0, 5, 5, 1, 11),
@@ -52,7 +52,7 @@ public abstract class BranchBlockShapeProvider {
             Shape.box(15, 0, 5, 16, 1, 11)
         ));
 
-        put("both/flat_down", List.of(
+        put("flat_flat_down", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 15, 1, 11),
             Shape.box(0, 0, 5, 5, 1, 11),
@@ -60,13 +60,13 @@ public abstract class BranchBlockShapeProvider {
             Shape.box(15, 0, 5, 16, 1, 11)
         ));
 
-        put("both/flat_flat", List.of(
+        put("flat_flat_flat", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11),
             Shape.box(0, 0, 5, 5, 1, 11)
         ));
 
-        put("both/flat_up", List.of(
+        put("flat_flat_up", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 15, 1, 11),
             Shape.box(0, 0, 5, 5, 1, 11),
@@ -74,7 +74,7 @@ public abstract class BranchBlockShapeProvider {
             Shape.box(15, 0, 5, 16, 1, 11)
         ));
 
-        put("both/up_down", List.of(
+        put("flat_up_down", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 15, 1, 11),
             Shape.box(1, 0, 5, 5, 1, 11),
@@ -84,7 +84,7 @@ public abstract class BranchBlockShapeProvider {
             Shape.box(15, 0, 5, 16, 1, 11)
         ));
 
-        put("both/up_flat", List.of(
+        put("flat_up_flat", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11),
             Shape.box(1, 0, 5, 5, 1, 11),
@@ -92,7 +92,7 @@ public abstract class BranchBlockShapeProvider {
             Shape.box(0, 0, 5, 1, 1, 11)
         ));
 
-        put("both/up_up", List.of(
+        put("flat_up_up", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 15, 1, 11),
             Shape.box(1, 0, 5, 5, 1, 11),
@@ -106,55 +106,55 @@ public abstract class BranchBlockShapeProvider {
             Shape.box(5, 0, 0, 11, 1, 1)
         ));
 
-        put("left/down", List.of(
+        put("none_down_none", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(0, 0, 5, 0, 0, 11),
             Shape.box(0, 0, 5, 5, 1, 11),
             Shape.box(0, 0, 5, 0, 1, 11)
         ));
 
-        put("left/flat", List.of(
+        put("none_flat_none", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(0, 0, 5, 5, 1, 11)
         ));
 
-        put("left/up", List.of(
+        put("none_up_none", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(0, 1, 5, 1, 16, 11),
             Shape.box(1, 0, 5, 5, 1, 11),
             Shape.box(0, 0, 5, 1, 1, 11)
         ));
 
-        put("right/down", List.of(
+        put("none_none_down", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11),
             Shape.box(16, 0, 5, 16, 1, 11),
             Shape.box(16, 0, 5, 16, 0, 11)
         ));
 
-        put("right/flat", List.of(
+        put("none_none_flat", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11)
         ));
 
-        put("right/up", List.of(
+        put("none_none_up", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 15, 1, 11),
             Shape.box(15, 0, 5, 16, 1, 11),
             Shape.box(15, 1, 5, 16, 16, 11)
         ));
 
-        put("straight/down", List.of(
+        put("down_none_none", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(5, 0, 0, 11, 1, 0),
             Shape.box(5, 0, 0, 11, 0, 0)
         ));
 
-        put("straight/flat", List.of(
+        put("flat_none_none", List.of(
             Shape.box(5, 0, 0, 11, 1, 16)
         ));
 
-        put("straight/up", List.of(
+        put("up_none_none", List.of(
             Shape.box(5, 0, 1, 11, 1, 16),
             Shape.box(5, 0, 0, 11, 1, 1),
             Shape.box(5, 1, 0, 11, 16, 1)

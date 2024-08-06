@@ -1,11 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
-import com.ramsey.biosynthesis.content.blocks.SpreadingBlock;
 import com.ramsey.biosynthesis.data.providers.block.common.stem.BranchStemBlockShapeProvider;
-import com.ramsey.biosynthesis.registrate.BlockRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,11 +10,10 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public class BranchStemBlock extends Block implements SpreadingBlock {
+public class BranchStemBlock extends Block {
     public static final IntegerProperty AgeProperty = IntegerProperty.create("age", 0, 4);
     public static final BooleanProperty RootedProperty = BooleanProperty.create("rooted");
     public static final EnumProperty<Orientation> OrientationProperty = EnumProperty.create("orientation", Orientation.class);
@@ -46,11 +41,5 @@ public class BranchStemBlock extends Block implements SpreadingBlock {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return BranchStemBlockShapeProvider.buildShape(pState);
-    }
-
-    @Override
-    public void spread(ServerLevel pLevel, BlockState pState, BlockPos pPos, RandomSource pRandom, SpreadTask pTask) {
-
-        pTask.consume();
     }
 }
