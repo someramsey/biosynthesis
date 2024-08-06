@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "biosynthesis:block/branch/map",
-		"particle": "biosynthesis:block/branch/map"
+		"0": "biosynthesis:block/branch/intersection",
+		"particle": "biosynthesis:block/branch/intersection"
 	},
 	"elements": [
 		{

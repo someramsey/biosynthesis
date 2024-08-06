@@ -7,7 +7,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -16,8 +15,7 @@ import org.jetbrains.annotations.NotNull;
 public class BranchBlock extends Block {
     public static final EnumProperty<Orientation> OrientationProperty = EnumProperty.create("orientation", Orientation.class);
     public static final EnumProperty<ConnectionState> FrontConnectionProperty = EnumProperty.create("front", ConnectionState.class);
-    public static final BooleanProperty ConnectedRightProperty = BooleanProperty.create("connected_right");
-    public static final BooleanProperty ConnectedLeftProperty = BooleanProperty.create("connected_left");
+    public static final EnumProperty<SideConnectionState> SideConnectionProperty = EnumProperty.create("side", SideConnectionState.class);
 
     public BranchBlock(Properties pProperties) {
         super(pProperties);
@@ -26,8 +24,7 @@ public class BranchBlock extends Block {
             this.stateDefinition.any()
                 .setValue(FrontConnectionProperty, ConnectionState.Flat)
                 .setValue(OrientationProperty, Orientation.UpN)
-                .setValue(ConnectedRightProperty, false)
-                .setValue(ConnectedLeftProperty, false)
+                .setValue(SideConnectionProperty, SideConnectionState.None)
         );
     }
 
@@ -36,8 +33,7 @@ public class BranchBlock extends Block {
         super.createBlockStateDefinition(pBuilder);
 
         pBuilder.add(FrontConnectionProperty);
-        pBuilder.add(ConnectedRightProperty);
-        pBuilder.add(ConnectedLeftProperty);
+        pBuilder.add(SideConnectionProperty);
         pBuilder.add(OrientationProperty);
     }
 
@@ -55,6 +51,24 @@ public class BranchBlock extends Block {
         private final String name;
 
         ConnectionState(String state) {
+            this.name = state;
+        }
+
+        @Override
+        public @NotNull String getSerializedName() {
+            return this.name;
+        }
+    }
+
+    public enum SideConnectionState implements StringRepresentable {
+        None("none"),
+        Left("left"),
+        Right("right"),
+        Both("both");
+
+        private final String name;
+
+        SideConnectionState(String state) {
             this.name = state;
         }
 

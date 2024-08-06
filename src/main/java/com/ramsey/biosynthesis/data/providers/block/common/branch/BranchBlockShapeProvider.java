@@ -24,140 +24,105 @@ public abstract class BranchBlockShapeProvider {
     }
 
     private static final Map<String, List<Shape.Fragment>> shapes = new HashMap<>() {{
-        put("flat_down_down", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 16, 1, 11),
-            Shape.box(0, 0, 5, 5, 1, 11),
-            Shape.box(0, 0, 5, 0, 0, 11),
-            Shape.box(16, 0, 5, 16, 0, 11),
-            Shape.box(0, 0, 5, 0, 1, 11),
-            Shape.box(16, 0, 5, 16, 1, 11)
-        ));
-
-        put("flat_down_flat", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 16, 1, 11),
-            Shape.box(0, 0, 5, 5, 1, 11),
-            Shape.box(0, 0, 5, 0, 0, 11),
-            Shape.box(0, 0, 5, 0, 1, 11)
-        ));
-
-        put("flat_down_up", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 15, 1, 11),
-            Shape.box(1, 0, 5, 5, 1, 11),
-            Shape.box(0, 0, 5, 1, 0, 11),
-            Shape.box(15, 1, 5, 16, 16, 11),
-            Shape.box(0, 0, 5, 1, 1, 11),
-            Shape.box(15, 0, 5, 16, 1, 11)
-        ));
-
-        put("flat_flat_down", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 15, 1, 11),
-            Shape.box(0, 0, 5, 5, 1, 11),
-            Shape.box(15, 0, 5, 16, 0, 11),
-            Shape.box(15, 0, 5, 16, 1, 11)
-        ));
-
-        put("flat_flat_flat", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
+        put("both", List.of(
+            Shape.box(5, 0, 5, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11),
             Shape.box(0, 0, 5, 5, 1, 11)
         ));
 
-        put("flat_flat_up", List.of(
+        put("down", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 15, 1, 11),
-            Shape.box(0, 0, 5, 5, 1, 11),
-            Shape.box(15, 1, 5, 16, 16, 11),
-            Shape.box(15, 0, 5, 16, 1, 11)
+            Shape.box(5, 0, 0, 11, 1, 0),
+            Shape.box(5, 0, 0, 11, 0, 0)
         ));
 
-        put("flat_up_down", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 15, 1, 11),
-            Shape.box(1, 0, 5, 5, 1, 11),
-            Shape.box(0, 1, 5, 1, 16, 11),
-            Shape.box(15, 0, 5, 16, 0, 11),
-            Shape.box(0, 0, 5, 1, 1, 11),
-            Shape.box(15, 0, 5, 16, 1, 11)
-        ));
-
-        put("flat_up_flat", List.of(
+        put("down_both", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11),
-            Shape.box(1, 0, 5, 5, 1, 11),
-            Shape.box(0, 1, 5, 1, 16, 11),
-            Shape.box(0, 0, 5, 1, 1, 11)
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(5, 0, 0, 11, 1, 0),
+            Shape.box(5, 0, 0, 11, 0, 0)
         ));
 
-        put("flat_up_up", List.of(
+        put("down_left", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 15, 1, 11),
-            Shape.box(1, 0, 5, 5, 1, 11),
-            Shape.box(0, 1, 5, 1, 16, 11),
-            Shape.box(15, 1, 5, 16, 16, 11),
-            Shape.box(0, 0, 5, 1, 1, 11),
-            Shape.box(15, 0, 5, 16, 1, 11)
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(5, 0, 0, 11, 1, 0),
+            Shape.box(5, 0, 0, 11, 0, 0)
+        ));
+
+        put("down_right", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(5, 0, 0, 11, 1, 0),
+            Shape.box(5, 0, 0, 11, 0, 0)
         ));
 
         put("edge", List.of(
             Shape.box(5, 0, 0, 11, 1, 1)
         ));
 
-        put("none_down_none", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(0, 0, 5, 0, 0, 11),
-            Shape.box(0, 0, 5, 5, 1, 11),
-            Shape.box(0, 0, 5, 0, 1, 11)
+        put("flat", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16)
         ));
 
-        put("none_flat_none", List.of(
+        put("flat_both", List.of(
+            Shape.box(5, 0, 0, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(0, 0, 5, 5, 1, 11)
+        ));
+
+        put("flat_left", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(0, 0, 5, 5, 1, 11)
         ));
 
-        put("none_up_none", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(0, 1, 5, 1, 16, 11),
-            Shape.box(1, 0, 5, 5, 1, 11),
-            Shape.box(0, 0, 5, 1, 1, 11)
-        ));
-
-        put("none_none_down", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 16, 1, 11),
-            Shape.box(16, 0, 5, 16, 1, 11),
-            Shape.box(16, 0, 5, 16, 0, 11)
-        ));
-
-        put("none_none_flat", List.of(
+        put("flat_right", List.of(
             Shape.box(5, 0, 0, 11, 1, 16),
             Shape.box(11, 0, 5, 16, 1, 11)
         ));
 
-        put("none_none_up", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(11, 0, 5, 15, 1, 11),
-            Shape.box(15, 0, 5, 16, 1, 11),
-            Shape.box(15, 1, 5, 16, 16, 11)
+        put("left", List.of(
+            Shape.box(5, 0, 11, 11, 1, 16),
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(5, 0, 5, 11, 1, 11)
         ));
 
-        put("down_none_none", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16),
-            Shape.box(5, 0, 0, 11, 1, 0),
-            Shape.box(5, 0, 0, 11, 0, 0)
+        put("right", List.of(
+            Shape.box(5, 0, 11, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(5, 0, 5, 11, 1, 11)
         ));
 
-        put("flat_none_none", List.of(
-            Shape.box(5, 0, 0, 11, 1, 16)
-        ));
-
-        put("up_none_none", List.of(
+        put("up", List.of(
             Shape.box(5, 0, 1, 11, 1, 16),
             Shape.box(5, 0, 0, 11, 1, 1),
             Shape.box(5, 1, 0, 11, 16, 1)
+        ));
+
+        put("up_both", List.of(
+            Shape.box(5, 0, 1, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(5, 1, 0, 11, 16, 1),
+            Shape.box(0, 0, 5, 1, 1, 11),
+            Shape.box(5, 0, 0, 11, 1, 1)
+        ));
+
+        put("up_left", List.of(
+            Shape.box(5, 0, 1, 11, 1, 16),
+            Shape.box(0, 0, 5, 5, 1, 11),
+            Shape.box(5, 1, 0, 11, 16, 1),
+            Shape.box(0, 0, 5, 1, 1, 11),
+            Shape.box(5, 0, 0, 11, 1, 1)
+        ));
+
+        put("up_right", List.of(
+            Shape.box(5, 0, 1, 11, 1, 16),
+            Shape.box(11, 0, 5, 16, 1, 11),
+            Shape.box(5, 1, 0, 11, 16, 1),
+            Shape.box(0, 0, 5, 1, 1, 11),
+            Shape.box(5, 0, 0, 11, 1, 1)
         ));
     }};
 }
