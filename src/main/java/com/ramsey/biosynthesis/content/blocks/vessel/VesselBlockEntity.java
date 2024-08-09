@@ -10,15 +10,12 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import java.util.ArrayList;
-
 @SuppressWarnings("removal")
 public class VesselBlockEntity extends BlockEntity implements IAnimatable {
-    private final ArrayList<TreePart> treeParts = new ArrayList<>();
-
     public VesselBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         super(BlockEntityTypeRegistry.vesselBlockEntityType.get(), pPos, pState);
     }
+
     @Override
     public AnimationFactory getFactory() {
         return new AnimationFactory(this);
@@ -29,10 +26,5 @@ public class VesselBlockEntity extends BlockEntity implements IAnimatable {
         animationData.addAnimationController(new AnimationController<>(this, "controller", 0,
             VesselBlockModel::animationControllerPredicate
         ));
-    }
-
-    public static class TreePart {
-
-
     }
 }

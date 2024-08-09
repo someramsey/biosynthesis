@@ -1,8 +1,11 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
+import com.ramsey.biosynthesis.content.blocks.vessel.VesselHeadBlockEntity;
 import com.ramsey.biosynthesis.data.providers.block.common.stem.BranchStemBlockShapeProvider;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -41,5 +44,16 @@ public class BranchStemBlock extends Block {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return BranchStemBlockShapeProvider.buildShape(pState);
+    }
+
+    public static class Spreader extends VesselHeadBlockEntity.Spreader {
+        public Spreader(VesselHeadBlockEntity pHead, BlockPos pBlockPos) {
+            super(pHead, pBlockPos, 3);
+        }
+
+        @Override
+        public void spread(Level pLevel, RandomSource pRandom) {
+            System.out.println("stem spread");
+        }
     }
 }
