@@ -62,6 +62,9 @@ public enum Orientation implements StringRepresentable, Shape.Modifier {
     @SuppressWarnings("SuspiciousNameCombination")
     public void applyToShapeFragment(Shape.Fragment pFragment) {
         switch (this) {
+            case UpS ->
+                pFragment.transform(1 - pFragment.minX, pFragment.minY, 1 - pFragment.minZ, 1 - pFragment.maxX, pFragment.maxY, 1 - pFragment.maxZ);
+
             case UpW ->
                 pFragment.transform(pFragment.minZ, pFragment.minY, 1 - pFragment.maxX, pFragment.maxZ, pFragment.maxY, 1 - pFragment.minX);
 

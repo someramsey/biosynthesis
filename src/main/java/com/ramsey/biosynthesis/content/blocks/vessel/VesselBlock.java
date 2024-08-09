@@ -55,6 +55,8 @@ public class VesselBlock extends BaseEntityBlock {
         return new VesselBlockEntity(pPos, pState);
     }
 
+    //TODO: track age on the spreader
+    //TODO: make calls safe
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
         private int east = -1;
         private int west = -1;
@@ -126,14 +128,19 @@ public class VesselBlock extends BaseEntityBlock {
             BlockState blockState = pLevel.getBlockState(blockPos);
             int age = blockState.getValue(VesselBlock.AgeProperty);
 
-            if (pRandom.nextInt(0, age + 1) > 0) {
-                propagate(pLevel, pRandom, neighbour);
-            } else if (age < VesselBlock.MaxAge) {
+            if (age < VesselBlock.MaxAge && pRandom.nextInt(0, age + 1) == 0) {
                 grow(pLevel);
-            } else if (above == -1) {
-                placeAbove(pLevel);
             } else {
-                propagate(pLevel, pRandom, above);
+                if (pRandom.nextBoolean()) {
+                    propagate(pLevel, pRandom, neighbour);
+                    return;
+                }
+
+                if (above == -1) {
+                    placeAbove(pLevel);
+                } else {
+                    propagate(pLevel, pRandom, above);
+                }
             }
         }
 
@@ -192,7 +199,7 @@ public class VesselBlock extends BaseEntityBlock {
 
             pLevel.setBlock(targetPos, stemBlockState, 3);
 
-            BranchStemBlock.Spreader part = new BranchStemBlock.Spreader(this.head, targetPos);
+            BranchStemBlock.Spreader part = new BranchStemBlock.Spreader(this.head, targetPos, stemOrientation, true);
             int reference = this.head.addPart(part);
 
             setNeighbour(index, reference);

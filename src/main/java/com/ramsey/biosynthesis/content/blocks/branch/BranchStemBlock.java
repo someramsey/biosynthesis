@@ -48,49 +48,56 @@ public class BranchStemBlock extends Block {
         return BranchStemBlockShapeProvider.buildShape(pState);
     }
 
+    //TODO: make get block or get state calls safe
+    //TODO: implement actual branch navigation
+    //TODO: make branches only spread on supporting blocks
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
+        private final boolean rooted;
+        private final Orientation orientation;
         private int nextPart = -1;
+        private int age = 0;
 
-        public Spreader(VesselHeadBlockEntity pHead, BlockPos pBlockPos) {
+        public Spreader(VesselHeadBlockEntity pHead, BlockPos pBlockPos, Orientation pOrientation, boolean pRooted) {
             super(pHead, pBlockPos);
+            this.orientation = pOrientation;
+            this.rooted = pRooted;
         }
 
-        private void extend(Level pLevel, BlockState pCurrentBlockState) {
-            if (!pCurrentBlockState.getValue(RootedProperty)) {
+        private void extend(Level pLevel) {
+            if (!this.rooted) {
                 BlockState branchBlockState = BlockRegistry.branchBlock.get().defaultBlockState()
-                    .setValue(BranchBlock.OrientationProperty, pCurrentBlockState.getValue(OrientationProperty));
+                    .setValue(BranchBlock.OrientationProperty, this.orientation);
 
                 pLevel.setBlock(this.blockPos, branchBlockState, 3);
             }
 
-            Orientation orientation = pCurrentBlockState.getValue(OrientationProperty);
-
-            BlockPos nextStemBlockPos = orientation.relative(this.blockPos);
+            Orientation nextStemOrientation = this.orientation;
+            BlockPos nextStemBlockPos = nextStemOrientation.relative(this.blockPos);
             BlockState nextStemBlockState = BlockRegistry.stemBlock.get().defaultBlockState()
-                .setValue(OrientationProperty, orientation);
+                .setValue(OrientationProperty, nextStemOrientation);
 
             pLevel.setBlock(nextStemBlockPos, nextStemBlockState, 3);
 
-            Spreader spreader = new Spreader(this.head, this.blockPos);
+            Spreader spreader = new Spreader(this.head, nextStemBlockPos, nextStemOrientation, false);
             this.nextPart = this.head.addPart(spreader);
         }
 
         @Override
         public void spread(Level pLevel, RandomSource pRandom) {
-            BlockState currentBlockState = pLevel.getBlockState(this.blockPos);
-            int age = currentBlockState.getValue(AgeProperty);
+            if (this.age < BranchStemBlock.MaxAge) {
+                BlockState blockState = pLevel.getBlockState(this.blockPos)
+                    .setValue(AgeProperty, ++this.age);
 
-            if (age < BranchStemBlock.MaxAge) {
-                pLevel.setBlock(this.blockPos, currentBlockState.setValue(AgeProperty, age + 1), 3);
+                pLevel.setBlock(this.blockPos, blockState, 3);
 
-                if (age == BranchStemBlock.MaxAge - 1) {
-                    extend(pLevel, currentBlockState);
+                if (this.age == BranchStemBlock.MaxAge) {
+                    extend(pLevel);
                 }
                 return;
             }
 
             if (nextPart == -1) {
-                extend(pLevel, currentBlockState);
+                extend(pLevel);
                 return;
             }
 
