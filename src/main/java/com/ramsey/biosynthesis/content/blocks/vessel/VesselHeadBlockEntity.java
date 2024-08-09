@@ -17,37 +17,20 @@ public class VesselHeadBlockEntity extends VesselBlockEntity {
         this.base = new VesselBlock.Spreader(this, pPos);
     }
 
+    public int addPart(Spreader pSpreader) {
+        this.parts.add(pSpreader);
+        return this.parts.size() - 1;
+    }
+
     public abstract static class Spreader {
         public final VesselHeadBlockEntity head;
         public final BlockPos blockPos;
-        public final int[] neighbours;
-        public int availableNeighbours;
 
         public abstract void spread(Level pLevel, RandomSource pRandom);
 
-        public Spreader(VesselHeadBlockEntity pHead, BlockPos pBlockPos, int pNeighbourCount) {
+        public Spreader(VesselHeadBlockEntity pHead, BlockPos pBlockPos) {
             this.head = pHead;
             this.blockPos = pBlockPos;
-            this.neighbours = new int[pNeighbourCount];
-        }
-
-        protected boolean hasUnsetNeighbours() {
-            return availableNeighbours < neighbours.length;
-        }
-
-        protected void connect(Spreader pNeighbour) {
-            head.parts.add(pNeighbour);
-
-            int neighbourIndex = head.parts.size() - 1;
-            pNeighbour.neighbours[pNeighbour.availableNeighbours++] = neighbourIndex;
-        }
-
-        protected void propagate(RandomSource pRandom) {
-            int index = pRandom.nextInt(0, availableNeighbours);
-            int reference = neighbours[index];
-
-            Spreader neighbour = head.parts.get(reference);
-            neighbour.spread(head.getLevel(), pRandom);
         }
     }
 }

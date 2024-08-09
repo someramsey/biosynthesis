@@ -48,7 +48,7 @@ public class BranchStemBlock extends Block {
 
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
         public Spreader(VesselHeadBlockEntity pHead, BlockPos pBlockPos) {
-            super(pHead, pBlockPos, 3);
+            super(pHead, pBlockPos);
         }
 
         @Override

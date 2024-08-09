@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
 import com.ramsey.biosynthesis.data.providers.block.Shape;
+import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 

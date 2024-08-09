@@ -8,7 +8,7 @@ public abstract class VesselBlockModelProvider {
     public static String getModelKey(BlockState pBlockState) {
         int age = pBlockState.getValue(VesselBlock.AgeProperty);
 
-        if (age == 5) {
+        if (age == VesselBlock.MaxAge) {
             return "full";
         }
 

@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
 import com.ramsey.biosynthesis.content.blocks.branch.BranchStemBlock;
+import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import com.ramsey.biosynthesis.data.providers.block.common.vessel.VesselBlockShapeProvider;
 import com.ramsey.biosynthesis.registrate.BlockRegistry;
 import net.minecraft.core.BlockPos;
@@ -56,8 +57,83 @@ public class VesselBlock extends BaseEntityBlock {
     }
 
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
+        private int east = -1;
+        private int west = -1;
+        private int north = -1;
+        private int south = -1;
+        private int above = -1;
+
         public Spreader(VesselHeadBlockEntity pHead, BlockPos pPos) {
-            super(pHead, pPos, 4);
+            super(pHead, pPos);
+        }
+
+        private BlockPos getNeighbourPosition(int index) {
+            return switch (index) {
+                case 0 -> blockPos.east();
+                case 1 -> blockPos.west();
+                case 2 -> blockPos.north();
+                case 3 -> blockPos.south();
+                default -> throw new IllegalArgumentException("Invalid state");
+            };
+        }
+
+        private Orientation getNeighbourOrientation(int index) {
+            return switch (index) {
+                case 0 -> Orientation.UpE;
+                case 1 -> Orientation.UpW;
+                case 2 -> Orientation.UpN;
+                case 3 -> Orientation.UpS;
+                default -> throw new IllegalArgumentException("Invalid state");
+            };
+        }
+
+        private int getNeighbour(int index) {
+            return switch (index) {
+                case 0 -> east;
+                case 1 -> west;
+                case 2 -> north;
+                case 3 -> south;
+                default -> throw new IllegalArgumentException("Invalid state");
+            };
+        }
+
+        private void setNeighbour(int index, int value) {
+            switch (index) {
+                case 0 -> east = value;
+                case 1 -> west = value;
+                case 2 -> north = value;
+                case 3 -> south = value;
+            }
+        }
+
+        private boolean canSupport(BlockState pState) {
+            if(pState.is(BlockRegistry.vesselBlock.get())) {
+                return pState.getValue(VesselBlock.AgeProperty) == VesselBlock.MaxAge;
+            }
+        }
+
+        @Override
+        public void spread(Level pLevel, RandomSource pRandom) {
+            int index = pRandom.nextInt(4);
+            int neighbour = getNeighbour(index);
+
+            if (neighbour == -1) {
+                tryPlaceStem(pLevel, pRandom, index);
+                return;
+            }
+
+            BlockState blockState = pLevel.getBlockState(blockPos);
+            int age = blockState.getValue(VesselBlock.AgeProperty);
+
+            if (pRandom.nextInt(0, age + 1) > 0) {
+                propagate(pLevel, pRandom, neighbour);
+            } else if (age < VesselBlock.MaxAge) {
+                grow(pLevel);
+            } else if (above == -1) {
+                placeAbove(pLevel);
+            } else {
+                propagate(pLevel, pRandom, above);
+            }
         }
 
         private void grow(Level pLevel) {
@@ -67,28 +143,63 @@ public class VesselBlock extends BaseEntityBlock {
             pLevel.setBlock(blockPos, blockState.setValue(VesselBlock.AgeProperty, age + 1), 3);
         }
 
-        @Override
-        public void spread(Level pLevel, RandomSource pRandom) {
-            BlockState blockState = pLevel.getBlockState(blockPos);
+        private void propagate(Level pLevel, RandomSource pRandom, int reference) {
+            VesselHeadBlockEntity.Spreader part = head.parts.get(reference);
+            part.spread(pLevel, pRandom);
+        }
 
-            if (blockState.getValue(VesselBlock.AgeProperty) < VesselBlock.MaxAge) {
-                grow(pLevel);
+        private void placeAbove(Level pLevel) {
+            BlockPos targetPos = blockPos.above();
+            BlockState targetBlockState = pLevel.getBlockState(targetPos);
+
+            if (!targetBlockState.isCollisionShapeFullBlock(pLevel, targetPos)) {
+                pLevel.destroyBlock(targetPos, true);
             }
 
-            if (pRandom.nextBoolean()) {
-                this.propagate(pRandom);
+            BlockState vesselBlockState = BlockRegistry.vesselBlock.get().defaultBlockState()
+                .setValue(VesselBlock.AlignmentProperty, Alignment.Middle);
+
+            pLevel.setBlock(targetPos, vesselBlockState, 3);
+
+            Spreader part = new Spreader(this.head, targetPos);
+            above = head.addPart(part);
+        }
+
+        private void tryPlaceStem(Level pLevel, RandomSource pRandom, int index) {
+
+            BlockPos targetPos = getNeighbourPosition(index);
+
+            BlockState targetBlockState = pLevel.getBlockState(targetPos);
+
+            if (!targetBlockState.isAir()) {
+                if (pRandom.nextInt(0, 3) > 0) {
+                    return;
+                }
+
+                pLevel.destroyBlock(targetPos, true);
+            }
+
+            BlockPos targetSupportingPos = targetPos.below();
+            BlockState targetSupportingBlockState = pLevel.getBlockState(targetSupportingPos);
+
+            if (targetSupportingBlockState.isAir()) {
+                BlockState wasteBlockState = BlockRegistry.wasteBlock.get().defaultBlockState();
+                pLevel.setBlock(targetSupportingPos, wasteBlockState, 3);
+
                 return;
             }
 
-            if (this.hasUnsetNeighbours()) {
-                BlockPos stemPos = blockPos.relative(Direction.getRandom(pRandom));
-                BlockState stemBlockState = BlockRegistry.stemBlock.get().defaultBlockState()
-                    .setValue(BranchStemBlock.RootedProperty, true);
+            Orientation stemOrientation = getNeighbourOrientation(index);
+            BlockState stemBlockState = BlockRegistry.stemBlock.get().defaultBlockState()
+                .setValue(BranchStemBlock.RootedProperty, true)
+                .setValue(BranchStemBlock.OrientationProperty, stemOrientation);
 
-                pLevel.setBlock(stemPos, stemBlockState, 3);
+            pLevel.setBlock(targetPos, stemBlockState, 3);
 
-                this.connect(new BranchStemBlock.Spreader(head, stemPos));
-            }
+            BranchStemBlock.Spreader part = new BranchStemBlock.Spreader(this.head, targetPos);
+            int reference = this.head.addPart(part);
+
+            setNeighbour(index, reference);
         }
     }
 }
