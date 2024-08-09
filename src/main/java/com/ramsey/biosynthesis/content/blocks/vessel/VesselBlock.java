@@ -5,7 +5,6 @@ import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import com.ramsey.biosynthesis.data.providers.block.common.vessel.VesselBlockShapeProvider;
 import com.ramsey.biosynthesis.registrate.BlockRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -106,10 +105,12 @@ public class VesselBlock extends BaseEntityBlock {
             }
         }
 
-        private boolean canSupport(BlockState pState) {
-            if(pState.is(BlockRegistry.vesselBlock.get())) {
+        private boolean canSupportStems(Level pLevel, BlockPos pPos, BlockState pState) {
+            if (pState.is(BlockRegistry.vesselBlock.get())) {
                 return pState.getValue(VesselBlock.AgeProperty) == VesselBlock.MaxAge;
             }
+
+            return Block.isShapeFullBlock(pState.getCollisionShape(pLevel, pPos));
         }
 
         @Override
@@ -166,9 +167,7 @@ public class VesselBlock extends BaseEntityBlock {
         }
 
         private void tryPlaceStem(Level pLevel, RandomSource pRandom, int index) {
-
             BlockPos targetPos = getNeighbourPosition(index);
-
             BlockState targetBlockState = pLevel.getBlockState(targetPos);
 
             if (!targetBlockState.isAir()) {
@@ -182,10 +181,7 @@ public class VesselBlock extends BaseEntityBlock {
             BlockPos targetSupportingPos = targetPos.below();
             BlockState targetSupportingBlockState = pLevel.getBlockState(targetSupportingPos);
 
-            if (targetSupportingBlockState.isAir()) {
-                BlockState wasteBlockState = BlockRegistry.wasteBlock.get().defaultBlockState();
-                pLevel.setBlock(targetSupportingPos, wasteBlockState, 3);
-
+            if (!canSupportStems(pLevel, targetSupportingPos, targetSupportingBlockState)) {
                 return;
             }
 

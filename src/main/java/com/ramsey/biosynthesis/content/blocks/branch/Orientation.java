@@ -1,6 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
 import com.ramsey.biosynthesis.data.providers.block.Shape;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
@@ -45,6 +46,17 @@ public enum Orientation implements StringRepresentable, Shape.Modifier {
 
     public int getYRotation() {
         return this.yRotation;
+    }
+
+    public BlockPos relative(BlockPos pPos) {
+        return switch (this) {
+            case UpN, DownN -> pPos.north();
+            case UpE, DownE -> pPos.east();
+            case UpS, DownS -> pPos.south();
+            case UpW, DownW -> pPos.west();
+            case NorthU, SouthU, WestU, EastU -> pPos.above();
+            case NorthD, SouthD, WestD, EastD -> pPos.below();
+        };
     }
 
     @SuppressWarnings("SuspiciousNameCombination")
