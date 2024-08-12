@@ -23,6 +23,8 @@ public class VesselHeadBlockEntity extends VesselBlockEntity {
     }
 
     public abstract static class Spreader {
+        protected static final int UNSET = -1;
+
         public final VesselHeadBlockEntity head;
         public final BlockPos blockPos;
 

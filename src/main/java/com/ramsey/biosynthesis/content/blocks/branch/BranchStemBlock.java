@@ -1,5 +1,7 @@
 package com.ramsey.biosynthesis.content.blocks.branch;
 
+import com.ramsey.biosynthesis.content.blocks.vessel.Alignment;
+import com.ramsey.biosynthesis.content.blocks.vessel.VesselBlock;
 import com.ramsey.biosynthesis.content.blocks.vessel.VesselHeadBlockEntity;
 import com.ramsey.biosynthesis.data.providers.block.common.stem.BranchStemBlockShapeProvider;
 import com.ramsey.biosynthesis.registrate.BlockRegistry;
@@ -18,8 +20,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class BranchStemBlock extends Block {
-    public static final int MaxAge = 4;
-    public static final IntegerProperty AgeProperty = IntegerProperty.create("age", 0, MaxAge);
+    public static final int MAX_AGE = 4;
+    public static final IntegerProperty AgeProperty = IntegerProperty.create("age", 0, MAX_AGE);
     public static final BooleanProperty RootedProperty = BooleanProperty.create("rooted");
     public static final EnumProperty<Orientation> OrientationProperty = EnumProperty.create("orientation", Orientation.class);
 
@@ -55,8 +57,10 @@ public class BranchStemBlock extends Block {
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
         private final boolean rooted;
         private final Orientation orientation;
-        private int nextPart = -1;
-        private int age = 0;
+
+        public int nextPart = -1;
+        public int age = 0;
+        public int absoluteAge = 0;
 
         public Spreader(VesselHeadBlockEntity pHead, BlockPos pBlockPos, Orientation pOrientation, boolean pRooted) {
             super(pHead, pBlockPos);
@@ -85,13 +89,13 @@ public class BranchStemBlock extends Block {
 
         @Override
         public void spread(Level pLevel, RandomSource pRandom) {
-            if (this.age < BranchStemBlock.MaxAge) {
+            if (this.age < BranchStemBlock.MAX_AGE) {
                 BlockState blockState = pLevel.getBlockState(this.blockPos)
                     .setValue(AgeProperty, ++this.age);
 
                 pLevel.setBlock(this.blockPos, blockState, 3);
 
-                if (this.age == BranchStemBlock.MaxAge) {
+                if (this.age == BranchStemBlock.MAX_AGE) {
                     extend(pLevel);
                 }
                 return;
@@ -104,6 +108,25 @@ public class BranchStemBlock extends Block {
 
             VesselHeadBlockEntity.Spreader nextPart = this.head.parts.get(this.nextPart);
             nextPart.spread(pLevel, pRandom);
+        }
+
+        public void mature(Level pLevel, RandomSource pRandom) {
+            BlockState vesselBlockState = BlockRegistry.vesselBlock.get().defaultBlockState()
+                .setValue(VesselBlock.AlignmentProperty, Alignment.fromOrientation(this.orientation));
+
+            pLevel.setBlock(this.blockPos, vesselBlockState, 3);
+
+            if(nextPart == -1) {
+                return;
+            }
+
+            VesselHeadBlockEntity.Spreader spreader = this.head.parts.get(this.nextPart);
+
+            BlockState branchBlockState = BlockRegistry.stemBlock.get().defaultBlockState()
+                .setValue(BranchStemBlock.OrientationProperty, this.orientation)
+                .setValue(BranchStemBlock.RootedProperty, true);
+
+            pLevel.setBlock(spreader.blockPos, branchBlockState, 3);
         }
     }
 }

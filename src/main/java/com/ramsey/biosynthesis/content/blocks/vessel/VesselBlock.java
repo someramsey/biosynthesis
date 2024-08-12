@@ -56,7 +56,7 @@ public class VesselBlock extends BaseEntityBlock {
     }
 
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
-        private static final int UNSET = -1;
+        private static final int STEM_MATURE_AGE = 10;
 
         private int east = UNSET;
         private int west = UNSET;
@@ -91,10 +91,10 @@ public class VesselBlock extends BaseEntityBlock {
         }
 
         private boolean canMature() {
-            return east != UNSET && head.parts.get(east) instanceof Spreader
-                && west != UNSET && head.parts.get(west) instanceof Spreader
-                && north != UNSET && head.parts.get(north) instanceof Spreader
-                && south != UNSET && head.parts.get(south) instanceof Spreader;
+            return east != UNSET && head.parts.get(east) instanceof VesselBlock.Spreader
+                && west != UNSET && head.parts.get(west) instanceof VesselBlock.Spreader
+                && north != UNSET && head.parts.get(north) instanceof VesselBlock.Spreader
+                && south != UNSET && head.parts.get(south) instanceof VesselBlock.Spreader;
         }
 
         private int getNeighbour(int index) {
@@ -145,9 +145,9 @@ public class VesselBlock extends BaseEntityBlock {
 
         private void spreadMature(Level pLevel, RandomSource pRandom, int neighbour, int index) {
             if (pRandom.nextInt(0, 3) == 0) {
-                propagateAboveSafe(pLevel, pRandom);
+                trySpreadAbove(pLevel, pRandom);
             } else {
-                propagateNeighbourSafe(pLevel, pRandom, neighbour, index);
+                trySpreadNeighbours(pLevel, pRandom, index, neighbour);
             }
         }
 
@@ -155,7 +155,7 @@ public class VesselBlock extends BaseEntityBlock {
             if (canMature()) {
                 grow(pLevel);
             } else {
-                propagateNeighbourSafe(pLevel, pRandom, neighbour, index);
+                trySpreadNeighbours(pLevel, pRandom, index, neighbour);
             }
         }
 
@@ -163,11 +163,11 @@ public class VesselBlock extends BaseEntityBlock {
             if (pRandom.nextInt(0, age + 1) == 0) {
                 grow(pLevel);
             } else {
-                propagateNeighbourSafe(pLevel, pRandom, neighbour, index);
+                trySpreadNeighbours(pLevel, pRandom, index, neighbour);
             }
         }
 
-        private void propagateAboveSafe(Level pLevel, RandomSource pRandom) {
+        private void trySpreadAbove(Level pLevel, RandomSource pRandom) {
             if (above != UNSET) {
                 if (propagateNeighbour(pLevel, pRandom, above)) {
                     above = UNSET;
@@ -177,7 +177,7 @@ public class VesselBlock extends BaseEntityBlock {
             }
         }
 
-        private void propagateNeighbourSafe(Level pLevel, RandomSource pRandom, int index, int neighbour) {
+        private void trySpreadNeighbours(Level pLevel, RandomSource pRandom, int index, int neighbour) {
             if (propagateNeighbour(pLevel, pRandom, neighbour)) {
                 setNeighbour(index, UNSET);
             }
@@ -185,7 +185,7 @@ public class VesselBlock extends BaseEntityBlock {
 
         private void grow(Level pLevel) {
             BlockState blockState = pLevel.getBlockState(blockPos);
-            System.out.println(blockState);
+
             if (!(blockState.getBlock() instanceof VesselBlock)) { //Corrupted state
                 head.parts.remove(this);
                 return;
@@ -197,8 +197,16 @@ public class VesselBlock extends BaseEntityBlock {
         private boolean propagateNeighbour(Level pLevel, RandomSource pRandom, int reference) {
             VesselHeadBlockEntity.Spreader part = head.parts.get(reference);
 
-            if (part == null) {
+            if(part == null) {
+                head.parts.remove(reference);
                 return true;
+            }
+
+            if(part instanceof BranchStemBlock.Spreader stemPart) {
+                if(stemPart.absoluteAge > STEM_MATURE_AGE) {
+                    stemPart.mature(pLevel, pRandom);
+                    return false;
+                }
             }
 
             part.spread(pLevel, pRandom);
