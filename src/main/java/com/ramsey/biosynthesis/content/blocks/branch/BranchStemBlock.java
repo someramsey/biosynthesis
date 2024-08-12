@@ -51,6 +51,7 @@ public class BranchStemBlock extends Block {
     //TODO: make get block or get state calls safe
     //TODO: implement actual branch navigation
     //TODO: make branches only spread on supporting blocks
+    //TODO: make sure vessel only places above if its neighbours are vessels
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
         private final boolean rooted;
         private final Orientation orientation;

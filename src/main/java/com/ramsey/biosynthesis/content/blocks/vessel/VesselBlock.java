@@ -54,15 +54,17 @@ public class VesselBlock extends BaseEntityBlock {
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         return new VesselBlockEntity(pPos, pState);
     }
-
-    //TODO: track age on the spreader
-    //TODO: make calls safe
+    
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
-        private int east = -1;
-        private int west = -1;
-        private int north = -1;
-        private int south = -1;
-        private int above = -1;
+        private static final int UNSET = -1;
+
+        private int east = UNSET;
+        private int west = UNSET;
+        private int north = UNSET;
+        private int south = UNSET;
+        private int above = UNSET;
+        
+        private int age = 0;
 
         public Spreader(VesselHeadBlockEntity pHead, BlockPos pPos) {
             super(pHead, pPos);
@@ -86,6 +88,13 @@ public class VesselBlock extends BaseEntityBlock {
                 case 3 -> Orientation.UpS;
                 default -> throw new IllegalArgumentException("Invalid state");
             };
+        }
+
+        private boolean canPlaceAbove() {
+            return east != UNSET && head.parts.get(east) instanceof Spreader
+                && west != UNSET && head.parts.get(west) instanceof Spreader
+                && north != UNSET && head.parts.get(north) instanceof Spreader
+                && south != UNSET && head.parts.get(south) instanceof Spreader;
         }
 
         private int getNeighbour(int index) {
@@ -117,43 +126,65 @@ public class VesselBlock extends BaseEntityBlock {
 
         @Override
         public void spread(Level pLevel, RandomSource pRandom) {
-            int index = pRandom.nextInt(4);
+            int index = pRandom.nextInt(0, 4);
             int neighbour = getNeighbour(index);
 
-            if (neighbour == -1) {
+            if (neighbour == UNSET) {
                 tryPlaceStem(pLevel, pRandom, index);
                 return;
             }
 
-            BlockState blockState = pLevel.getBlockState(blockPos);
-            int age = blockState.getValue(VesselBlock.AgeProperty);
+            if (age < VesselBlock.MaxAge) {
+                spreadImmature(pLevel, pRandom, age, neighbour, index);
+            } else {
+                spreadMature(pLevel, pRandom, neighbour, index);
+            }
+        }
 
-            if (age < VesselBlock.MaxAge && pRandom.nextInt(0, age + 1) == 0) {
+        private void spreadMature(Level pLevel, RandomSource pRandom, int neighbour, int index) {
+            if (pRandom.nextBoolean()) {
+                if(propagate(pLevel, pRandom, neighbour)) {
+                    setNeighbour(index, UNSET);
+                }
+            } else if (above != UNSET) {
+                if(propagate(pLevel, pRandom, above)) {
+                    above = UNSET;
+                }
+            } else if (canPlaceAbove()) {
+                placeAbove(pLevel);
+            }
+        }
+
+        private void spreadImmature(Level pLevel, RandomSource pRandom, int age, int neighbour, int index) {
+            if (pRandom.nextInt(0, age + 1) == 0) {
                 grow(pLevel);
             } else {
-                if (pRandom.nextBoolean()) {
-                    propagate(pLevel, pRandom, neighbour);
-                    return;
-                }
-
-                if (above == -1) {
-                    placeAbove(pLevel);
-                } else {
-                    propagate(pLevel, pRandom, above);
+                if(propagate(pLevel, pRandom, neighbour)) {
+                    setNeighbour(index, UNSET);
                 }
             }
         }
 
         private void grow(Level pLevel) {
             BlockState blockState = pLevel.getBlockState(blockPos);
-            int age = blockState.getValue(VesselBlock.AgeProperty);
+            System.out.println(blockState);
+            if (!(blockState.getBlock() instanceof VesselBlock)) { //Corrupted state
+                head.parts.remove(this);
+                return;
+            }
 
-            pLevel.setBlock(blockPos, blockState.setValue(VesselBlock.AgeProperty, age + 1), 3);
+            pLevel.setBlock(blockPos, blockState.setValue(VesselBlock.AgeProperty, ++age), 3);
         }
 
-        private void propagate(Level pLevel, RandomSource pRandom, int reference) {
+        private boolean propagate(Level pLevel, RandomSource pRandom, int reference) {
             VesselHeadBlockEntity.Spreader part = head.parts.get(reference);
+
+            if(part == null) {
+                return true;
+            }
+
             part.spread(pLevel, pRandom);
+            return false;
         }
 
         private void placeAbove(Level pLevel) {
@@ -185,10 +216,10 @@ public class VesselBlock extends BaseEntityBlock {
                 pLevel.destroyBlock(targetPos, true);
             }
 
-            BlockPos targetSupportingPos = targetPos.below();
-            BlockState targetSupportingBlockState = pLevel.getBlockState(targetSupportingPos);
+            BlockPos targetBelowPos = targetPos.below();
+            BlockState targetBelowState = pLevel.getBlockState(targetBelowPos);
 
-            if (!canSupportStems(pLevel, targetSupportingPos, targetSupportingBlockState)) {
+            if (!canSupportStems(pLevel, targetBelowPos, targetBelowState)) {
                 return;
             }
 
