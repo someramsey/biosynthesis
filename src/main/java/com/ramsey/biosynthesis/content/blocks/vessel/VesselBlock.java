@@ -54,7 +54,7 @@ public class VesselBlock extends BaseEntityBlock {
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
         return new VesselBlockEntity(pPos, pState);
     }
-    
+
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
         private static final int UNSET = -1;
 
@@ -63,7 +63,7 @@ public class VesselBlock extends BaseEntityBlock {
         private int north = UNSET;
         private int south = UNSET;
         private int above = UNSET;
-        
+
         private int age = 0;
 
         public Spreader(VesselHeadBlockEntity pHead, BlockPos pPos) {
@@ -90,7 +90,7 @@ public class VesselBlock extends BaseEntityBlock {
             };
         }
 
-        private boolean canPlaceAbove() {
+        private boolean canMature() {
             return east != UNSET && head.parts.get(east) instanceof Spreader
                 && west != UNSET && head.parts.get(west) instanceof Spreader
                 && north != UNSET && head.parts.get(north) instanceof Spreader
@@ -130,38 +130,56 @@ public class VesselBlock extends BaseEntityBlock {
             int neighbour = getNeighbour(index);
 
             if (neighbour == UNSET) {
-                tryPlaceStem(pLevel, pRandom, index);
+                placeStem(pLevel, pRandom, index);
                 return;
             }
 
-            if (age < VesselBlock.MaxAge) {
-                spreadImmature(pLevel, pRandom, age, neighbour, index);
-            } else {
+            if (age == VesselBlock.MaxAge) {
                 spreadMature(pLevel, pRandom, neighbour, index);
+            } else if (age == VesselBlock.MaxAge - 1) {
+                spreadPremature(pLevel, pRandom, index, neighbour);
+            } else {
+                spreadImmature(pLevel, pRandom, index, neighbour);
             }
         }
 
         private void spreadMature(Level pLevel, RandomSource pRandom, int neighbour, int index) {
-            if (pRandom.nextBoolean()) {
-                if(propagate(pLevel, pRandom, neighbour)) {
-                    setNeighbour(index, UNSET);
-                }
-            } else if (above != UNSET) {
-                if(propagate(pLevel, pRandom, above)) {
+            if (pRandom.nextInt(0, 3) == 0) {
+                propagateAboveSafe(pLevel, pRandom);
+            } else {
+                propagateNeighbourSafe(pLevel, pRandom, neighbour, index);
+            }
+        }
+
+        private void spreadPremature(Level pLevel, RandomSource pRandom, int index, int neighbour) {
+            if (canMature()) {
+                grow(pLevel);
+            } else {
+                propagateNeighbourSafe(pLevel, pRandom, neighbour, index);
+            }
+        }
+
+        private void spreadImmature(Level pLevel, RandomSource pRandom, int index, int neighbour) {
+            if (pRandom.nextInt(0, age + 1) == 0) {
+                grow(pLevel);
+            } else {
+                propagateNeighbourSafe(pLevel, pRandom, neighbour, index);
+            }
+        }
+
+        private void propagateAboveSafe(Level pLevel, RandomSource pRandom) {
+            if (above != UNSET) {
+                if (propagateNeighbour(pLevel, pRandom, above)) {
                     above = UNSET;
                 }
-            } else if (canPlaceAbove()) {
+            } else if (canMature()) {
                 placeAbove(pLevel);
             }
         }
 
-        private void spreadImmature(Level pLevel, RandomSource pRandom, int age, int neighbour, int index) {
-            if (pRandom.nextInt(0, age + 1) == 0) {
-                grow(pLevel);
-            } else {
-                if(propagate(pLevel, pRandom, neighbour)) {
-                    setNeighbour(index, UNSET);
-                }
+        private void propagateNeighbourSafe(Level pLevel, RandomSource pRandom, int index, int neighbour) {
+            if (propagateNeighbour(pLevel, pRandom, neighbour)) {
+                setNeighbour(index, UNSET);
             }
         }
 
@@ -176,10 +194,10 @@ public class VesselBlock extends BaseEntityBlock {
             pLevel.setBlock(blockPos, blockState.setValue(VesselBlock.AgeProperty, ++age), 3);
         }
 
-        private boolean propagate(Level pLevel, RandomSource pRandom, int reference) {
+        private boolean propagateNeighbour(Level pLevel, RandomSource pRandom, int reference) {
             VesselHeadBlockEntity.Spreader part = head.parts.get(reference);
 
-            if(part == null) {
+            if (part == null) {
                 return true;
             }
 
@@ -204,7 +222,7 @@ public class VesselBlock extends BaseEntityBlock {
             above = head.addPart(part);
         }
 
-        private void tryPlaceStem(Level pLevel, RandomSource pRandom, int index) {
+        private void placeStem(Level pLevel, RandomSource pRandom, int index) {
             BlockPos targetPos = getNeighbourPosition(index);
             BlockState targetBlockState = pLevel.getBlockState(targetPos);
 
