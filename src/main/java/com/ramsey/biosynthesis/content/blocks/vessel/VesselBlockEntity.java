@@ -1,6 +1,6 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
-import com.ramsey.biosynthesis.registrate.BlockEntityTypeRegistry;
+import com.ramsey.biosynthesis.registry.BlockEntityTypeRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;

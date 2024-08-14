@@ -1,8 +1,8 @@
-package com.ramsey.biosynthesis.registrate.event;
+package com.ramsey.biosynthesis.registry.event;
 
 import com.ramsey.biosynthesis.Main;
 import com.ramsey.biosynthesis.content.particles.BloodParticle;
-import com.ramsey.biosynthesis.registrate.ParticleTypeRegistry;
+import com.ramsey.biosynthesis.registry.ParticleTypeRegistry;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

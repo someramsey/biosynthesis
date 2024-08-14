@@ -1,8 +1,8 @@
-package com.ramsey.biosynthesis.registrate.event;
+package com.ramsey.biosynthesis.registry.event;
 
 import com.ramsey.biosynthesis.Main;
 import com.ramsey.biosynthesis.content.blocks.vessel.VesselBlockRenderer;
-import com.ramsey.biosynthesis.registrate.BlockEntityTypeRegistry;
+import com.ramsey.biosynthesis.registry.BlockEntityTypeRegistry;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

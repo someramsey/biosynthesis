@@ -1,10 +1,10 @@
 package com.ramsey.biosynthesis;
 
 import com.mojang.logging.LogUtils;
-import com.ramsey.biosynthesis.registrate.BlockEntityTypeRegistry;
-import com.ramsey.biosynthesis.registrate.BlockRegistry;
-import com.ramsey.biosynthesis.registrate.ItemRegistry;
-import com.ramsey.biosynthesis.registrate.ParticleTypeRegistry;
+import com.ramsey.biosynthesis.registry.BlockEntityTypeRegistry;
+import com.ramsey.biosynthesis.registry.BlockRegistry;
+import com.ramsey.biosynthesis.registry.ItemRegistry;
+import com.ramsey.biosynthesis.registry.ParticleTypeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;

@@ -1,9 +1,8 @@
-package com.ramsey.biosynthesis.registrate;
+package com.ramsey.biosynthesis.registry;
 
 import com.ramsey.biosynthesis.Main;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 

@@ -4,7 +4,7 @@ import com.ramsey.biosynthesis.Main;
 import com.ramsey.biosynthesis.data.providers.block.ModelConfiguration;
 import com.ramsey.biosynthesis.data.providers.block.common.branch.BranchBlockModelProvider;
 import com.ramsey.biosynthesis.data.providers.block.common.stem.BranchStemBlockModelProvider;
-import com.ramsey.biosynthesis.registrate.BlockRegistry;
+import com.ramsey.biosynthesis.registry.BlockRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;

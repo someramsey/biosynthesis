@@ -1,4 +1,4 @@
-package com.ramsey.biosynthesis.registrate;
+package com.ramsey.biosynthesis.registry;
 
 import com.ramsey.biosynthesis.Main;
 import com.ramsey.biosynthesis.content.blocks.vessel.VesselBlockEntity;

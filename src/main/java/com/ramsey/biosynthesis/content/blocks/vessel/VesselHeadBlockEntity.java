@@ -19,12 +19,22 @@ public class VesselHeadBlockEntity extends VesselBlockEntity {
 
     public int addPart(Spreader pSpreader) {
         this.parts.add(pSpreader);
-        return this.parts.size() - 1;
+
+        int order = this.parts.size() - 1;
+        pSpreader.id = order;
+        return order;
+    }
+
+    public void replacePart(Spreader pSpreader, int pIndex) {
+        this.parts.set(pIndex, pSpreader);
+        pSpreader.id = pIndex;
     }
 
     public abstract static class Spreader {
         protected static final int UNSET = -1;
+        protected static final int OCCUPIED = -2;
 
+        public int id = UNSET;
         public final VesselHeadBlockEntity head;
         public final BlockPos blockPos;
 

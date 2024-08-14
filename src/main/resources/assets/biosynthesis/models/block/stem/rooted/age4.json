@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-  	"ambientocclusion": false,
+	"ambientocclusion": false,
 	"textures": {
 		"0": "biosynthesis:block/branch/intersection",
 		"particle": "biosynthesis:block/branch/intersection"
@@ -20,13 +20,13 @@
 		},
 		{
 			"from": [5, 0, 15],
-			"to": [11, 1, 20],
+			"to": [11, 1, 24],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 12]},
 			"faces": {
 				"north": {"uv": [9.5, 0, 13.5, 0.5], "texture": "#0"},
 				"east": {"uv": [6.5, 13.5, 10.5, 14.5], "texture": "#0"},
 				"west": {"uv": [6.5, 13.5, 10.5, 14.5], "texture": "#0"},
-				"up": {"uv": [10.5, 1.5, 13.5, 5], "texture": "#0"},
+				"up": {"uv": [10.5, 1.5, 13.5, 7], "texture": "#0"},
 				"down": {"uv": [10.5, 0, 13.5, 2], "texture": "#0"}
 			}
 		}

@@ -4,7 +4,7 @@ import com.ramsey.biosynthesis.content.blocks.vessel.Alignment;
 import com.ramsey.biosynthesis.content.blocks.vessel.VesselBlock;
 import com.ramsey.biosynthesis.content.blocks.vessel.VesselHeadBlockEntity;
 import com.ramsey.biosynthesis.data.providers.block.common.stem.BranchStemBlockShapeProvider;
-import com.ramsey.biosynthesis.registrate.BlockRegistry;
+import com.ramsey.biosynthesis.registry.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
@@ -50,10 +50,8 @@ public class BranchStemBlock extends Block {
         return BranchStemBlockShapeProvider.buildShape(pState);
     }
 
-    //TODO: make get block or get state calls safe
     //TODO: implement actual branch navigation
     //TODO: make branches only spread on supporting blocks
-    //TODO: make sure vessel only places above if its neighbours are vessels
     public static class Spreader extends VesselHeadBlockEntity.Spreader {
         private final boolean rooted;
         private final Orientation orientation;
@@ -89,6 +87,8 @@ public class BranchStemBlock extends Block {
 
         @Override
         public void spread(Level pLevel, RandomSource pRandom) {
+            absoluteAge++;
+
             if (this.age < BranchStemBlock.MAX_AGE) {
                 BlockState blockState = pLevel.getBlockState(this.blockPos)
                     .setValue(AgeProperty, ++this.age);
@@ -111,22 +111,27 @@ public class BranchStemBlock extends Block {
         }
 
         public void mature(Level pLevel, RandomSource pRandom) {
+            Alignment alignment = Alignment.fromOrientation(this.orientation);
             BlockState vesselBlockState = BlockRegistry.vesselBlock.get().defaultBlockState()
-                .setValue(VesselBlock.AlignmentProperty, Alignment.fromOrientation(this.orientation));
+                .setValue(VesselBlock.AlignmentProperty, alignment);
 
             pLevel.setBlock(this.blockPos, vesselBlockState, 3);
 
-            if(nextPart == -1) {
+            VesselBlock.Spreader vesselSpreader = new VesselBlock.Spreader(this.head, this.blockPos);
+            this.head.replacePart(vesselSpreader, this.id);
+
+            if (nextPart == -1) {
                 return;
             }
 
-            VesselHeadBlockEntity.Spreader spreader = this.head.parts.get(this.nextPart);
+            VesselHeadBlockEntity.Spreader stemSpreader = this.head.parts.get(this.nextPart);
 
             BlockState branchBlockState = BlockRegistry.stemBlock.get().defaultBlockState()
                 .setValue(BranchStemBlock.OrientationProperty, this.orientation)
-                .setValue(BranchStemBlock.RootedProperty, true);
+                .setValue(BranchStemBlock.RootedProperty, true)
+                .setValue(BranchStemBlock.AgeProperty, BranchStemBlock.MAX_AGE);
 
-            pLevel.setBlock(spreader.blockPos, branchBlockState, 3);
+            pLevel.setBlock(stemSpreader.blockPos, branchBlockState, 3);
         }
     }
 }

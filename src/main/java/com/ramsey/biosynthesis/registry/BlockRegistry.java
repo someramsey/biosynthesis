@@ -1,4 +1,4 @@
-package com.ramsey.biosynthesis.registrate;
+package com.ramsey.biosynthesis.registry;
 
 import com.ramsey.biosynthesis.Main;
 import com.ramsey.biosynthesis.content.blocks.WasteBlock;
@@ -8,7 +8,6 @@ import com.ramsey.biosynthesis.content.blocks.vessel.VesselBlock;
 import com.ramsey.biosynthesis.content.blocks.vessel.VesselHeadBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;

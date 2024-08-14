@@ -1,9 +1,10 @@
 package com.ramsey.biosynthesis.content.blocks.vessel;
 
+import com.ramsey.biosynthesis.content.Tags;
 import com.ramsey.biosynthesis.content.blocks.branch.BranchStemBlock;
 import com.ramsey.biosynthesis.content.blocks.branch.Orientation;
 import com.ramsey.biosynthesis.data.providers.block.common.vessel.VesselBlockShapeProvider;
-import com.ramsey.biosynthesis.registrate.BlockRegistry;
+import com.ramsey.biosynthesis.registry.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
@@ -91,10 +92,10 @@ public class VesselBlock extends BaseEntityBlock {
         }
 
         private boolean canMature() {
-            return east != UNSET && head.parts.get(east) instanceof VesselBlock.Spreader
-                && west != UNSET && head.parts.get(west) instanceof VesselBlock.Spreader
-                && north != UNSET && head.parts.get(north) instanceof VesselBlock.Spreader
-                && south != UNSET && head.parts.get(south) instanceof VesselBlock.Spreader;
+            return east >= 0 && head.parts.get(east) instanceof VesselBlock.Spreader
+                && west >= 0 && head.parts.get(west) instanceof VesselBlock.Spreader
+                && north >= 0 && head.parts.get(north) instanceof VesselBlock.Spreader
+                && south >= 0 && head.parts.get(south) instanceof VesselBlock.Spreader;
         }
 
         private int getNeighbour(int index) {
@@ -129,8 +130,12 @@ public class VesselBlock extends BaseEntityBlock {
             int index = pRandom.nextInt(0, 4);
             int neighbour = getNeighbour(index);
 
+            if(neighbour == OCCUPIED) {
+                return;
+            }
+
             if (neighbour == UNSET) {
-                placeStem(pLevel, pRandom, index);
+                tryPlaceStem(pLevel, pRandom, index);
                 return;
             }
 
@@ -197,13 +202,13 @@ public class VesselBlock extends BaseEntityBlock {
         private boolean propagateNeighbour(Level pLevel, RandomSource pRandom, int reference) {
             VesselHeadBlockEntity.Spreader part = head.parts.get(reference);
 
-            if(part == null) {
+            if (part == null) {
                 head.parts.remove(reference);
                 return true;
             }
 
-            if(part instanceof BranchStemBlock.Spreader stemPart) {
-                if(stemPart.absoluteAge > STEM_MATURE_AGE) {
+            if (part instanceof BranchStemBlock.Spreader stemPart) {
+                if (stemPart.absoluteAge > STEM_MATURE_AGE) {
                     stemPart.mature(pLevel, pRandom);
                     return false;
                 }
@@ -230,11 +235,16 @@ public class VesselBlock extends BaseEntityBlock {
             above = head.addPart(part);
         }
 
-        private void placeStem(Level pLevel, RandomSource pRandom, int index) {
+        private void tryPlaceStem(Level pLevel, RandomSource pRandom, int index) {
             BlockPos targetPos = getNeighbourPosition(index);
             BlockState targetBlockState = pLevel.getBlockState(targetPos);
 
             if (!targetBlockState.isAir()) {
+                if (targetBlockState.is(Tags.plantBased)) {
+                    setNeighbour(index, OCCUPIED);
+                    return;
+                }
+
                 if (pRandom.nextInt(0, 3) > 0) {
                     return;
                 }
