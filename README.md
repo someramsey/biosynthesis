@@ -2,7 +2,7 @@
 
 This is an under-development Minecraft Forge mod that adds a new unique virus like plant that will spread and grow over time. The plant can not be destroyed by normal means and will forcefully spread to other blocks or mutate itself into bigger clumps.
 
-![image](https://imgur.com/a/DY1KaaX)
+![tYP0Rhi](https://github.com/user-attachments/assets/58f2da0b-2130-49e8-901e-fdf7bd93c91a)
 
 ## Installation
 
